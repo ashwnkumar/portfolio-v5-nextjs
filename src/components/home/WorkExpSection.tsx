@@ -56,7 +56,7 @@ const WorkExpSection = () => {
 
               {/* Details */}
               {isActive && (
-                <div className="flex flex-col gap-4 border-t border-border pt-4">
+                <div className="flex flex-col gap-5 border-t border-border pt-4">
                   <div>
                     <p className="font-medium">Skills Used:</p>
                     <div className="flex flex-wrap gap-2 mt-1">

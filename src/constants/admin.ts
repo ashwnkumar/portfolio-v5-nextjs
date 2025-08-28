@@ -1,3 +1,10 @@
+import {
+  faArtstation,
+  faInstagram,
+  faPinterest,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+
 export const admin = {
   name: "Ashwin Kumar",
   email: "code.by.ashwin@gmail.com",
@@ -5,11 +12,39 @@ export const admin = {
     github: "https://github.com/ashwnkumar",
     linkedin: "https://www.linkedin.com/in/ashwin-kumar-221160240",
   },
+  profile: "/assets/home.jpg",
   socialLinks: [
-    { label: "Instagram", link: "https://www.instagram.com/ashwnkumar/" },
-    { label: "Twitter", link: "https://x.com/ashwnkumaar" },
-    { label: "ArtStation", link: "https://www.artstation.com/ashwnkumar" },
+    {
+      title: "Instagram",
+      link: "https://www.instagram.com/ashwnkumar/",
+      icon: faInstagram,
+      color: "#FD006C",
+    },
+    {
+      title: "X",
+      link: "https://www.instagram.com/ashwnkumaar/",
+      icon: faXTwitter,
+      color: "#000000",
+    },
+    {
+      title: "Pinterest",
+      link: "https://www.pinterest.com",
+      icon: faPinterest,
+      color: "#e70025",
+    },
+    {
+      title: "ArtStation",
+      link: "https://www.artstation.com/ashwnkumar/",
+      icon: faArtstation,
+      color: "#42A5F5",
+    },
   ],
+  aboutShort: `
+
+  A Full Stack Web Developer,<span class="text-secondary"> specializing in 
+  creating clean, user-focused web interfaces <span/> .
+`,
+  location: "Pune, Maharashtra, India",
   stack: [
     "ReactJS",
     "NextJS",

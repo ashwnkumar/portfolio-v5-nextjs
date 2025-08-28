@@ -2,14 +2,48 @@
 @import "tailwindcss";
 
 :root,
-[theme="light"] {
-  --bg: #d1d5db;
-  --primary: #1f2937;
-  --secondary: #4b5563;
-  --gray: #99a1af59;
-  --border: #9ca3af;
-  --brand: #0d9488;
-  --brand-faded: #0d948833;
+[data-theme="dark"] {
+  --color-bg: #09090b;
+  --color-primary: #d1d5db;
+  --color-secondary: #9ca3af;
+  --color-gray: #27272a99;
+  --color-border: #3f3f46;
+  --color-brand: #0d9488;
+  --color-brand-faded: #0d948833;
+  --color-hover: #18181b;
+}
+
+[data-theme="light"] {
+  --color-bg: #d1d5db;
+  --color-primary: #1f2937;
+  --color-secondary: #4b5563;
+  --color-gray: #99a1af26;
+  --color-border: #99a1af80;
+  --color-brand: #0d9488;
+  --color-brand-faded: #0d94881a;
+  --color-hover: #9ca3af33;
+}
+
+[data-theme="neo"] {
+  --color-bg: #0a0a0a;
+  --color-primary: #cedfc9;
+  --color-secondary: #5a8a4a;
+  --color-gray: #27272a99;
+  --color-border: #3f3f46;
+  --color-brand: #36ba01;
+  --color-brand-faded: #16a34a26;
+  --color-hover: #18181b;
+}
+
+[data-theme="upside-down"] {
+  --color-bg: #0f0202;
+  --color-primary: #ebd4d4;
+  --color-secondary: #8d7575;
+  --color-gray: #27272a99;
+  --color-border: #3f3f46;
+  --color-brand: #ca2128;
+  --color-brand-faded: #ca212826;
+  --color-hover: #18181b;
 }
 
 @theme {
@@ -20,11 +54,32 @@
   --color-border: var(--border);
   --color-brand: var(--brand);
   --color-brand-faded: var(--brand-faded);
+  --color-hover: var(--hover);
   --font-body: "DM Sans", sans-serif;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--secondary);
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
   font-family: var(--font-body);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 9999px;
+}
+
+/* Optional: Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) var(--color-bg);
 }

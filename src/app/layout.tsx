@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { GlobalProvider } from "@/contexts/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Ashwin Kumar | Full Stack Developer",
@@ -34,17 +35,19 @@ export default function RootLayout({
       suppressHydrationWarning
       className="flex items-center justify-center scroll-smooth"
     >
-      <body className="flex min-h-screen w-full max-w-5xl flex-col items-center justify-center  bg-bg text-text font-body">
-        <header className="w-full ">
-          <Navbar />
-        </header>
-        <main className="flex-1 w-full flex">{children}</main>
-        <footer className="w-full">
-          <div className="container mx-auto">
-            <Footer />
-          </div>
-        </footer>
+      <body data-theme="dark" className="relative flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  bg-bg text-text font-body">
+        <GlobalProvider>
+          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray backdrop-blur-sm rounded-xl">
+            <Navbar />
+          </header>
+          <main className="flex-1 w-full flex pt-10 ">{children}</main>
+          <footer className="w-full">
+            <div className="container mx-auto">
+              <Footer />
+            </div>
+          </footer>
+        </GlobalProvider>
       </body>
-    </html>
+    </html >
   );
 }
