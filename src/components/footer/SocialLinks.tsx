@@ -1,6 +1,6 @@
 "use client";
 import { admin } from "@/constants/admin";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RenderIcon from "@/utils/RenderIcon";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -23,15 +23,6 @@ const SocialLinks = (props: Props) => {
       </Link>
 
       <div className="grid grid-cols-4 gap-5 w-full h-full">
-        {/* <div className="bg-gray rounded-xl p-4 flex items-center justify-center">
-                    <p>Card 1</p>
-                </div>
-                <div className="bg-gray rounded-xl p-4 flex items-center justify-center">
-                    <p>Card 2</p>
-                </div>
-                <div className="bg-gray rounded-xl p-4 flex items-center justify-center">
-                    <p>Card 3</p>
-                </div> */}
         {admin.socialLinks.map((item) => {
           return (
             <Link
@@ -50,7 +41,7 @@ const SocialLinks = (props: Props) => {
                 e.currentTarget.style.backgroundColor = "var(--color-gray)";
               }}
             >
-              <FontAwesomeIcon icon={item.icon} size="2xl" />
+              <RenderIcon icon={item.icon} />
             </Link>
           );
         })}
