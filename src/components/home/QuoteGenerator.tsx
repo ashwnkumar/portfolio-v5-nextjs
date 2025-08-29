@@ -47,7 +47,7 @@ const QuoteGenerator: React.FC = () => {
         <h3 className="text-base md:text-xl text-secondary font-medium">
           LifeHacks.exe
         </h3>
-        <p className="text-sm md:text-2xl font-secondary overflow-y-auto pb-4 md:pb-0">
+        <p className="text-xl md:text-2xl font-secondary overflow-y-auto pb-4 md:pb-0">
           {loading ? (
             <span className="animate-pulse text-secondary text-md">
               {thinkingMsg}

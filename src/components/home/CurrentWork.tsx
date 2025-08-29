@@ -2,6 +2,7 @@ import { admin } from "@/constants/admin";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import LinkCard from "../LinkCard";
 
 type Props = {};
 
@@ -13,23 +14,15 @@ const CurrentWork = (props: Props) => {
       </h3>
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="flex flex-col items-start justify-center gap-2">
-          <h3 className="text-3xl text-primary font-medium">
+          <h3 className="text-2xl md:text-3xl text-primary font-medium">
             {admin.workExp[0].company}
           </h3>
-          <p className="text-2xl text-secondary font-medium">
+          <p className="text-xl md:text-2xl text-secondary font-medium">
             {admin.workExp[0].position} | {admin.workExp[0].from} -{" "}
             {admin.workExp[0].to || "Present"}
           </p>
         </div>
-        <Link
-          href={"/about#work"}
-          className="group w-full shadow-sm rounded-xl bg-bg flex items-center text-lg  hover:text-brand hover:bg-brand-faded hover:border-brand justify-between px-5 py-3  transition-all duration-300 font-medium hover:font-semibold ease-in-out"
-        >
-          See All Experience
-          <span className=" p-1 border border-border rounded-full transition-all group-hover:border-brand group-hover:bg-brand group-hover:text-bg group-hover:rotate-45 duration-500 ease-in-out">
-            <ArrowUpRight size={28} />
-          </span>
-        </Link>
+        <LinkCard label="See All Experience" href="/about" />
       </div>
     </div>
   );
