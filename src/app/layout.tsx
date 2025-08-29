@@ -35,9 +35,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className="flex items-center justify-center scroll-smooth"
     >
-      <body data-theme="dark" className="relative flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  bg-bg text-text font-body">
+      <body
+        data-theme="dark"
+        className="relative flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  bg-bg text-text font-body p-4 md:p-0"
+      >
         <GlobalProvider>
-          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray backdrop-blur-sm rounded-xl">
+          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray backdrop-blur-sm rounded-xl ">
             <Navbar />
           </header>
           <main className="flex-1 w-full flex pt-10 ">{children}</main>
@@ -48,6 +51,6 @@ export default function RootLayout({
           </footer>
         </GlobalProvider>
       </body>
-    </html >
+    </html>
   );
 }

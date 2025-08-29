@@ -42,7 +42,7 @@ export const admin = {
     },
     {
       title: "Pinterest",
-      link: "https://www.pinterest.com",
+      link: "https://www.linkedin.com/in/ashwin-kumar-221160240",
       icon: siPinterest,
       color: "#e70025",
     },
@@ -109,7 +109,7 @@ export const admin = {
         "Took charge of complete UI redesigns for multiple projects, improving how they looked, felt, and performed.",
         "Worked closely with design teams and backend engineers to turn concepts into functional, polished web applications.",
       ],
-      skills: ["ReactJS", "Axios", "JavaScript", "Figma", "TailwindCSS"],
+      skills: ["ReactJS", "Axios", "JavaScript", "Figma", "TailwindCSS", "CSS"],
     },
   ],
 };

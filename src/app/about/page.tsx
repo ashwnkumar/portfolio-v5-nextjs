@@ -1,4 +1,8 @@
+import AboutDetails from "@/components/about/AboutDetails";
+import AboutExpCard from "@/components/about/AboutExpCard";
 import AboutSocialCard from "@/components/about/AboutSocialCard";
+import MusicCard from "@/components/about/MusicCard";
+import PhotosCard from "@/components/about/PhotosCard";
 import StackCard from "@/components/about/StackCard";
 import GridCard from "@/components/GridCard";
 import GridContainer from "@/components/GridContainer";
@@ -8,11 +12,11 @@ import React from "react";
 
 type Props = {};
 
-function page({}: Props) {
+function page({ }: Props) {
   return (
     <GridContainer>
-      <GridCard className="col-span-5 row-span-7">
-        <p>about</p>
+      <GridCard className="col-span-5 row-span-5">
+        <AboutDetails />
       </GridCard>
       <GridCard className="col-span-3 row-span-3">
         <div className="w-full h-full relative min-h-full">
@@ -24,20 +28,20 @@ function page({}: Props) {
           />
         </div>
       </GridCard>
-      <GridCard className="col-span-4 row-span-6">
-        <StackCard />
+      <GridCard className="col-span-4 row-span-6  hover:!scale-100">
+        <AboutExpCard />
       </GridCard>
       <GridCard className="col-span-3 row-span-3 !bg-bg !p-0 !shadow-none hover:!scale-100">
         <AboutSocialCard />
       </GridCard>
-      <GridCard className="col-span-4 row-span-4">
-        <p>photos</p>
+      <GridCard className="col-span-5 row-span-5">
+        <StackCard />
       </GridCard>
       <GridCard className="col-span-3 row-span-4">
-        <p>music</p>
+        <MusicCard />
       </GridCard>
-      <GridCard className="col-span-5 row-span-3">
-        <p>exp</p>
+      <GridCard className="col-span-4 row-span-4">
+        <PhotosCard />
       </GridCard>
     </GridContainer>
   );

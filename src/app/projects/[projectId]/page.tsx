@@ -76,7 +76,7 @@ const Page = ({ params }: Props) => {
           <LinksCard links={project?.links} />
         </GridCard>
       )}
-      <GridCard className="col-span-12 row-span-4 !bg-bg hover:!scale-100 !p-0 ">
+      <GridCard className="col-span-12 row-span-4 !bg-bg hover:!scale-100 !p-0 !shadow-none">
         <OtherProjects projectId={projectId} />
       </GridCard>
     </GridContainer>

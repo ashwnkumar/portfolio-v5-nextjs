@@ -3,6 +3,7 @@ import { projects } from "@/constants/projects";
 import { ArrowUpRight } from "lucide-react";
 import React, { useMemo } from "react";
 import PageHeader from "../PageHeader";
+import Link from "next/link";
 
 type Props = {
   projectId: string;
@@ -15,11 +16,11 @@ const OtherProjects = ({ projectId }: Props) => {
   }, [projectId]);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-4 ">
+    <div className="w-full h-full flex flex-col items-center justify-center gap-4 py-4">
       <PageHeader label="Other Projects" />
       <div className="w-full h-full flex items-center justify-center gap-5 cursor-pointer">
         {arr.map((project) => (
-          <div className="group w-full h-full bg-gray rounded-xl flex flex-col items-start justify-start gap-4 p-3">
+          <Link href={`/projects/${project.id}`} className="group w-full h-full bg-gray rounded-xl flex flex-col items-start justify-between gap-4 p-3">
             <div className=" rounded-lg overflow-hidden ">
               <img
                 src={project.images[0].src}
@@ -38,7 +39,7 @@ const OtherProjects = ({ projectId }: Props) => {
                 <ArrowUpRight size={32} />
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
