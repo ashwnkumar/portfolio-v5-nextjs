@@ -56,13 +56,13 @@ const ImageCarousel = ({ images }: Props) => {
           <>
             <button
               onClick={prevImage}
-              className="absolute top-1/2 active:scale-95 cursor-pointer z-50 left-2 -translate-y-1/2 bg-bg text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 ease-in-out"
+              className="absolute top-1/2 active:scale-95 cursor-pointer z-50 left-2 -translate-y-1/2 bg-black text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 ease-in-out"
             >
               <ChevronLeft size={20} strokeWidth={1.5} />
             </button>
             <button
               onClick={nextImage}
-              className="absolute top-1/2 active:scale-95 cursor-pointer z-50 right-2 -translate-y-1/2 bg-bg text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 ease-in-out"
+              className="absolute top-1/2 active:scale-95 cursor-pointer z-50 right-2 -translate-y-1/2 bg-black text-white p-2 rounded-full hover:bg-opacity-75 transition-all duration-300 ease-in-out"
             >
               <ChevronRight size={20} strokeWidth={1.5} />
             </button>
@@ -73,7 +73,7 @@ const ImageCarousel = ({ images }: Props) => {
                   key={idx}
                   onClick={() => setCurrentImage(idx)}
                   className={`size-3 rounded-full ${
-                    currentImage === idx ? "bg-brand" : "bg-white"
+                    currentImage === idx ? "bg-brand" : "bg-black"
                   }`}
                 />
               ))}
@@ -97,13 +97,13 @@ const ImageCarousel = ({ images }: Props) => {
               <img
                 src={images[currentImage].src}
                 alt={images[currentImage].alt}
-                className="max-h-[95vh] max-w-full object-contain"
+                className="max-h-[85vh] max-w-full object-contain"
               />
 
               {/* Close button */}
               <button
                 onClick={() => setIsLightboxOpen(false)}
-                className="absolute top-4 right-4 bg-white p-2 rounded-full text-black bg-opacity-60 hover:bg-opacity-80 transition "
+                className="absolute top-4 right-4 bg-black p-2 rounded-full text-white bg-opacity-60 hover:bg-opacity-80 transition "
               >
                 <X size={24} />
               </button>
@@ -113,19 +113,19 @@ const ImageCarousel = ({ images }: Props) => {
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white text-black bg-opacity-60 p-2 rounded-full hover:bg-opacity-80 transition"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black text-white bg-opacity-60 p-2 rounded-full hover:bg-opacity-80 transition"
                   >
                     <ChevronLeft size={28} />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white text-black bg-opacity-60 p-2 rounded-full hover:bg-opacity-80 transition"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black text-white bg-opacity-60 p-2 rounded-full hover:bg-opacity-80 transition"
                   >
                     <ChevronRight size={28} />
                   </button>
                 </>
               )}
-              <p className="bg-white text-bg absolute bottom-5 text-xl px-4 p-2">
+              <p className="bg-black text-white absolute bottom-5 text-xl px-4 p-2">
                 {images[currentImage].alt}
               </p>
             </div>

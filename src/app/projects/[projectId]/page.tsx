@@ -8,7 +8,6 @@ import LinksCard from "@/components/projectDetails/LinksCard";
 import OtherProjects from "@/components/projectDetails/OtherProjects";
 import StackCard from "@/components/projectDetails/StackCard";
 import { projects } from "@/constants/projects";
-import { useGlobal } from "@/contexts/GlobalContext";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, use } from "react";
@@ -18,7 +17,6 @@ type Props = {
 };
 
 const Page = ({ params }: Props) => {
-  const { setLoading } = useGlobal();
   const router = useRouter();
   const unwrapped = use(params); // 👈 unwrap the promise
   const { projectId } = unwrapped;
@@ -27,14 +25,12 @@ const Page = ({ params }: Props) => {
 
   useEffect(() => {
     const getData = async () => {
-      setLoading(true);
       try {
         const data = projects.find((project) => project.id === projectId);
         setProject(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
       }
     };
 
@@ -47,7 +43,10 @@ const Page = ({ params }: Props) => {
 
   return (
     <GridContainer>
-      <GridCard className="col-start-1 col-end-13 row-start-1 row-end-2">
+      <GridCard
+        loading={!project}
+        className="col-start-1 col-end-13 row-start-1 row-end-2"
+      >
         <div className="w-full h-full flex items-center justify-center">
           <button
             type="button"
@@ -62,11 +61,15 @@ const Page = ({ params }: Props) => {
         </div>
       </GridCard>
 
-      <GridCard className="col-start-1 col-end-13 md:col-end-9 row-start-2 row-end-5 md:row-end-7 hover:!scale-100">
+      <GridCard
+        loading={!project}
+        className="col-start-1 col-end-13 md:col-end-9 row-start-2 row-end-5 md:row-end-7 hover:!scale-100"
+      >
         <ImageCarousel images={project?.images} />
       </GridCard>
 
       <GridCard
+        loading={!project}
         className={`${
           project?.links?.length > 0
             ? "row-start-5 row-end-11 md:row-start-2 md:row-end-9"
@@ -76,7 +79,10 @@ const Page = ({ params }: Props) => {
         <FeaturesCard features={project?.features} />
       </GridCard>
 
-      <GridCard className="col-start-1 col-end-13 md:col-end-5 row-start-12 row-end-15 md:row-start-7 md:row-end-10">
+      <GridCard
+        loading={!project}
+        className="col-start-1 col-end-13 md:col-end-5 row-start-12 row-end-15 md:row-start-7 md:row-end-10"
+      >
         <div className="w-full h-full flex flex-col items-start justify-start gap-2">
           <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center font-medium">
             Overview:
@@ -87,17 +93,25 @@ const Page = ({ params }: Props) => {
         </div>
       </GridCard>
 
-      <GridCard className="col-start-1 col-end-13 md:col-start-5 md:col-end-9 row-start-15 row-end-18 md:row-start-7 md:row-end-10">
+      <GridCard
+        loading={!project}
+        className="col-start-1 col-end-13 md:col-start-5 md:col-end-9 row-start-15 row-end-18 md:row-start-7 md:row-end-10"
+      >
         <StackCard stack={project?.stack} />
       </GridCard>
 
       {project?.links?.length > 0 && (
-        <GridCard className="col-start-1  md:col-start-9 col-end-13 row-start-11 row-end-12 md:row-start-9 md:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100">
+        <GridCard
+          loading={!project}
+          className="col-start-1  md:col-start-9 col-end-13 row-start-11 row-end-12 md:row-start-9 md:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100"
+        >
           <LinksCard links={project?.links} />
         </GridCard>
       )}
 
-      <GridCard className="col-start-1 col-end-13 row-start-18 row-end-29 md:row-start-10 md:row-end-15 !bg-bg hover:!scale-100 !p-0 !shadow-none">
+      <GridCard
+        className="col-start-1 col-end-13 row-start-18 row-end-29 md:row-start-10 md:row-end-15 !bg-bg hover:!scale-100 !p-0 !shadow-none"
+      >
         <OtherProjects projectId={projectId} />
       </GridCard>
     </GridContainer>

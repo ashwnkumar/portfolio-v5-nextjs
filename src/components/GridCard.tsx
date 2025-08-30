@@ -1,17 +1,16 @@
-"use client";
-import { useGlobal } from "@/contexts/GlobalContext";
 import React from "react";
 
 type GridCardProps = {
   children?: React.ReactNode;
   className?: string;
+  loading?: boolean;
 };
 
 const GridCard: React.FC<GridCardProps> = ({
   children,
   className = "row-span-1 col-span-1",
+  loading = false,
 }) => {
-  const { loading } = useGlobal();
 
   return (
     <div

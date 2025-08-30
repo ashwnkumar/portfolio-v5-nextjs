@@ -9,8 +9,8 @@ import {
 } from "react";
 
 type GlobalContextType = {
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  loader: boolean;
+  setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
   applyTheme: (newTheme: string) => void;
@@ -20,7 +20,7 @@ const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState("dark");
-  const [loading, setLoading] = useState(true);
+  const [loader, setLoader] = useState(true);
 
   const applyTheme = (newTheme: string) => {
     setTheme(newTheme);
@@ -49,7 +49,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ theme, setTheme, applyTheme, loading, setLoading }}
+      value={{ theme, setTheme, applyTheme, loader, setLoader }}
     >
       {children}
     </GlobalContext.Provider>

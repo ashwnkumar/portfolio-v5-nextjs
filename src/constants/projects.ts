@@ -38,7 +38,7 @@ export const projects: Project[] = [
         id: 3,
       },
       {
-        src: "/projects/hiten-enterprises/5.jpg",
+        src: "/projects/hiten-enterprises/4.jpg",
         alt: "Hiten Enterprises-Figma Mockup",
         id: 4,
       },
@@ -191,7 +191,13 @@ export const projects: Project[] = [
     id: "ashwinkumar-dev",
     title: "Developer Portfolio",
     subTitle: "The current version of my developer portfolio.",
-    images: [{ src: "/projects/ashwinkumar-dev/1.png", alt: "Image 1", id: 1 }],
+    images: [
+      {
+        src: "/projects/ashwinkumar-dev/1.jpg",
+        alt: "Ashwin Kumar Dev",
+        id: 1,
+      },
+    ],
     description:
       "The website you're currently on. I was bored by how the previous iteration of my portfolio website looked. Just another generic design that looked like every other template. So I decided to revamp the whole thing from the ground up. Ditched the traditional portfolio design and opted for a design style that always fascinated me - The Bento Grid. I love the jigsaw-puzzle type feel it has and the way it makes the elements look like they're part of a whole. Exactly what you'd want from a portfolio website. So I decided to leverage CSS's Grid System and HOURS of tweaking the layout to make everything fit in place. The result is a responsive and clean portfolio website that's easy to navigate and looks great on all devices.",
     links: [{ name: "GitHub Repo", url: "https://www.github.com/ashwnkumar" }],

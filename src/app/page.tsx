@@ -16,6 +16,7 @@ import React from "react";
 export default function Home() {
   return (
     <GridContainer>
+      {/* Title and tagline */}
       <GridCard className="col-start-1 col-end-7 md:col-end-5 row-start-1 row-end-3">
         <div className="w-full h-full flex flex-col items-start justify-between">
           <span className="text-4xl font-bold text-brand">
@@ -27,10 +28,12 @@ export default function Home() {
         </div>
       </GridCard>
 
+      {/* About section */}
       <GridCard className="col-start-1 md:col-start-5 col-end-13 md:col-end-10 row-start-3 md:row-start-1 row-end-6 ">
         <AboutSection />
       </GridCard>
 
+      {/* Profile image */}
       <GridCard className="col-start-7 md:col-start-10 col-end-13 row-start-1 row-end-3 md:row-end-4 !p-3 !md:p-5">
         <div className="w-full h-full relative min-h-full">
           <Image
@@ -42,18 +45,22 @@ export default function Home() {
         </div>
       </GridCard>
 
+      {/* Quote generator */}
       <GridCard className="col-start-1 col-end-7 md:col-end-5 row-start-6 md:row-start-3 row-end-9 md:row-end-6">
         <QuoteGenerator />
       </GridCard>
 
+      {/* Theme switcher */}
       <GridCard className="col-start-7 md:col-start-10 col-end-13 row-start-6 md:row-start-4 row-end-9 md:row-end-7 !bg-bg !p-0 !shadow-none hover:!scale-100">
         <ThemeSwitcher />
       </GridCard>
 
+      {/* Current work */}
       <GridCard className="col-start-1 col-end-13 md:col-end-7 row-start-9 md:row-start-6 row-end-12 md:row-end-9">
         <CurrentWork />
       </GridCard>
 
+      {/* Location and coding since */}
       <GridCard className="col-start-1 md:col-start-7 col-end-8 md:col-end-10 row-start-12 md:row-start-6 row-end-14 md:row-end-9">
         <div className="w-full h-full flex flex-col items-start justify-start gap-5">
           <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center gap-2 font-medium">

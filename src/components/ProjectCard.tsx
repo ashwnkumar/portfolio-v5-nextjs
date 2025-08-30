@@ -20,14 +20,14 @@ const ProjectCard = ({ project }: Props) => {
                     className="object-cover transition-transform duration-600 group-hover:scale-103"
                 />
             </div>
-            <div className="flex items-center justify-between w-full mt-4 bg-brand-faded md:group-hover:bg-brand-faded px-4 py-2 rounded-lg gap-4">
+            <div className="flex items-center justify-between w-full mt-4 bg-brand-faded md:bg-inherit md:group-hover:bg-brand-faded px-4 py-2 rounded-lg gap-4">
                 <div className="flex flex-col items-start justify-center">
                     <h3 className="text-xl md:text-2xl font-semibold md:text-primary text-brand md:group-hover:text-brand transition-colors">
                         {project.title}
                     </h3>
                     <p className='text-sm md:text-base pe-4'>{project.subTitle}</p>
                 </div>
-                <span className="bg-brand md:group-hover:bg-brand text-bg md:group-hover:text-bg group-hover:rotate-45 transition-all duration-300 rounded-full border border-border">
+                <span className="bg-brand md:bg-inherit md:text-primary md:group-hover:bg-brand text-bg md:group-hover:text-bg group-hover:rotate-45 transition-all duration-300 rounded-full border border-border">
                     <ArrowUpRight size={32} />
                 </span>
             </div>
