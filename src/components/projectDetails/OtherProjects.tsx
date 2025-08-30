@@ -18,9 +18,12 @@ const OtherProjects = ({ projectId }: Props) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center gap-4 py-4">
       <PageHeader label="Other Projects" />
-      <div className="w-full h-full flex items-center justify-center gap-5 cursor-pointer">
+      <div className="w-full h-full grid grid-cols-1 md:grid-cols-3 gap-5 cursor-pointer">
         {arr.map((project) => (
-          <Link href={`/projects/${project.id}`} className="group w-full h-full bg-gray rounded-xl flex flex-col items-start justify-between gap-4 p-3">
+          <Link
+            href={`/projects/${project.id}`}
+            className="group w-full h-full bg-gray rounded-xl col-span-1 flex flex-col items-start justify-start gap-4 p-3"
+          >
             <div className=" rounded-lg overflow-hidden ">
               <img
                 src={project.images[0].src}

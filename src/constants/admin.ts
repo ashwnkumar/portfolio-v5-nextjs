@@ -25,6 +25,7 @@ export const admin = {
     github: "https://github.com/ashwnkumar",
     linkedin: "https://www.linkedin.com/in/ashwin-kumar-221160240",
   },
+  resume: "/resume.pdf",
   profile: "/assets/home.jpg",
   aboutProfile: "/assets/about.jpg",
   socialLinks: [

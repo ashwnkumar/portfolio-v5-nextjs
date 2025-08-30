@@ -11,7 +11,7 @@ type TechStackItem = {
 const StackCard = () => {
   return (
     <section className="w-full h-full flex flex-col gap-4">
-      <h3 className="text-base md:text-xl text-secondary font-semibold">
+      <h3 className="text-lg md:text-xl text-secondary font-semibold">
         Tech I Use
       </h3>
 

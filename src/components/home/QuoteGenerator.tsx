@@ -44,7 +44,7 @@ const QuoteGenerator: React.FC = () => {
   return (
     <div className="w-full flex h-full flex-col items-center justify-between text-primary">
       <div className="flex flex-col items-start justify-start gap-2 w-full">
-        <h3 className="text-base md:text-xl text-secondary font-medium">
+        <h3 className="text-lg md:text-xl text-secondary font-medium">
           LifeHacks.exe
         </h3>
         <p className="text-xl md:text-2xl font-secondary overflow-y-auto pb-4 md:pb-0">

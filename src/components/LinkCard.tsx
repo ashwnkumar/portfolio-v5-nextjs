@@ -15,12 +15,12 @@ const LinkCard = ({ label, href, className = "" }: LinkCardProps) => {
       className={`group w-full flex items-center justify-between px-4 py-3 
         rounded-xl shadow-sm transition-all duration-300 ease-in-out
         text-base md:text-lg font-medium
-        bg-brand-faded md:bg-bg 
+        bg-brand-faded md:bg-bg
         text-brand md:text-primary md:hover:text-brand
         hover:font-semibold  md:hover:bg-brand-faded hover:border-brand
         ${className}`}
     >
-      <span>{label}</span>
+      <span className="pe-1">{label}</span>
 
       <span
         className="p-1 rounded-full border border-border 

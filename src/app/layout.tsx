@@ -40,10 +40,10 @@ export default function RootLayout({
         className="relative flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  bg-bg text-text font-body p-4 md:p-0"
       >
         <GlobalProvider>
-          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray backdrop-blur-sm rounded-xl ">
+          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray rounded-xl border border-brand/50">
             <Navbar />
           </header>
-          <main className="flex-1 w-full flex pt-10 ">{children}</main>
+          <main className="flex-1 w-full flex pt-5 md:pt-10 ">{children}</main>
           <footer className="w-full">
             <div className="container mx-auto">
               <Footer />

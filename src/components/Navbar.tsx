@@ -3,9 +3,10 @@ import { navbarRoutes } from "@/constants/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./form/Button";
-import { BoomBox, FileText, Moon, Rabbit, Sun } from "lucide-react";
+import { BoomBox, FileText, Menu, Moon, Rabbit, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useGlobal } from "@/contexts/GlobalContext";
+import { admin } from "@/constants/admin";
 
 const themes = [
   { name: "Dark", key: "dark", icon: Moon },
@@ -20,6 +21,15 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleDownnloadResume = () => {
+    const link = document.createElement("a");
+    link.href = admin.resume;
+    link.download = "Ashwin-Kumar-Resume.pdf";
+    link.click();
+    link.remove();
+    document.body.removeChild(link);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,14 +62,49 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full p-4 flex items-center justify-between ">
-      <div className="flex items-center justify-center gap-2 divide-x divide-border">
-        <Link href="/" className="inline-block px-4">
+    <nav className="relative w-full p-4 flex items-center justify-between">
+      <div className="flex items-center justify-center gap-2 divide-0 md:divide-x divide-border">
+        <button
+          type="button"
+          className="block md:hidden pointer-events-none md:pointer-events-auto text-primary me-2 p-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <X size={28} strokeWidth={1.5} />
+          ) : (
+            <Menu size={28} strokeWidth={1.5} />
+          )}
+        </button>
+        {isOpen && (
+          <div className="absolute top-22 left-0 w-full bg-gray border border-brand text-xl rounded-lg flex flex-col items-start justify-start gap-2 p-4">
+            {navbarRoutes.map((route) => {
+              const isActive = pathname === route.path;
+              return (
+                <Link
+                  href={route.path}
+                  key={route.name}
+                  onClick={() => setIsOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`${
+                    isActive ? "bg-brand-faded text-brand" : "text-primary"
+                  } w-full px-4 py-2 rounded-lg`}
+                >
+                  {route.name}
+                </Link>
+              );
+            })}
+          </div>
+        )}
+        <Link
+          href="/"
+          onClick={() => setIsOpen(false)}
+          className="inline-block px-0 md:px-4"
+        >
           <h3 className="text-3xl font-bold text-brand active:scale-95 transition-all duration-300 ease-in-out uppercase ">
             [{getLogo()}]
           </h3>
         </Link>
-        <ul className="flex flex-row items-center">
+        <ul className="hidden md:flex flex-row items-center">
           {navbarRoutes.map((route) => {
             const isActive = pathname === route.path;
             return (
@@ -80,7 +125,7 @@ export default function Navbar() {
       <div className="flex items-center justify-center gap-5">
         <Button
           label="Download CV"
-          onClick={() => {}}
+          onClick={handleDownnloadResume}
           variant="outline"
           icon={FileText}
         />

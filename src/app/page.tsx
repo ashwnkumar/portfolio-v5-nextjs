@@ -56,7 +56,7 @@ export default function Home() {
 
       <GridCard className="col-start-1 md:col-start-7 col-end-8 md:col-end-10 row-start-12 md:row-start-6 row-end-14 md:row-end-9">
         <div className="w-full h-full flex flex-col items-start justify-start gap-5">
-          <h3 className="text-base md:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
+          <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
             Based Out Of:
           </h3>
           <p className="text-xl md:text-2xl text-primary font-medium flex items-start justify-center gap-2">
@@ -70,7 +70,7 @@ export default function Home() {
 
       <GridCard className="col-start-8 md:col-start-10 col-end-13 row-start-12 md:row-start-7 row-end-14 md:row-end-9">
         <div className="w-full h-full flex flex-col items-start justify-start gap-5">
-          <h3 className="text-base md:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
+          <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
             Coding Since:
           </h3>
           <p className="text-2xl text-primary font-medium flex items-start justify-center gap-2">
@@ -101,7 +101,11 @@ export default function Home() {
 
       <div className="col-start-1 col-end-13 row-start-25 row-end-26 md:row-start-15 md:row-end-16">
         {projects.length > 2 && (
-          <LinkCard label="See All Projects" href="/projects" className="w-full h-full text-xl" />
+          <LinkCard
+            label="See All Projects"
+            href="/projects"
+            className="w-full h-full text-xl md:!bg-gray md:hover:!bg-brand-faded"
+          />
         )}
       </div>
     </GridContainer>

@@ -15,8 +15,7 @@ const AboutSocialCard = () => {
           href={item.link}
           target="_blank"
           rel="noreferrer"
-          // className=""
-          className="flex flex-col items-center justify-between gap-2 rounded-xl p-4 b-gray hover-link  bg-gray  hover:scale-103 active:scale-95 hover:text-gray-200 transition-all duration-300 ease-in-out"
+          className="flex flex-col items-center justify-center md:justify-between gap-2 rounded-xl p-3 md:p-4 b-gray hover-link  bg-gray  hover:scale-103 active:scale-95 hover:text-gray-200 transition-all duration-300 ease-in-out"
           style={{
             transition: "background-color 0.3s ease-in-out",
           }}
@@ -27,11 +26,13 @@ const AboutSocialCard = () => {
             e.currentTarget.style.backgroundColor = "var(--color-gray)";
           }}
         >
-          <div className="flex items-center justify-between w-full">
-            <p>{item.title}</p>
-            <ArrowUpRight />
+          <div className="hidden md:flex items-center justify-between w-full">
+            <p className="">{item.title}</p>
+            <span className="self-end">
+              <ArrowUpRight />
+            </span>
           </div>
-          <span className="self-start">
+          <span className="md:self-start">
             <RenderIcon icon={item.icon} />
           </span>
         </Link>

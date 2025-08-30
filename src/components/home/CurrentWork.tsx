@@ -9,7 +9,7 @@ type Props = {};
 const CurrentWork = (props: Props) => {
   return (
     <div className="w-full h-full flex flex-col items-start justify-between">
-      <h3 className="text-base md:text-xl text-secondary flex items-center justify-center font-medium">
+      <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center font-medium">
         Currently Working At:
       </h3>
       <div className="w-full flex flex-col items-start justify-start gap-5">

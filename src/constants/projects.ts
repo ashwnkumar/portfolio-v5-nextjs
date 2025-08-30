@@ -38,7 +38,7 @@ export const projects: Project[] = [
         id: 3,
       },
       {
-        src: "/projects/hiten-enterprises/4.jpg",
+        src: "/projects/hiten-enterprises/5.jpg",
         alt: "Hiten Enterprises-Figma Mockup",
         id: 4,
       },
@@ -55,10 +55,7 @@ export const projects: Project[] = [
     ],
     description:
       "I designed and developed a full-featured business website for Hiten Enterprises, a sheet metal fabrication company with over 30 years of experience. The site needed to showcase a diverse range of industrial products — from rolling shutters and high-speed doors to mezzanine floors and storage racks — while communicating the company’s credibility and service-first approach. To keep things simple and cost-effective, I implemented Google Sheets as a headless CMS: product and service data is stored in a sheet, fetched via the Sheets API, and served to the frontend as JSON. Images hosted on Google Drive are automatically converted into web-friendly `lh3.googleusercontent.com` links, ensuring smooth rendering across the site. Alongside this dynamic data logic, I designed an About page with mission, vision, and trust-building elements, plus a product image carousel. The result is a professional, responsive, and easy-to-maintain online presence that the client can update without touching code.",
-    links: [
-      { name: "Live Link", url: "#" },
-      { name: "GitHub Repo", url: "#" },
-    ],
+    links: [{ name: "Live Link", url: "https://www.hitenenterprises.in/" }],
     stack: [
       "ReactJS",
       "TailwindCSS",
@@ -131,7 +128,8 @@ export const projects: Project[] = [
   {
     id: "idbfiles",
     title: "IDBFiles",
-    subTitle: "A file manager app built into your browser",
+    subTitle:
+      "An offline file manager app built into your browser that leverages IndexedDB Storage.",
     images: [
       { src: "/projects/idbfiles/1.jpg", alt: "IDBFiles", id: 1 },
       { src: "/projects/idbfiles/2.jpg", alt: "IDBFiles", id: 2 },
@@ -167,7 +165,8 @@ export const projects: Project[] = [
       { src: "/projects/cmdtask/1.jpg", alt: "CmdTask", id: 1 },
       { src: "/projects/cmdtask/2.jpg", alt: "CmdTask", id: 2 },
       { src: "/projects/cmdtask/3.jpg", alt: "CmdTask", id: 3 },
-      { src: "/projects/cmdtask/4.jpg", alt: "CmdTask", id: 3 },
+      { src: "/projects/cmdtask/4.jpg", alt: "CmdTask", id: 4 },
+      { src: "/projects/cmdtask/5.jpg", alt: "CmdTask", id: 5 },
     ],
     description:
       "CmdTask is a personal task manager designed with a command-line inspired interface. Instead of buttons and menus, it’s fully keyboard-driven — every action happens through typed commands. Tasks are stored locally using the browser’s IndexedDB, which means your data persists across sessions without relying on any server or cloud service. You can add tasks with priority levels, list and filter them, mark them as done, or purge everything entirely — all with a few keystrokes. CmdTask combines productivity with a terminal aesthetic, making it fast, efficient, and distraction-free.",
