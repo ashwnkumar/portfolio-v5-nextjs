@@ -11,15 +11,15 @@ const ProjectsSection = (props: Props) => {
   return (
     <div className="flex flex-col items-center justify-center gap-5 w-full">
       <PageHeader label="Featured Projects" />
-      <div className=" p-4 md:p-6  rounded-3xl w-full gap-5 space-y-5 border border-border max-w-3xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 border border-border rounded-3xl p-4 md:p-6">
+      <div className=" p-4 lg:p-6  rounded-3xl w-full gap-5 space-y-5 border border-border max-w-3xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 border border-border rounded-3xl p-4 lg:p-6">
           {projects.slice(0, 2).map((project) => (
             <Link
               href={`/projects/${project.id}`}
               key={project.id}
-              className="group flex flex-col items-start justify-start w-full rounded-2xl bg-gray p-4 md:p-6 transition-all duration-300 "
+              className="group flex flex-col items-start justify-start w-full rounded-2xl bg-gray p-4 lg:p-6 transition-all duration-300 "
             >
-              <div className="relative w-full h-64 md:h-72 overflow-hidden rounded-xl ">
+              <div className="relative w-full h-64 lg:h-72 overflow-hidden rounded-xl ">
                 <Image
                   src={project.images[0].src}
                   alt={project.images[0].alt}
@@ -29,7 +29,7 @@ const ProjectsSection = (props: Props) => {
               </div>
 
               <div className="flex items-center justify-between w-full mt-4">
-                <h3 className="text-lg md:text-xl font-semibold text-primary group-hover:text-brand transition-colors">
+                <h3 className="text-lg lg:text-xl font-semibold text-primary group-hover:text-brand transition-colors">
                   {project.title}
                 </h3>
                 <span className=" group-hover:border-brand border-border group-hover:text-bg group-hover:bg-brand p-1 rounded-md transition-all duration-300 ease-in-out">

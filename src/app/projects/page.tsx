@@ -13,7 +13,7 @@ const page = (props: Props) => {
         <GridCard
           loading={!project}
           key={project.id}
-          className="col-span-12 md:col-span-6 row-span-5"
+          className="col-span-12 lg:col-span-6 row-span-5"
         >
           <ProjectCard project={project} />
         </GridCard>

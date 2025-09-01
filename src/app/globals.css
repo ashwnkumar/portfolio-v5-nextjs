@@ -25,10 +25,10 @@
 }
 
 [data-theme="neo"] {
-  --color-bg: #0a0a0a;
+  --color-bg: #09090b;
   --color-primary: #cedfc9;
   --color-secondary: #5a8a4a;
-  --color-gray: #99a1af26;
+  --color-gray: #1b1b1d;
   --color-border: #3f3f46;
   --color-brand: #36ba01;
   --color-brand-faded: #16a34a26;
@@ -36,10 +36,10 @@
 }
 
 [data-theme="upside-down"] {
-  --color-bg: #0f0202;
+  --color-bg: #09090b;
   --color-primary: #ebd4d4;
   --color-secondary: #8d7575;
-  --color-gray: #99a1af26;
+  --color-gray: #1d1b1b;
   --color-border: #3f3f46;
   --color-brand: #ca2128;
   --color-brand-faded: #ca212826;

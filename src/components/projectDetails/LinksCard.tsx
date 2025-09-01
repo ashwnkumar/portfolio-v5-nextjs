@@ -13,7 +13,7 @@ const LinksCard = ({ links }: Props) => {
         <Link
           href={link.url}
           key={link.name}
-          className="relative bg-gray rounded-xl p-4 flex flex-col items-center justify-center text-xl w-full h-full hover:scale-103 active:scale-95 hover:text-brand transition-all duration-300 ease-in-out hover:bg-brand-faded "
+          className="relative bg-gray rounded-xl p-4 text-primary  flex flex-col items-center justify-center text-xl w-full h-full hover:scale-103 active:scale-95 hover:text-brand transition-all duration-300 ease-in-out hover:bg-brand-faded "
         >
           {link.name}
           <span className="absolute top-3 right-3">

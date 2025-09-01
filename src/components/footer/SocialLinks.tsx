@@ -14,10 +14,11 @@ const SocialLinks = (props: Props) => {
         href={`mailto:${admin.email}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="group hover:bg-brand-faded bg-brand-faded md:bg-gray text-brand md:text-primary rounded-xl px-4 py-1 flex items-center justify-between transition-all duration-300 text-2xl hover:text-brand hover:border-brand hover:scale-103"
+        className="group hover:bg-brand-faded bg-brand-faded lg:bg-gray text-brand lg:text-primary rounded-xl px-4 py-1 flex items-center justify-between transition-all duration-300 text-2xl hover:text-brand hover:border-brand hover:scale-103"
       >
-        {admin.email}
-        <span className="group-hover:bg-brand group-hover:text-bg bg-brand md:bg-gray text-bg md:text-primary group-hover:rotate-45 transition-all duration-300 rounded-full border border-border">
+        {/* {admin.email} */}
+        Email
+        <span className="group-hover:bg-brand group-hover:text-bg bg-brand lg:bg-gray text-bg lg:text-primary group-hover:rotate-45 transition-all duration-300 rounded-full border border-border">
           <ArrowUpRight size={32} />
         </span>
       </Link>

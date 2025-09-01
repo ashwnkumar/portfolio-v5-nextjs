@@ -19,7 +19,7 @@ const PhotosCard = (props: Props) => {
       className="w-full h-full flex flex-col items-start justify-center gap-3 cursor-pointer"
       onClick={handleNext}
     >
-      {/* <h3 className="text-lg md:text-xl text-secondary font-semibold">
+      {/* <h3 className="text-lg lg:text-xl text-secondary font-semibold">
         Life Beyond the 9-5
       </h3> */}
 
@@ -46,7 +46,7 @@ const PhotosCard = (props: Props) => {
       <LinkCard
         label="@frames.by.ashwin"
         href={"https://www.instagram.com/frames.by.ashwin/"}
-        className="text-xs md:text-base !px-2 md:!px-4"
+        className="text-xs lg:text-base !px-2 lg:!px-4"
       />
     </div>
   );

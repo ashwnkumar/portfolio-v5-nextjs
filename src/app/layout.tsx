@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { GlobalProvider } from "@/contexts/GlobalContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Ashwin Kumar | Full Stack Developer",
@@ -37,14 +38,25 @@ export default function RootLayout({
     >
       <body
         data-theme="dark"
-        className="relative flex min-h-screen w-full max-w-7xl flex-col items-center justify-center  bg-bg text-text font-body p-4 md:p-0"
+        className="relative flex min-h-screen w-full max-w-7xl flex-col items-center  justify-center  bg-bg text-text font-body p-4 lg:p-0"
       >
         <GlobalProvider>
-          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray rounded-xl border border-brand/50">
+          <Toaster
+            toastOptions={{
+              style: {
+                background: "var(--color-bg)",
+                color: "var(--color-primary)",
+                border: "1px solid var(--color-border)",
+              },
+            }}
+          />
+          <header className="sticky top-4 shadow-sm z-50 w-full bg-gray  rounded-xl border border-brand/50 !max-w-7xl">
             <Navbar />
           </header>
-          <main className="flex-1 w-full flex pt-5 md:pt-10 ">{children}</main>
-          <footer className="w-full">
+          <main className="flex-1 w-full flex items-center justify-center pt-5 lg:pt-10 ">
+            {children}
+          </main>
+          <footer className="w-full lg:max-w-7xl">
             <div className="container mx-auto">
               <Footer />
             </div>

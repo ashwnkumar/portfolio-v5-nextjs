@@ -15,7 +15,7 @@ const AboutExpCard = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-start gap-4">
-      <h3 className="text-lg md:text-xl text-secondary font-semibold">
+      <h3 className="text-lg lg:text-xl text-secondary font-semibold">
         Work Experience
       </h3>
 

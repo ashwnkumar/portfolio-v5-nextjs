@@ -55,7 +55,7 @@ const Page = ({ params }: Props) => {
           >
             <ChevronLeft size={36} strokeWidth={1.5} className="pe-1" />
           </button>
-          <h3 className="w-full h-full text-2xl md:text-3xl text-primary font-medium flex items-center justify-start gap-2">
+          <h3 className="w-full h-full text-2xl lg:text-3xl text-primary font-medium flex items-center justify-start gap-2">
             {project?.title}
           </h3>
         </div>
@@ -63,7 +63,7 @@ const Page = ({ params }: Props) => {
 
       <GridCard
         loading={!project}
-        className="col-start-1 col-end-13 md:col-end-9 row-start-2 row-end-5 md:row-end-7 hover:!scale-100"
+        className="col-start-1 col-end-13 lg:col-end-9 row-start-2 row-end-5 lg:row-end-7 hover:!scale-100"
       >
         <ImageCarousel images={project?.images} />
       </GridCard>
@@ -72,22 +72,22 @@ const Page = ({ params }: Props) => {
         loading={!project}
         className={`${
           project?.links?.length > 0
-            ? "row-start-5 row-end-11 md:row-start-2 md:row-end-9"
-            : "row-start-5 row-end-12 md:row-start-2 md:row-end-10"
-        } col-start-1 col-end-13 md:col-start-9 md:col-end-13 `}
+            ? "row-start-5 row-end-11 lg:row-start-2 lg:row-end-9"
+            : "row-start-5 row-end-12 lg:row-start-2 lg:row-end-10"
+        } col-start-1 col-end-13 lg:col-start-9 lg:col-end-13 `}
       >
         <FeaturesCard features={project?.features} />
       </GridCard>
 
       <GridCard
         loading={!project}
-        className="col-start-1 col-end-13 md:col-end-5 row-start-12 row-end-15 md:row-start-7 md:row-end-10"
+        className="col-start-1 col-end-13 lg:col-end-5 row-start-12 row-end-15 lg:row-start-7 lg:row-end-10"
       >
         <div className="w-full h-full flex flex-col items-start justify-start gap-2">
-          <h3 className="text-lg md:text-xl text-secondary flex items-center justify-center font-medium">
+          <h3 className="text-lg lg:text-xl text-secondary flex items-center justify-center font-medium">
             Overview:
           </h3>
-          <p className="text-lg md:text-xl text-primary overflow-auto custom-scrollbar pe-5">
+          <p className="text-lg lg:text-xl text-primary overflow-auto custom-scrollbar pe-5">
             {project?.description}
           </p>
         </div>
@@ -95,7 +95,7 @@ const Page = ({ params }: Props) => {
 
       <GridCard
         loading={!project}
-        className="col-start-1 col-end-13 md:col-start-5 md:col-end-9 row-start-15 row-end-18 md:row-start-7 md:row-end-10"
+        className="col-start-1 col-end-13 lg:col-start-5 lg:col-end-9 row-start-15 row-end-18 lg:row-start-7 lg:row-end-10"
       >
         <StackCard stack={project?.stack} />
       </GridCard>
@@ -103,15 +103,13 @@ const Page = ({ params }: Props) => {
       {project?.links?.length > 0 && (
         <GridCard
           loading={!project}
-          className="col-start-1  md:col-start-9 col-end-13 row-start-11 row-end-12 md:row-start-9 md:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100"
+          className="col-start-1  lg:col-start-9 col-end-13 row-start-11 row-end-12 lg:row-start-9 lg:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100"
         >
           <LinksCard links={project?.links} />
         </GridCard>
       )}
 
-      <GridCard
-        className="col-start-1 col-end-13 row-start-18 row-end-29 md:row-start-10 md:row-end-15 !bg-bg hover:!scale-100 !p-0 !shadow-none"
-      >
+      <GridCard className="col-start-1 col-end-13 row-start-18 row-end-32 lg:row-start-10 lg:row-end-16 !bg-bg hover:!scale-100 !p-0 !shadow-none">
         <OtherProjects projectId={projectId} />
       </GridCard>
     </GridContainer>
