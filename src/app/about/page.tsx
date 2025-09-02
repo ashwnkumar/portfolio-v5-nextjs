@@ -15,7 +15,7 @@ type Props = {};
 function page({}: Props) {
   return (
     <GridContainer>
-      <GridCard className=" col-start-1 col-end-13 lg:col-end-6 row-start-1 row-end-6">
+      <GridCard className=" col-start-1 col-end-13 lg:col-end-6 row-start-1 row-end-7">
         <AboutDetails />
       </GridCard>
 
@@ -38,16 +38,36 @@ function page({}: Props) {
         <AboutSocialCard />
       </GridCard>
 
-      <GridCard className="col-start-1 col-end-13 lg:col-end-6 row-start-14 row-end-18 lg:row-start-6 lg:row-end-11">
+      <GridCard className="col-start-1 col-end-13 lg:col-end-13 row-start-14 row-end-18 lg:row-start-7 lg:row-end-11">
         <StackCard />
       </GridCard>
 
-      <GridCard className="col-start-1 col-end-7 lg:col-start-6 lg:col-end-9 row-start-18 row-end-21 lg:row-start-7 lg:row-end-11">
+      <GridCard className="col-start-1 col-end-7 lg:col-start-1 lg:col-end-4 row-start-18 row-end-21 lg:row-start-11 lg:row-end-15">
         <MusicCard />
       </GridCard>
 
-      <GridCard className="col-start-7 col-end-13 lg:col-start-9 lg:col-end-13 row-start-18 row-end-21 lg:row-start-7 lg:row-end-11">
+      <GridCard className="col-start-7 col-end-13 lg:col-start-4 lg:col-end-8 row-start-18 row-end-21 lg:row-start-11 lg:row-end-15">
         <PhotosCard />
+      </GridCard>
+      <GridCard className="col-start-7 col-end-13 lg:col-start-8 lg:col-end-13 row-start-18 row-end-21 lg:row-start-11 lg:row-end-13">
+        <div className="w-full h-full flex flex-col items-start justify-between gap-5">
+          <h3 className="text-lg lg:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
+            My Go To Movie:
+          </h3>
+          <p className="text-2xl md:text-4xl text-primary font-medium flex items-start justify-center gap-2">
+            GoodFellas
+          </p>
+        </div>
+      </GridCard>
+      <GridCard className="col-start-7 col-end-13 lg:col-start-8 lg:col-end-13 row-start-18 row-end-21 lg:row-start-13 lg:row-end-15">
+        <div className="w-full h-full flex flex-col items-start justify-between gap-5">
+          <h3 className="text-lg lg:text-xl text-secondary flex items-center justify-center gap-2 font-medium">
+            Currently Reading:
+          </h3>
+          <p className="text-2xl md:text-4xl text-primary font-medium flex items-start justify-center gap-2">
+            You Have Not Yet Heard Your Favourite Song
+          </p>
+        </div>
       </GridCard>
     </GridContainer>
   );

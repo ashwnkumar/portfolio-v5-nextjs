@@ -10,22 +10,33 @@ type TechStackItem = {
 
 const StackCard = () => {
   return (
-    <section className="w-full h-full flex flex-col gap-4">
+    <section className="w-full h-full flex flex-col gap-4 ">
       <h3 className="text-lg lg:text-xl text-secondary font-semibold">
-        Tech I Use
+        Skills/Technologies:
       </h3>
-
-      <ul className="flex flex-col gap-4 w-full overflow-auto">
-        {admin.stack.map((tech) => (
-          <li
-            key={tech.name}
-            className="flex items-center gap-3 text-xl lg:text-2xl text-primary "
+      <div className="w-full h-full grid grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden">
+        {admin.stack.map((item) => (
+          <div
+            key={item.title}
+            className="w-full h-full flex flex-col items-start justify-start gap-4 overflow-auto custom-scrollbar"
           >
-            <RenderIcon icon={tech.icon} size={28} />
-            <span>{tech.name}</span>
-          </li>
+            <p className="uppercase text-lg lg:text-xl font-medium">
+              {item.title}
+            </p>
+            <ul className="flex flex-col gap-4 w-full overflow-auto">
+              {item.skills.map((tech) => (
+                <li
+                  key={tech.name}
+                  className="flex items-center gap-3 text-xl lg:text-2xl text-primary "
+                >
+                  <RenderIcon icon={tech.icon} size={28} />
+                  <span>{tech.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };

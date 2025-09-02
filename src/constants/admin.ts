@@ -1,3 +1,4 @@
+import { Languages } from "lucide-react";
 import {
   siArtstation,
   siBlender,
@@ -61,20 +62,36 @@ export const admin = {
 `,
   location: "Pune, Maharashtra, India",
   stack: [
-    { name: "ReactJS", icon: siReact },
-    { name: "NextJS", icon: siNextdotjs },
-    { name: "MongoDB", icon: siMongodb },
-    { name: "ExpressJS", icon: siExpress },
-    { name: "NodeJS", icon: siNodedotjs },
-    { name: "React Native", icon: siReact },
-    { name: "JavaScript", icon: siJavascript },
-    { name: "TypeScript", icon: siTypescript },
-    { name: "Figma", icon: siFigma },
-    { name: "HTML", icon: siHtml5 },
-    { name: "CSS", icon: siCss },
-    { name: "TailwindCSS", icon: siTailwindcss },
-    { name: "Bootstrap", icon: siBootstrap },
-    { name: "Blender", icon: siBlender },
+    {
+      title: "Frontend",
+      skills: [
+        { name: "ReactJS", icon: siReact },
+        { name: "NextJS", icon: siNextdotjs },
+        { name: "React Native", icon: siReact },
+        { name: "JavaScript", icon: siJavascript },
+        { name: "TypeScript", icon: siTypescript },
+        { name: "HTML", icon: siHtml5 },
+        { name: "CSS", icon: siCss },
+        { name: "TailwindCSS", icon: siTailwindcss },
+        { name: "Bootstrap", icon: siBootstrap },
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: "ExpressJS", icon: siExpress },
+        { name: "MongoDB", icon: siMongodb },
+        { name: "NodeJS", icon: siNodedotjs },
+      ],
+    },
+    {
+      title: "Other",
+      skills: [
+        { name: "Figma", icon: siFigma },
+        { name: "Blender", icon: siBlender },
+        { name: "Japanese", icon: Languages },
+      ],
+    },
   ],
   workExp: [
     {
