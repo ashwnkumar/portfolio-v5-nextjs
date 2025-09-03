@@ -1,36 +1,34 @@
 "use client";
 import GridCard from "@/components/GridCard";
 import GridContainer from "@/components/GridContainer";
-import PageHeader from "@/components/PageHeader";
 import FeaturesCard from "@/components/projectDetails/FeaturesCard";
 import ImageCarousel from "@/components/projectDetails/ImageCarousel";
 import LinksCard from "@/components/projectDetails/LinksCard";
 import OtherProjects from "@/components/projectDetails/OtherProjects";
 import StackCard from "@/components/projectDetails/StackCard";
-import { projects } from "@/constants/projects";
+import { projects, type Project } from "@/constants/projects";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, use } from "react";
 
 type Props = {
-  params: Promise<{ projectId: string }>; // 👈 params is now a Promise
+  params: Promise<{ projectId: string }>;
 };
 
 const Page = ({ params }: Props) => {
   const router = useRouter();
-  const unwrapped = use(params); // 👈 unwrap the promise
+  const unwrapped = use(params);
   const { projectId } = unwrapped;
 
-  const [project, setProject] = useState<any>(null);
+  const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = projects.find((project) => project.id === projectId);
+        const data = projects.find((p) => p.id === projectId) || null;
         setProject(data);
       } catch (error) {
         console.error("Error fetching data:", error);
-      } finally {
       }
     };
 
@@ -51,7 +49,7 @@ const Page = ({ params }: Props) => {
           <button
             type="button"
             onClick={() => router.back()}
-            className="flex items-center justify-center cursor-pointer "
+            className="flex items-center justify-center cursor-pointer"
           >
             <ChevronLeft size={36} strokeWidth={1.5} className="pe-1" />
           </button>
@@ -65,18 +63,18 @@ const Page = ({ params }: Props) => {
         loading={!project}
         className="col-start-1 col-end-13 lg:col-end-9 row-start-2 row-end-5 lg:row-end-7 hover:!scale-100"
       >
-        <ImageCarousel images={project?.images} />
+        <ImageCarousel images={project?.images || []} />
       </GridCard>
 
       <GridCard
         loading={!project}
         className={`${
-          project?.links?.length > 0
+          project?.links?.length
             ? "row-start-5 row-end-11 lg:row-start-2 lg:row-end-9"
             : "row-start-5 row-end-12 lg:row-start-2 lg:row-end-10"
         } col-start-1 col-end-13 lg:col-start-9 lg:col-end-13 `}
       >
-        <FeaturesCard features={project?.features} />
+        <FeaturesCard features={project?.features || []} />
       </GridCard>
 
       <GridCard
@@ -97,15 +95,15 @@ const Page = ({ params }: Props) => {
         loading={!project}
         className="col-start-1 col-end-13 lg:col-start-5 lg:col-end-9 row-start-15 row-end-18 lg:row-start-7 lg:row-end-10"
       >
-        <StackCard stack={project?.stack} />
+        <StackCard stack={project?.stack || []} />
       </GridCard>
 
-      {project?.links?.length > 0 && (
+      {project?.links && (
         <GridCard
           loading={!project}
-          className="col-start-1  lg:col-start-9 col-end-13 row-start-11 row-end-12 lg:row-start-9 lg:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100"
+          className="col-start-1 lg:col-start-9 col-end-13 row-start-11 row-end-12 lg:row-start-9 lg:row-end-10 !bg-bg !p-0 !shadow-none hover:!scale-100"
         >
-          <LinksCard links={project?.links} />
+          {project?.links && <LinksCard links={project.links} />}
         </GridCard>
       )}
 

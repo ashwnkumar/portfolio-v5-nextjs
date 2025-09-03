@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import React, { useMemo } from "react";
 import PageHeader from "../PageHeader";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   projectId: string;
@@ -21,16 +22,19 @@ const OtherProjects = ({ projectId }: Props) => {
       <div className="w-full h-full grid grid-cols-1 lg:grid-cols-3 gap-5 cursor-pointer">
         {arr.map((project) => (
           <Link
+            key={project.id}
             href={`/projects/${project.id}`}
             className="group w-full h-full bg-gray rounded-xl col-span-1 flex flex-col items-start justify-between gap-4 p-3"
           >
-            <div className=" rounded-lg overflow-hidden ">
-              <img
+            <div className="relative w-full h-64 rounded-lg overflow-hidden">
+              <Image
                 src={project.images[0].src}
                 alt={project.images[0].alt}
-                className="group-hover:scale-105 w-full object-cover duration-500 transition-transform ease-in-out"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
+
             <div className="flex flex-col items-center justify-center gap-2">
               <div className="flex items-center justify-between w-full mt-4 group-hover:bg-brand-faded px-3 rounded-lg">
                 <div className="flex flex-col items-start justify-center">

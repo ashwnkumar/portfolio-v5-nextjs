@@ -1,12 +1,6 @@
 import { admin } from "@/constants/admin";
 import RenderIcon from "@/utils/RenderIcon";
 import React from "react";
-import { SimpleIcon } from "simple-icons";
-
-type TechStackItem = {
-  name: string;
-  icon: SimpleIcon;
-};
 
 const StackCard = () => {
   return (

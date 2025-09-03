@@ -5,9 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
-
-const SocialLinks = (props: Props) => {
+const SocialLinks = () => {
   return (
     <div className="w-full h-full grid grid-rows-2 gap-5">
       <Link

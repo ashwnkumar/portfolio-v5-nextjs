@@ -4,9 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/constants/projects";
 import React from "react";
 
-type Props = {};
-
-const page = (props: Props) => {
+const page = () => {
   return (
     <GridContainer>
       {projects.map((project) => (

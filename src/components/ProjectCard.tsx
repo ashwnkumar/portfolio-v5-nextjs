@@ -1,12 +1,11 @@
+import { Project } from "@/constants/projects";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  project: {
-    [key: string]: any;
-  };
+  project: Project;
 };
 
 const ProjectCard = ({ project }: Props) => {

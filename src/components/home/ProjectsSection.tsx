@@ -5,9 +5,7 @@ import Link from "next/link";
 import React from "react";
 import PageHeader from "../PageHeader";
 
-type Props = {};
-
-const ProjectsSection = (props: Props) => {
+const ProjectsSection = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5 w-full">
       <PageHeader label="Featured Projects" />

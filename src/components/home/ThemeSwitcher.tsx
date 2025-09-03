@@ -1,9 +1,7 @@
 "use client";
 import { useGlobal } from "@/contexts/GlobalContext";
 import { BoomBox, Moon, Rabbit, Sun } from "lucide-react";
-import React, { useEffect, useState } from "react";
-
-type Props = {};
+import React from "react";
 
 const themes = [
   { name: "Dark", key: "dark", icon: Moon },
@@ -12,7 +10,7 @@ const themes = [
   { name: "Upside Down", key: "upside-down", icon: BoomBox },
 ];
 
-const ThemeSwitcher = (props: Props) => {
+const ThemeSwitcher = () => {
   const { theme, applyTheme } = useGlobal();
 
   return (

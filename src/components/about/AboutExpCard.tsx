@@ -4,9 +4,7 @@ import { admin } from "@/constants/admin";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
-type Props = {};
-
-const AboutExpCard = (props: Props) => {
+const AboutExpCard = () => {
   const [selectedId, setSelectedId] = useState(admin.workExp[0].id);
 
   const toggleSelected = (id: string) => {

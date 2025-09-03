@@ -1,9 +1,72 @@
 [
-    {
-        "id": 0,
-        "title": "Numb",
-        "artist": "Linkin Park",
-        "src": "/music/audio/Numb.mp3",
-        "cover": "/music/cover/Numb.jpg"
-    }
+  {
+    "id": 0,
+    "title": "Somewhere I Belong",
+    "artist": "Linkin Park",
+    "src": "/music/audio/Somewhere I Belong.mp3",
+    "cover": "/music/cover/Somewhere I Belong.jpg"
+  },
+  {
+    "id": 0,
+    "title": "FRANCHISE",
+    "artist": "Travis Scott (feat. Young Thug & M.I.A)",
+    "src": "/music/audio/FRANCHISE.mp3",
+    "cover": "/music/cover/FRANCHISE.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Revolution",
+    "artist": "Pennywise",
+    "src": "/music/audio/Revolution.mp3",
+    "cover": "/music/cover/Revolution.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Tek It",
+    "artist": "Cafuné",
+    "src": "/music/audio/Tek It.mp3",
+    "cover": "/music/cover/Tek It.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Under The Knife",
+    "artist": "Rise Against",
+    "src": "/music/audio/Under The Knife.mp3",
+    "cover": "/music/cover/Under The Knife.jpg"
+  },
+  {
+    "id": 0,
+    "title": "we never dated",
+    "artist": "sombr",
+    "src": "/music/audio/we never dated.mp3",
+    "cover": "/music/cover/we never dated.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Say Something",
+    "artist": "Swimming Paul",
+    "src": "/music/audio/Say Something.mp3",
+    "cover": "/music/cover/Say Something.jpg"
+  },
+  {
+    "id": 0,
+    "title": "RATHER LIE",
+    "artist": "Playboi Carti & The Weeknd",
+    "src": "/music/audio/RATHER LIE.mp3",
+    "cover": "/music/cover/RATHER LIE.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Miss Alissa",
+    "artist": "Eagles of Death Metal",
+    "src": "/music/audio/Miss Alissa.mp3",
+    "cover": "/music/cover/Miss Alissa.jpg"
+  },
+  {
+    "id": 0,
+    "title": "Dancing with my phone",
+    "artist": "HYBS",
+    "src": "/music/audio/Dancing with my phone.mp3",
+    "cover": "/music/cover/Dancing with my phone.jpg"
+  }
 ]

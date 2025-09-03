@@ -4,16 +4,23 @@ export interface ProjectImage {
   id: number;
 }
 
-export interface Project {
+export type Project = {
   id: string;
   title: string;
   subTitle: string;
-  images: ProjectImage[];
+  images: {
+    src: string;
+    alt: string;
+    id: number;
+  }[];
   description: string;
-  links?: { name: string; url: string }[];
+  links?: {
+    name: string;
+    url: string;
+  }[];
   stack: string[];
   features: string[];
-}
+};
 
 export const projects: Project[] = [
   {
@@ -201,12 +208,13 @@ export const projects: Project[] = [
     description:
       "The website you're currently on. I was bored by how the previous iteration of my portfolio website looked. Just another generic design that looked like every other template. So I decided to revamp the whole thing from the ground up. Ditched the traditional portfolio design and opted for a design style that always fascinated me - The Bento Grid. I love the jigsaw-puzzle type feel it has and the way it makes the elements look like they're part of a whole. Exactly what you'd want from a portfolio website. So I decided to leverage CSS's Grid System and HOURS of tweaking the layout to make everything fit in place. The result is a responsive and clean portfolio website that's easy to navigate and looks great on all devices.",
     links: [{ name: "GitHub Repo", url: "https://www.github.com/ashwnkumar" }],
-    stack: ["ReactJS", "JavaScript", "TailwindCSS", "Firebase"],
+    stack: ["NextJS", "JavaScript", "TailwindCSS", "Firebase"],
     features: [
       "Responsive Bento Grid inspired UI using CSS Grid",
       "Fully custom design built from scratch (no templates)",
       "Suports multiple themes and color schemes",
       "Mobile-first design and adaptive layout tweaks",
+      "Basically functions as my online resume",
     ],
   },
 ];

@@ -1,12 +1,8 @@
 import { admin } from "@/constants/admin";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import LinkCard from "../LinkCard";
 
-type Props = {};
-
-const CurrentWork = (props: Props) => {
+const CurrentWork = () => {
   return (
     <div className="w-full h-full flex flex-col items-start justify-between">
       <h3 className="text-lg lg:text-xl text-secondary flex items-center justify-center font-medium">

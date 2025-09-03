@@ -12,34 +12,39 @@ const { quotes, thinkingMessages } = quotesData as QuotesData;
 const getRandomMessage = () =>
   thinkingMessages[Math.floor(Math.random() * thinkingMessages.length)];
 
+const getRandomQuote = (list: string[], exclude?: string) => {
+  if (list.length === 0) return "";
+  let random: string;
+  do {
+    random = list[Math.floor(Math.random() * list.length)];
+  } while (list.length > 1 && random === exclude); // avoid repeats
+  return random;
+};
+
 const QuoteGenerator: React.FC = () => {
-  const [quotesList, setQuotesList] = useState<string[]>([]);
   const [output, setOutput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [thinkingMsg, setThinkingMsg] = useState<string>("");
 
   const generateQuote = () => {
+    if (quotes.length === 0) return; // guard
     const msg = getRandomMessage();
     setThinkingMsg(msg);
     setLoading(true);
 
     setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * quotesList.length);
-      const random = quotesList[randomIndex];
+      const random = getRandomQuote(quotes, output); // exclude last quote
       setOutput(random);
       setLoading(false);
     }, 1500);
   };
 
+  // initial quote
   useEffect(() => {
-    setQuotesList(quotes);
-  }, []);
-
-  useEffect(() => {
-    if (quotesList.length > 0) {
-      generateQuote();
+    if (quotes.length > 0) {
+      setOutput(getRandomQuote(quotes));
     }
-  }, [quotesList]);
+  }, []);
 
   return (
     <div className="w-full flex h-full flex-col items-center justify-between text-primary">

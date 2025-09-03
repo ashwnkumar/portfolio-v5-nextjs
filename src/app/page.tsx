@@ -8,9 +8,8 @@ import LinkCard from "@/components/LinkCard";
 import ProjectCard from "@/components/ProjectCard";
 import { admin } from "@/constants/admin";
 import { projects } from "@/constants/projects";
-import { ArrowUpRight, CodeXml, MapPin } from "lucide-react";
+import { CodeXml, MapPin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export default function Home() {

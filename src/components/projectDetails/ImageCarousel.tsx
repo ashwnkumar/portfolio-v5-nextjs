@@ -2,6 +2,7 @@
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 type Props = {
   images: { src: string; alt: string; id: number }[];
@@ -37,18 +38,25 @@ const ImageCarousel = ({ images }: Props) => {
       {/* Carousel */}
       <div className="w-full h-full relative">
         {images?.map((image, idx) => (
-          <img
+          <div
             key={image.id}
-            src={image.src}
-            alt={image.alt}
             onClick={() => {
               setCurrentImage(idx);
               setIsLightboxOpen(true);
             }}
-            className={`w-full h-full object-cover absolute top-0 left-0 rounded-lg cursor-pointer transition-opacity duration-500 ${
+            className={`w-full h-full absolute top-0 left-0 rounded-lg cursor-pointer transition-opacity duration-500 ${
               idx === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
-          />
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-cover rounded-lg"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={idx === 0} // preload first image
+            />
+          </div>
         ))}
 
         {/* Navigation Buttons */}
@@ -91,14 +99,18 @@ const ImageCarousel = ({ images }: Props) => {
           >
             {/* Prevent closing when clicking the image */}
             <div
-              className=" w-full flex items-center justify-center"
+              className="w-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={images[currentImage].src}
-                alt={images[currentImage].alt}
-                className="max-h-[85vh] max-w-full object-contain"
-              />
+              <div className="relative max-h-[85vh] max-w-full w-auto h-auto">
+                <Image
+                  src={images[currentImage].src}
+                  alt={images[currentImage].alt}
+                  fill
+                  className="object-contain"
+                  sizes="100vw"
+                />
+              </div>
 
               {/* Close button */}
               <button

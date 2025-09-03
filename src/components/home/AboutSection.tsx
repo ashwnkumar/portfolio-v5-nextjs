@@ -1,21 +1,14 @@
 import React from "react";
-import PageHeader from "../PageHeader";
-import Image from "next/image";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import Link from "next/link";
-import { admin } from "@/constants/admin";
 import LinkCard from "../LinkCard";
 
-type Props = {};
-
-const AboutSection = (props: Props) => {
+const AboutSection = () => {
   return (
     <div className="w-full h-full flex flex-col items-start justify-between ">
       <div className="space-y-6">
         <div>
           <p className="text-lg lg:text-xl font-semibold">Hey there!</p>
           <p className="text-3xl lg:text-4xl font-semibold text-primary">
-            I'm Ashwin Kumar.
+            I&apos;m Ashwin Kumar.
           </p>
         </div>
         <p>

@@ -11,14 +11,11 @@ export async function POST(req: Request) {
       from: "Portfolio <onboarding@resend.dev>", // must be a verified sender in Resend
       to: "code.by.ashwin@gmail.com",
       subject: `New Contact Form Submission from ${name}`,
-      html:
-        "<p><b>Name:</b> " +
-        name +
-        "</p><p><b>Email:</b> " +
-        email +
-        "</p><p><b>Message:</b> " +
-        message +
-        "</p>",
+      html: `
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Message:</b> ${message}</p>
+      `,
     });
 
     if (error) {
@@ -26,7 +23,10 @@ export async function POST(req: Request) {
     }
 
     return Response.json({ success: true, data });
-  } catch (err: any) {
-    return Response.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return Response.json({ error: err.message }, { status: 500 });
+    }
+    return Response.json({ error: "Unknown error" }, { status: 500 });
   }
 }

@@ -1,9 +1,8 @@
 import React from "react";
 import { SimpleIcon } from "simple-icons";
-import { LucideIcon } from "lucide-react";
 
 type RenderIconProps = {
-  icon: SimpleIcon | LucideIcon;
+  icon: SimpleIcon | React.ComponentType<{ size?: number; color?: string }>;
   size?: number;
   color?: string;
 };
@@ -13,14 +12,8 @@ const RenderIcon: React.FC<RenderIconProps> = ({
   size = 24,
   color = "currentColor",
 }) => {
-  // If it's a function (React component) → Lucide
-  if (typeof icon === "function") {
-    const LucideComponent = icon as LucideIcon;
-    return <LucideComponent size={size} color={color} />;
-  }
-
-  // If it's an object with a `path` → SimpleIcon
-  if ("path" in icon) {
+  // If it's a SimpleIcon (object with `path`)
+  if (typeof icon === "object" && "path" in icon) {
     return (
       <span role="img" aria-label={icon.title}>
         <svg
@@ -36,7 +29,12 @@ const RenderIcon: React.FC<RenderIconProps> = ({
     );
   }
 
-  return null;
+  // Otherwise, treat as a React component (Lucide)
+  const LucideComponent = icon as React.ComponentType<{
+    size?: number;
+    color?: string;
+  }>;
+  return <LucideComponent size={size} color={color} />;
 };
 
 export default RenderIcon;

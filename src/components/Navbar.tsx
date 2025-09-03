@@ -3,17 +3,10 @@ import { navbarRoutes } from "@/constants/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "./form/Button";
-import { BoomBox, FileText, Menu, Moon, Rabbit, Sun, X } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useGlobal } from "@/contexts/GlobalContext";
 import { admin } from "@/constants/admin";
-
-const themes = [
-  { name: "Dark", key: "dark", icon: Moon },
-  { name: "Light", key: "light", icon: Sun },
-  { name: "Neo", key: "neo", icon: Rabbit },
-  { name: "Upside Down", key: "upside-down", icon: BoomBox },
-];
 
 export default function Navbar() {
   const { theme } = useGlobal();

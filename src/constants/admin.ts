@@ -130,4 +130,15 @@ export const admin = {
       skills: ["ReactJS", "Axios", "JavaScript", "Figma", "TailwindCSS", "CSS"],
     },
   ],
+  movies: [
+    "GoodFellas",
+    "The Irishman",
+    "Wake Up Sid",
+    "Zindagi Na Milegi Dobara",
+    "Interstellar",
+    "Dune",
+    "The Dark Knight",
+    "The Dark Knight Rises",
+    "Limitless",
+  ],
 };
