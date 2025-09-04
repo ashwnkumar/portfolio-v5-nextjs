@@ -6,22 +6,29 @@ import { GlobalProvider } from "@/contexts/GlobalContext";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Ashwin Kumar | Full Stack Developer",
-  description: "Developer Portfolio created using Next.js",
-  keywords: ["Ashwin Kumar", "Full Stack Developer", "Portfolio", "Next.js"],
+  title: "Ashwin Kumar | MERN Stack Developer & Web Developer",
+  description:
+    "Ashwin Kumar is a MERN Stack Developer specializing in building scalable web applications with ReactJS, Node.js, MongoDB, and TailwindCSS.",
   authors: [{ name: "Ashwin Kumar" }],
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://ashwinkumar.dev"),
+  alternates: {
+    canonical: "https://ashwinkumar.dev",
+  },
   openGraph: {
-    title: "Ashwin Kumar | Full Stack Developer",
-    description: "Developer Portfolio created using Next.js",
-    url: "https://yourdomain.com",
+    title: "Ashwin Kumar | MERN Stack Developer & Web Developer",
+    description:
+      "Portfolio of Ashwin Kumar, a full-stack web developer experienced in ReactJS, Node.js, MongoDB, and modern UI design.",
+    url: "https://ashwinkumar.dev",
     siteName: "Ashwin Kumar Portfolio",
     type: "website",
+    images: ["/assets/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashwin Kumar | Full Stack Developer",
-    description: "Developer Portfolio created using Next.js",
+    title: "Ashwin Kumar | MERN Stack Developer",
+    description:
+      "Explore Ashwin Kumar's portfolio showcasing full-stack web development projects with ReactJS, Node.js, and MongoDB.",
+    images: ["/assets/og-image.png"],
   },
 };
 
@@ -36,6 +43,27 @@ export default function RootLayout({
       suppressHydrationWarning
       className="flex items-center justify-center scroll-smooth"
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Ashwin Kumar",
+              jobTitle: "MERN Stack Developer",
+              email: "ashwin12kumar07@gmail.com",
+              url: "https://ashwinkumar.dev",
+              sameAs: [
+                "https://github.com/ashwnkumar",
+                "https://www.linkedin.com/in/ashwin-kumar-221160240",
+                "https://www.artstation.com/ashwnkumar",
+              ],
+            }),
+          }}
+        />
+        <></>
+      </head>
       <body
         data-theme="dark"
         className="relative flex min-h-screen w-full max-w-7xl flex-col items-center  justify-center  bg-bg text-text font-body p-4 lg:p-0"

@@ -21,9 +21,9 @@ export default function Home() {
           <span className="text-4xl font-bold text-brand">
             <CodeXml size={40} />
           </span>
-          <h3 className="text-xl lg:text-3xl font-semibold text-primary">
+          <h1 className="text-xl lg:text-3xl font-semibold text-primary">
             Developer, Designer, Visual Storyteller.
-          </h3>
+          </h1>
         </div>
       </GridCard>
 
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="w-full h-full relative min-h-full">
           <Image
             src={admin.profile}
-            alt="profile"
+            alt="Ashwin Kumar | MERN Stack Developer"
             fill
             className="object-cover rounded-lg"
           />

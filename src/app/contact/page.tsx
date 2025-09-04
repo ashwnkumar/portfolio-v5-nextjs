@@ -2,9 +2,33 @@
 import Button from "@/components/form/Button";
 import GridCard from "@/components/GridCard";
 import GridContainer from "@/components/GridContainer";
+import { Metadata } from "next";
 import { useState } from "react";
 import React from "react";
 import toast from "react-hot-toast";
+
+export const metadata: Metadata = {
+  title: "Contact | Ashwin Kumar – MERN Stack Developer",
+  description:
+    "Get in touch with Ashwin Kumar for freelance projects, collaborations, or any queries.",
+  alternates: {
+    canonical: "https://ashwinkumar.dev/contact",
+  },
+  openGraph: {
+    title: "Contact | Ashwin Kumar",
+    description:
+      "Get in touch with Ashwin Kumar for freelance projects, collaborations, or any queries.",
+    url: "https://ashwinkumar.dev/contact",
+    images: ["/assets/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | Ashwin Kumar",
+    description:
+      "Get in touch with Ashwin Kumar for freelance projects, collaborations, or any queries.",
+    images: ["/assets/og-image.png"],
+  },
+};
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -18,7 +42,12 @@ const Page = () => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     if (!form.name) newErrors.name = "Name is required";
-    if (!form.email) newErrors.email = "Email is required";
+    if (!form.email) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
     if (!form.message) newErrors.message = "Message is required";
 
     setErrors(newErrors);

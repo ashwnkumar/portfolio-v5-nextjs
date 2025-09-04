@@ -7,8 +7,32 @@ import StackCard from "@/components/about/StackCard";
 import GridCard from "@/components/GridCard";
 import GridContainer from "@/components/GridContainer";
 import { admin } from "@/constants/admin";
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "About Ashwin Kumar | MERN Stack Developer",
+  description:
+    "Learn more about Ashwin Kumar, a MERN Stack Developer based in Pune, India. Skilled in ReactJS, Node.js, MongoDB, and building scalable full-stack applications.",
+  alternates: {
+    canonical: "https://ashwinkumar.dev/about",
+  },
+  openGraph: {
+    title: "About Ashwin Kumar | MERN Stack Developer",
+    description:
+      "Ashwin Kumar is a web developer specializing in ReactJS, Node.js, and MongoDB. Based in Pune, India, with professional experience in full-stack development.",
+    url: "https://ashwinkumar.dev/about",
+    images: ["/assets/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | ashwinkumar.dev",
+    description:
+      "Portfolio of Ashwin Kumar – Web Developer skilled in ReactJS, Node.js, MongoDB, and full-stack development.",
+    images: ["/assets/og-image.png"],
+  },
+};
 
 function page() {
   return (

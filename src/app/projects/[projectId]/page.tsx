@@ -8,12 +8,51 @@ import OtherProjects from "@/components/projectDetails/OtherProjects";
 import StackCard from "@/components/projectDetails/StackCard";
 import { projects, type Project } from "@/constants/projects";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, use } from "react";
 
 type Props = {
   params: Promise<{ projectId: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { projectId } = await params;
+  const project = projects.find((p) => p.id === projectId);
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Ashwin Kumar",
+      description: "The project you are looking for does not exist.",
+    };
+  }
+
+  // map your custom project.images to OG format
+  const ogImages = project.images?.map((img) => ({
+    url: typeof img === "string" ? img : img.src, // ✅ ensure url field exists
+    alt: typeof img === "string" ? project.title : img.alt,
+  })) ?? ["/assets/og-image.png"];
+
+  return {
+    title: `${project.title} | Ashwin Kumar – MERN Stack Developer`,
+    description: project.description,
+    alternates: {
+      canonical: `https://ashwinkumar.dev/projects/${project.id}`,
+    },
+    openGraph: {
+      title: `${project.title} | Ashwin Kumar`,
+      description: project.description,
+      url: `https://ashwinkumar.dev/projects/${project.id}`,
+      images: ogImages, // ✅ now correct type
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Ashwin Kumar`,
+      description: project.description,
+      images: ogImages, // ✅ same fix
+    },
+  };
+}
 
 const Page = ({ params }: Props) => {
   const router = useRouter();
@@ -53,9 +92,9 @@ const Page = ({ params }: Props) => {
           >
             <ChevronLeft size={36} strokeWidth={1.5} className="pe-1" />
           </button>
-          <h3 className="w-full h-full text-2xl lg:text-3xl text-primary font-medium flex items-center justify-start gap-2">
+          <h1 className="w-full h-full text-2xl lg:text-3xl text-primary font-medium flex items-center justify-start gap-2">
             {project?.title}
-          </h3>
+          </h1>
         </div>
       </GridCard>
 
