@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import ProjectDetails from "./ProjectDetails";
 
 type Props = {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { projectId } = params;
+  const { projectId } = await params;
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
-  return <ProjectDetails projectId={params.projectId} />;
+export default async function Page({ params }: Props) {
+  const { projectId } = await params;
+  return <ProjectDetails projectId={projectId} />;
 }
