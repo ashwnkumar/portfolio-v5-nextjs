@@ -102,7 +102,7 @@ const ImageCarousel = ({ images }: Props) => {
               className="w-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative max-h-[85vh] max-w-full w-auto h-auto">
+              <div className="relative w-full max-w-[90vw] h-[85vh] flex items-center justify-center">
                 <Image
                   src={images[currentImage].src}
                   alt={images[currentImage].alt}
@@ -137,7 +137,7 @@ const ImageCarousel = ({ images }: Props) => {
                   </button>
                 </>
               )}
-              <p className="bg-black text-white absolute bottom-5 text-xl px-4 p-2">
+              <p className="bg-black text-white absolute bottom-5 text-lg lg:text-xl px-4 p-2">
                 {images[currentImage].alt}
               </p>
             </div>

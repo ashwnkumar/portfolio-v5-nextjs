@@ -88,17 +88,17 @@ export const projects: Project[] = [
       "A full stack app I created as my personal photography portfolio.",
     images: [
       {
-        src: "/projects/frames-by-ashwin/1.png",
+        src: "/projects/frames-by-ashwin/1.jpg",
         alt: "Frames By Ashwin",
         id: 1,
       },
       {
-        src: "/projects/frames-by-ashwin/2.png",
+        src: "/projects/frames-by-ashwin/2.jpg",
         alt: "Frames By Ashwin",
         id: 2,
       },
       {
-        src: "/projects/frames-by-ashwin/3.png",
+        src: "/projects/frames-by-ashwin/3.jpg",
         alt: "Frames By Ashwin",
         id: 3,
       },
