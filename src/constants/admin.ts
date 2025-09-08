@@ -110,7 +110,6 @@ export const admin = {
         "JavaScript",
         "Express.js",
         "MongoDB",
-        "NodeJS",
         "React Native",
         "TailwindCSS",
       ],
