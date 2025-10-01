@@ -127,7 +127,7 @@ export default function Navbar() {
       <div className="flex items-center justify-center gap-5">
         <Button
           label="Download CV"
-          onClick={handleDownnloadResume}
+          onClick={handleDownloadResume}
           variant="outline"
           icon={FileText}
         />
