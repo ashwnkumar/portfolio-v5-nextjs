@@ -15,14 +15,14 @@ export default function Navbar() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleDownnloadResume = () => {
-    const link = document.createElement("a");
-    link.href = admin.resume;
-    link.download = "Ashwin-Kumar-Resume.pdf";
-    link.click();
-    link.remove();
-    document.body.removeChild(link);
-  };
+  const handleDownloadResume = () => {
+  const link = document.createElement("a");
+  link.href = admin.resume;
+  link.setAttribute("download", "Ashwin-Kumar-Resume.pdf");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
