@@ -12,13 +12,14 @@ const ImageCarousel = ({ images }: Props) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const nextImage = () => {
+  const nextImage = React.useCallback(() => {
     setCurrentImage((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const prevImage = () => {
+  const prevImage = React.useCallback(() => {
     setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+  }, [images.length]);
+
 
   // Close lightbox on Escape
   useEffect(() => {
@@ -31,7 +32,7 @@ const ImageCarousel = ({ images }: Props) => {
       document.addEventListener("keydown", handleKeyDown);
     }
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isLightboxOpen]);
+  }, [isLightboxOpen, nextImage, prevImage]);
 
   return (
     <>
@@ -44,9 +45,8 @@ const ImageCarousel = ({ images }: Props) => {
               setCurrentImage(idx);
               setIsLightboxOpen(true);
             }}
-            className={`w-full h-full absolute top-0 left-0 rounded-lg cursor-pointer transition-opacity duration-500 ${
-              idx === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
+            className={`w-full h-full absolute top-0 left-0 rounded-lg cursor-pointer transition-opacity duration-500 ${idx === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
           >
             <Image
               src={image.src}
@@ -80,9 +80,8 @@ const ImageCarousel = ({ images }: Props) => {
                 <button
                   key={idx}
                   onClick={() => setCurrentImage(idx)}
-                  className={`size-3 rounded-full ${
-                    currentImage === idx ? "bg-brand" : "bg-black"
-                  }`}
+                  className={`size-3 rounded-full ${currentImage === idx ? "bg-brand" : "bg-black"
+                    }`}
                 />
               ))}
             </div>
