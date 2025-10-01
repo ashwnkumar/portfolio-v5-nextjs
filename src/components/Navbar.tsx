@@ -15,14 +15,21 @@ export default function Navbar() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleDownloadResume = () => {
-  const link = document.createElement("a");
-  link.href = admin.resume;
-  link.setAttribute("download", "Ashwin-Kumar-Resume.pdf");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+const handleDownloadResume = async () => {
+  try {
+    const response = await fetch(admin.resume);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Ashwin-Kumar-Resume.pdf"; // this will be used
+    link.click();
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    console.error("Failed to download resume:", err);
+  }
 };
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
