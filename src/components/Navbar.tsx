@@ -7,6 +7,7 @@ import { FileText, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useGlobal } from "@/contexts/GlobalContext";
 import { admin } from "@/constants/admin";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const { theme } = useGlobal();
@@ -15,20 +16,22 @@ export default function Navbar() {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-const handleDownloadResume = async () => {
-  try {
-    const response = await fetch(admin.resume);
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "Ashwin-Kumar-Resume.pdf"; // this will be used
-    link.click();
-    URL.revokeObjectURL(url);
-  } catch (err) {
-    console.error("Failed to download resume:", err);
-  }
-};
+  const handleDownloadResume = async () => {
+    try {
+      const response = await fetch(admin.resume);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Ashwin-Kumar-Resume.pdf";
+      link.click();
+      URL.revokeObjectURL(url);
+      toast.success("Resume downloaded successfully!");
+    } catch (err) {
+      console.error("Failed to download resume:", err);
+      toast.error("Failed to download resume");
+    }
+  };
 
 
   useEffect(() => {
