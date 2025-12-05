@@ -44,7 +44,7 @@ export const admin = {
     },
     {
       title: "Pinterest",
-      link: "https://www.linkedin.com/in/ashwin-kumar-221160240",
+      link: "https://www.pinterest.com/ashwnkumar07",
       icon: siPinterest,
       color: "#e70025",
     },
