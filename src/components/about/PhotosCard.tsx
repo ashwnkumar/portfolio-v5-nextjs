@@ -31,8 +31,8 @@ const PhotosCard = () => {
       </div>
 
       <LinkCard
-        label="@frames.by.ashwin"
-        href={"https://www.instagram.com/frames.by.ashwin/"}
+        label="@ashwin.archives"
+        href={"https://www.instagram.com/ashwin.archives/"}
         className="text-xs lg:text-base !px-2 lg:!px-4"
       />
     </div>
