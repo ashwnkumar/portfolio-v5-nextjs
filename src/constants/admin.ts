@@ -95,10 +95,36 @@ export const admin = {
   ],
   workExp: [
     {
+  id: "neuralarc",
+  company: "Neural Arc",
+  position: "Full Stack AI Developer",
+  from: "Jan 2026",
+  work: [
+    "Developing and maintaining web applications using modern full stack technologies.",
+    "Working on the company’s AI-driven products, contributing across both frontend and backend systems.",
+    "Building scalable features, integrating AI workflows, and ensuring smooth data flow between services.",
+    "Managing and overseeing freshers, reviewing their work, and assisting them with implementation and problem-solving.",
+    "Collaborating closely with product and engineering teams to ship reliable, production-ready solutions.",
+  ],
+  skills: [
+    "ReactJS",
+    "Next.js",
+    "NodeJS",
+    "JavaScript",
+    "TypeScript",
+    "Express.js",
+    "TailwindCSS",
+    "Database Design",
+    "Team Mentorship",
+  ],
+},
+
+    {
       id: "ndss",
       company: "NDSoftTech Solutions",
       position: "SDE - Trainee",
       from: "Jul 2025",
+      to: "Dec 2025",
 to: "Dec 2025",
       work: [
         "Developed user facing interfaces using React Native for multiple applications.",
