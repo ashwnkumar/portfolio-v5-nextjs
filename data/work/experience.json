@@ -1,0 +1,58 @@
+[
+  {
+    "id": "current-role",
+    "company": "Tech Innovations Inc",
+    "title": "Senior Full-Stack Developer",
+    "location": "San Francisco, CA",
+    "startDate": "2024-01",
+    "endDate": null,
+    "isCurrent": true,
+    "description": "Leading development of cloud-native applications using modern web technologies. Architecting scalable microservices and mentoring junior developers.",
+    "achievements": [
+      "Architected and deployed microservices handling 1M+ daily requests",
+      "Reduced API response time by 60% through optimization",
+      "Led migration from monolith to microservices architecture",
+      "Mentored 3 junior developers, improving team velocity by 40%"
+    ],
+    "technologies": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "AWS"
+    ]
+  },
+  {
+    "id": "previous-role-1",
+    "company": "Digital Solutions Co",
+    "title": "Full-Stack Developer",
+    "location": "Remote",
+    "startDate": "2022-06",
+    "endDate": "2023-12",
+    "isCurrent": false,
+    "description": "Developed and maintained multiple client-facing web applications. Collaborated with design and product teams to deliver high-quality features.",
+    "achievements": [
+      "Built 5+ production applications from scratch",
+      "Implemented CI/CD pipeline reducing deployment time by 70%",
+      "Improved test coverage from 40% to 85%"
+    ],
+    "technologies": ["React", "TypeScript", "Express", "MongoDB", "Redis"]
+  },
+  {
+    "id": "previous-role-2",
+    "company": "Startup Ventures",
+    "title": "Junior Developer",
+    "location": "New York, NY",
+    "startDate": "2020-03",
+    "endDate": "2022-05",
+    "isCurrent": false,
+    "description": "Started my professional journey building features for a fast-growing SaaS platform. Learned the fundamentals of scalable web development.",
+    "achievements": [
+      "Shipped 20+ features across frontend and backend",
+      "Reduced bug count by 30% through improved testing practices",
+      "Contributed to open-source libraries used by the team"
+    ],
+    "technologies": ["Vue.js", "Python", "Django", "PostgreSQL"]
+  }
+]

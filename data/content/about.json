@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Hey, I'm Ashwin",
+    "tagline": "Full Stack Web Developer crafting functional, fun & intuitive web experiences"
+  },
+  "bio": {
+    "professional": "I'm Ashwin Kumar, a full-stack MERN developer from Pune, India.\n\nI've got about a year of professional experience building web applications, and while I handle both frontend and backend, I'm definitely more drawn to the frontend — turning designs into smooth, responsive interfaces that actually feel good to use. That said, I'm comfortable across the stack: setting up APIs, working with databases, structuring servers, and making sure everything connects cleanly.\n\nI like building things that are intuitive and fast without unnecessary complexity. Whether it's polishing UI interactions, improving performance, or quickly prototyping in Figma, I enjoy the parts where code meets user experience the most.",
+    "personal": "Outside of code, I'm usually:\n\n• Listening to music or watching movies\n• Playing games\n• Taking photos (still learning how to tell better stories through the lens)\n• Occasionally messing around in Blender or game dev experiments\n\nAnything with a creative spark tends to catch my attention. I'm constantly exploring new tools and trying to get a little better at the things I care about."
+  },
+  "philosophy": {
+    "title": "How I Approach Building",
+    "quote": "The fastest way to learn is to build something real — then break it, fix it, and make it better. Every project is part playground, part craft, and part stubborn problem-solving.",
+    "extra": "I believe good software should feel effortless to use while being solid under the hood. Simplicity + reliability > flashy complexity."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "links": [
+    {
+      "platform": "github",
+      "username": "yourusername",
+      "url": "https://github.com/yourusername",
+      "label": "github",
+      "icons": {
+        "line": "RiGithubLine",
+        "fill": "RiGithubFill"
+      }
+    },
+    {
+      "platform": "linkedin",
+      "username": "yourusername",
+      "url": "https://linkedin.com/in/yourusername",
+      "label": "linkedin",
+      "icons": {
+        "line": "RiLinkedinBoxLine",
+        "fill": "RiLinkedinBoxFill"
+      }
+    },
+    {
+      "platform": "email",
+      "value": "your.email@example.com",
+      "url": "mailto:your.email@example.com",
+      "label": "email",
+      "icons": {
+        "line": "RiMailLine",
+        "fill": "RiMailFill"
+      }
+    },
+    {
+      "platform": "instagram",
+      "username": "ashwin",
+      "url": "https://instagram.com/ashwin",
+      "label": "instagram"
+    },
+    {
+      "platform": "twitter",
+      "username": "ashwinkumar",
+      "url": "https://x.com/ashwin",
+      "label": "x",
+      "icons": {
+        "line": "RiTwitterXLine",
+        "fill": "RiTwitterXFill"
+      }
+    },
+    {
+      "platform": "artstation",
+      "username": "ashwin",
+      "url": "https://artstation.com/ashwin",
+      "label": "artstation"
+    }
+  ]
+}
