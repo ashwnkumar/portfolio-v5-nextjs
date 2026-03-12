@@ -118,57 +118,83 @@ export default function Page() {
             {projects.map((project: any, index: number) => (
               <div
                 key={project.slug}
-                className="group border relative p-6 md:p-8 transition-colors"
+                className="group border relative overflow-hidden transition-colors"
               >
                 <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/30 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-2 flex-1">
-                      <div className="flex items-center gap-3">
-                        <Badge variant="outline" className="font-mono text-xs">
-                          {String(index + 1).padStart(2, "0")}
-                        </Badge>
-                        <Badge variant="secondary">{project.category}</Badge>
+
+                <div className="grid md:grid-cols-[300px_1fr] gap-6">
+                  {/* Project Image */}
+                  <div className="relative aspect-video w-full h-full overflow-hidden bg-muted">
+                    {project.preview ? (
+                      <img
+                        src={project.preview}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
+                        [Project Preview]
                       </div>
-                      <h3 className="text-xl md:text-2xl font-medium group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-muted-foreground">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div className="flex gap-2">
-                      {project.github && (
-                        <Link
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button size="icon" variant="ghost">
-                            <GithubLogoIcon className="w-4 h-4" />
-                          </Button>
-                        </Link>
-                      )}
-                      {project.live && (
-                        <Link
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button size="icon" variant="ghost">
-                            <ArrowUpRightIcon className="w-4 h-4" />
-                          </Button>
-                        </Link>
-                      )}
-                    </div>
+                    )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech: string) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
+                  {/* Project Content */}
+                  <div className="p-6 md:p-8 md:pl-0 space-y-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="space-y-2 flex-1">
+                        <div className="flex items-center gap-3">
+                          <Badge
+                            variant="outline"
+                            className="font-mono text-xs"
+                          >
+                            {String(index + 1).padStart(2, "0")}
+                          </Badge>
+                          <Badge variant="secondary">{project.category}</Badge>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-medium group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm md:text-base text-muted-foreground w-full">
+                          {project.description}
+                        </p>
+                      </div>
+                      <div className="flex gap-2">
+                        {project.github && (
+                          <Link
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button size="icon" variant="ghost">
+                              <GithubLogoIcon className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                        )}
+                        {project.live && (
+                          <Link
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button size="icon" variant="ghost">
+                              <ArrowUpRightIcon className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech: string) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="text-xs"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
