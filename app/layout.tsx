@@ -50,11 +50,11 @@ export default function RootLayout({
           "font-sans antialiased min-h-screen bg-background text-foreground",
         )}
       >
-        <div className="flex min-h-screen flex-col items-center font-pixel-square">
+        <div className="flex min-h-screen flex-col items-center font-pixel-circle">
           <Navbar navItems={navItems} />
 
           <main className="flex-1 w-full">
-            <div className="mx-auto w-full border-x  min-h-screen max-w-[70vw]">
+            <div className="mx-auto w-full border-x  min-h-screen max-w-[90vw] md:max-w-[70vw]">
               {children}
             </div>
           </main>

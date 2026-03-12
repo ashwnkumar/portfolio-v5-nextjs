@@ -11,7 +11,7 @@ function Projects() {
   return (
     <div className="w-full flex flex-col items-center justify-center py-12 md:py-16">
       {/* Section Header */}
-      <div className="flex items-center gap-3 relative w-full border-y px-4 py-3 text-lg md:text-xl text-muted-foreground">
+      <div className="flex items-center gap-3 relative w-full border-y px-4 py-3 text-base md:text-lg text-muted-foreground">
         <span className="whitespace-nowrap">// featured projects</span>
         <div className="h-px w-full bg-muted-foreground/30" />
       </div>
@@ -24,24 +24,24 @@ function Projects() {
             key={project.slug}
             className="group w-full flex flex-col items-center justify-center border-b"
           >
-            <div className="w-full px-20">
-              <div className="w-full border-x h-20 " />
+            <div className="w-full px-5 md:px-20">
+              <div className="w-full border-x h-5 md:h-20 " />
             </div>
-            <div className="w-full h-full flex-1 px-20 border-y">
+            <div className="w-full h-full flex-1 px-5 md:px-20 border-y">
               <div className="w-full h-full border">
                 <div className="relative w-full aspect-video overflow-hidden bg-muted">
                   <Image
                     src={project.preview}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-[102%] transition-all duration-500 saturate-0 group-hover:saturate-100 ease-in-out"
+                    className="object-cover group-hover:scale-[102%] transition-all duration-500 md:saturate-0 md:group-hover:saturate-100 ease-in-out"
                   />
                 </div>
 
                 {/* Project Info */}
-                <div className="flex flex-col gap-2 p-4 bg-background group-hover:bg-muted/50 transition-colors duration-300">
+                <div className="flex flex-col gap-2 p-2 md:p-4 md:bg-background bg-muted/50 group-hover:bg-muted/50 transition-colors duration-300">
                   <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-semibold text-lg text-foreground">
+                    <h3 className="font-semibold text-base md:text-lg text-foreground">
                       {project.title}
                     </h3>
                     <span className="text-xs text-muted-foreground px-2 py-1 border border-border/50 rounded">
@@ -49,7 +49,7 @@ function Projects() {
                     </span>
                   </div>
 
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">
                     {project.description}
                   </p>
 
@@ -69,23 +69,23 @@ function Projects() {
                 </div>
               </div>
             </div>
-            <div className="w-full px-20">
-              <div className="w-full border-x h-20 " />
+            <div className="w-full px-5 md:px-20">
+              <div className="w-full border-x h-5 md:h-20 " />
             </div>
           </Link>
         ))}
       </div>
       <Link
         href={"/projects"}
-        className="group flex items-center gap-3 relative w-full border-y px-4 py-3 text-lg md:text-xl text-muted-foreground"
+        className="group flex items-center gap-3 relative w-full border-y pl-4 text-base md:text-lg text-muted-foreground"
       >
-        <span className=" flex items-center gap-2 whitespace-nowrap text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+        <div className="h-px w-full bg-muted-foreground/30" />
+        <div className="relative bg-muted text-foreground group-hover:text-background group-hover:bg-foreground flex items-center gap-2 px-4 py-3 font-semibold whitespace-nowrap text-sm md:text-base transition-colors duration-300">
           <span>// go to projects</span>
           <span className="group-hover:translate-x-1 transition-transform duration-300">
             <ArrowRightIcon size={20} />
           </span>
-        </span>
-        <div className="h-px w-full bg-muted-foreground/30" />
+        </div>
       </Link>
     </div>
   );

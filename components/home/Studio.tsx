@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { StudioItem } from "@/lib/types";
-import { MagnifyingGlassPlus, ArrowRight } from "@phosphor-icons/react";
 import Lightbox from "@/components/Lightbox";
+import { ArrowRightIcon, MagnifyingGlassPlusIcon } from "@phosphor-icons/react/dist/ssr";
 
 interface StudioProps {
   items: StudioItem[];
@@ -40,7 +40,7 @@ function Studio({ items }: StudioProps) {
     <>
       <div className="w-full flex flex-col items-center justify-center py-12 md:py-16">
         {/* Section Header */}
-        <div className="flex items-center gap-3 relative w-full border-y px-4 py-3 text-lg md:text-xl text-muted-foreground">
+        <div className="flex items-center gap-3 relative w-full border-y px-4 py-3 text-base md:text-lg text-muted-foreground">
           <span className="whitespace-nowrap">// studio</span>
           <div className="h-px w-full bg-muted-foreground/30" />
         </div>
@@ -68,7 +68,7 @@ function Studio({ items }: StudioProps) {
 
                 {/* Zoom overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                  <MagnifyingGlassPlus className="size-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <MagnifyingGlassPlusIcon className="size-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 {/* Category badge */}
@@ -96,12 +96,12 @@ function Studio({ items }: StudioProps) {
       {/* View All Studio Link */}
       <Link
         href="/studio"
-        className="group flex items-center gap-3 relative w-full border-y px-4 py-3 text-lg md:text-xl text-muted-foreground"
+        className="group flex items-center gap-3 relative w-full border-y px-4 py-3 text-base md:text-lg text-muted-foreground"
       >
-        <span className="flex items-center gap-2 whitespace-nowrap text-sm md:text-base text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+        <span className="flex items-center gap-2 whitespace-nowrap  text-muted-foreground group-hover:text-foreground transition-colors duration-300">
           <span>// go to studio</span>
           <span className="group-hover:translate-x-1 transition-transform duration-300">
-            <ArrowRight size={20} />
+            <ArrowRightIcon size={20} />
           </span>
         </span>
         <div className="h-px w-full bg-muted-foreground/30" />

@@ -17,7 +17,7 @@ function Hero() {
      )?.url;
   return (
     <div className="w-full  min-h-[calc(100vh-200px)] flex items-center justify-center">
-      <div className="w-full flex border-y flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 p-4 sm:p-6 md:p-8 lg:p-12">
+      <div className="w-full flex md:border-y flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 p-4 sm:p-6 md:p-8 lg:p-12">
         {/* Content Section */}
         <div className="flex-2 flex flex-col justify-center space-y-4 md:space-y-6">
           <p className=" text-sm sm:text-base md:text-lg text-muted-foreground">
@@ -38,7 +38,7 @@ function Hero() {
             beautiful, functional experiences.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-2 pt-2 sm:pt-4">
+          <div className="flex flex-row gap-2 pt-2 sm:pt-4 w-full md:w-fit">
             <Button variant={"secondary"} size={"lg"}>
               <DownloadIcon />
               Download Resume

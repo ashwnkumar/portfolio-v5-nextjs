@@ -1,15 +1,43 @@
 {
   "hero": {
-    "title": "Hey, I'm Ashwin",
-    "tagline": "Full Stack Web Developer crafting functional, fun & intuitive web experiences"
+    "title": "Who Am I?",
+    "intro": "Hey! I'm Ashwin Kumar, a MERN stack developer based in Pune, India. I love building web apps that are functional, fun, and intuitive. I'm especially drawn to the frontend—bringing designs to life and making interfaces smooth and engaging. At the same time, I enjoy working on the backend, setting up servers, databases, and APIs to keep everything running seamlessly."
   },
-  "bio": {
-    "professional": "I'm Ashwin Kumar, a full-stack MERN developer from Pune, India.\n\nI've got about a year of professional experience building web applications, and while I handle both frontend and backend, I'm definitely more drawn to the frontend — turning designs into smooth, responsive interfaces that actually feel good to use. That said, I'm comfortable across the stack: setting up APIs, working with databases, structuring servers, and making sure everything connects cleanly.\n\nI like building things that are intuitive and fast without unnecessary complexity. Whether it's polishing UI interactions, improving performance, or quickly prototyping in Figma, I enjoy the parts where code meets user experience the most.",
-    "personal": "Outside of code, I'm usually:\n\n• Listening to music or watching movies\n• Playing games\n• Taking photos (still learning how to tell better stories through the lens)\n• Occasionally messing around in Blender or game dev experiments\n\nAnything with a creative spark tends to catch my attention. I'm constantly exploring new tools and trying to get a little better at the things I care about."
+  "background": {
+    "title": "Background",
+    "content": "I'm a Computer Engineer with over a year of experience working on both professional projects and personal passion builds. Along the way, I've picked up UI/UX basics and enough Figma to quickly prototype ideas. I've also dabbled in Game Development and 3D modeling with Blender. Always curious, I'm constantly exploring new tools and sharpening my craft."
   },
-  "philosophy": {
-    "title": "How I Approach Building",
-    "quote": "The fastest way to learn is to build something real — then break it, fix it, and make it better. Every project is part playground, part craft, and part stubborn problem-solving.",
-    "extra": "I believe good software should feel effortless to use while being solid under the hood. Simplicity + reliability > flashy complexity."
+  "lifeOutsideWork": {
+    "title": "Life Outside Work",
+    "content": "Outside of coding, you'll probably find me lost in music, a good movie, or a game. I also love being behind the camera—capturing stories through photos and frames. Anything creative with an artistic edge tends to pull me in.",
+    "images": [
+      "/images/gallery/1.jpg",
+      "/images/gallery/2.jpg",
+      "/images/gallery/3.jpg",
+      "/images/gallery/4.jpg"
+    ]
+  },
+  "favorites": {
+    "song": {
+      "title": "Somewhere I Belong",
+      "artist": "Linkin Park"
+    },
+    "movie": "Dune",
+    "currentlyReading": "You Have Not Yet Heard Your Favourite Song"
+  },
+  "skills": {
+    "frontend": [
+      "ReactJS",
+      "NextJS",
+      "React Native",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "TailwindCSS",
+      "Bootstrap"
+    ],
+    "backend": ["ExpressJS", "MongoDB", "NodeJS"],
+    "other": ["Figma", "Blender", "Japanese"]
   }
 }
