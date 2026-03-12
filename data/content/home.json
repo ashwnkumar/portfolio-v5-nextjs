@@ -1,14 +1,14 @@
 {
   "hero": {
     "greeting": "Hi, I'm Ashwin",
-    "tagline": "Full-stack developer crafting elegant solutions to complex problems. Building with modern web technologies, inspired by minimalist design.",
+    "tagline":  "I build things for the web. They break. I fix them. That's the job.",
     "cta": {
       "primary": {
-        "text": "View Projects",
+        "text": "Check out my work",
         "href": "/projects"
       },
       "secondary": {
-        "text": "Get in Touch",
+        "text": "Let's chat",
         "href": "/contact"
       }
     }
@@ -18,10 +18,12 @@
     "projectsCompleted": "30+"
   },
   "philosophy": {
-    "title": "Learning by Doing",
-    "quote": "I believe the best way to learn is to build. Every project is an experiment, every challenge an opportunity to grow.",
+    "title": "Learning by breaking things",
+    "quote": "The only way to learn a new programming language is by writing programs in it.",
+    "author": "Dennis Ritchie",
+    "personalNote": "This resonates with me. I learn best by building stuff and watching it fail spectacularly. Every bug is just a puzzle waiting to be solved.",
     "cta": {
-      "text": "More About Me",
+      "text": "More about me",
       "href": "/about"
     }
   }
