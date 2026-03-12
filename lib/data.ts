@@ -24,7 +24,7 @@ function readMarkdown(...segments: string[]) {
   };
 }
 
-export const getNavigation = () => readJSON("site", "navigation.json");
+export const getNavigation = () => readJSON("site", "navigation.json").links;
 export const getFooter = () => readJSON("site", "footer.json");
 export const getSocialLinks = () => readJSON("site", "social.json").links;
 

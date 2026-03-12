@@ -1,9 +1,11 @@
-import React from 'react'
+import Experience from "@/components/home/Experience";
+import Hero from "@/components/home/Hero";
 
-function page() {
+export default function Page() {
   return (
-    <div>page</div>
-  )
+    <div className="w-full min-h-screen flex flex-col">
+      <Hero />
+      <Experience />
+    </div>
+  );
 }
-
-export default page

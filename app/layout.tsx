@@ -1,24 +1,19 @@
 import Footer from "@/components/Footer";
-import Navbar from "@/components/ui/Navbar";
+import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
+import { getNavigation, getSocialLinks } from "@/lib/data";
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
+import {
+  GeistPixelSquare,
+  GeistPixelGrid,
+  GeistPixelCircle,
+  GeistPixelTriangle,
+  GeistPixelLine,
+} from "geist/font/pixel";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -33,10 +28,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const navItems = getNavigation();
+  const socials = getSocialLinks();
+
   return (
     <html
       lang="en"
-      className={cn(dmSans.variable, geistSans.variable, geistMono.variable)}
+      className={cn(
+        GeistMono.variable,
+        GeistSans.variable,
+        GeistPixelSquare.variable,
+        GeistPixelGrid.variable,
+        GeistPixelCircle.variable,
+        GeistPixelTriangle.variable,
+        GeistPixelLine.variable,
+      )}
       suppressHydrationWarning
     >
       <body
@@ -44,16 +50,15 @@ export default function RootLayout({
           "font-sans antialiased min-h-screen bg-background text-foreground",
         )}
       >
-        <div className="flex min-h-screen flex-col items-center ">
-          <Navbar />
+        <div className="flex min-h-screen flex-col items-center font-pixel-square">
+          <Navbar navItems={navItems} />
 
           <main className="flex-1 w-full">
-            <div className="mx-auto w-full border-x border-border/70 min-h-screen max-w-[80vw] p-4">
+            <div className="mx-auto w-full border-x  min-h-screen max-w-[70vw]">
               {children}
             </div>
           </main>
-
-          <Footer />
+          <Footer socials={socials} />
         </div>
       </body>
     </html>

@@ -5,19 +5,19 @@
   },
   "links": [
     {
-      "name": "About",
+      "label": "/about",
       "href": "/about"
     },
     {
-      "name": "Projects",
+      "label": "/projects",
       "href": "/projects"
     },
     {
-      "name": "Studio",
+      "label": "studio",
       "href": "/studio"
     },
     {
-      "name": "Contact",
+      "label": "/contact",
       "href": "/contact"
     }
   ]
