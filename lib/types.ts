@@ -24,4 +24,28 @@ export type ExperienceType = {
   description: string;
   achievements: string[];
   technologies: string[];
-}
+};
+
+export type ProjectType = {
+  slug: string;
+  title: string;
+  category: string;
+  description: string;
+  tech: string[];
+  github: string;
+  live: string | null;
+  preview: string;
+  images: string[];
+  featured: boolean;
+  order: number;
+};
+
+export type StudioItem = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  aspectRatio: string;
+  image: string;
+  order: number;
+};
