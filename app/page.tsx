@@ -37,10 +37,10 @@ export default function Page() {
       <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/40">
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-sm md:text-base text-muted-foreground font-mono">
+            <p className="text-sm md:text-base text-muted-foreground ">
               // {bio.tagline}
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
               {home.hero.greeting}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
@@ -71,9 +71,7 @@ export default function Page() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <p className="text-sm text-muted-foreground font-mono">
-                // currently
-              </p>
+              <p className="text-sm text-muted-foreground ">// currently</p>
             </div>
             <div className="space-y-3">
               <h2 className="text-xl md:text-2xl font-medium">
@@ -143,10 +141,7 @@ export default function Page() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-2 flex-1">
                         <div className="flex items-center gap-3">
-                          <Badge
-                            variant="outline"
-                            className="font-mono text-xs"
-                          >
+                          <Badge variant="outline" className=" text-xs">
                             {String(index + 1).padStart(2, "0")}
                           </Badge>
                           <Badge variant="secondary">{project.category}</Badge>
@@ -217,13 +212,25 @@ export default function Page() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {skills.categories.map((category: any) => (
-              <div key={category.name} className="space-y-4 border p-6">
-                <h3 className="text-sm md:text-base font-mono text-muted-foreground">
-                  // {category.name.toLowerCase()}
-                </h3>
+              <div
+                key={category.name}
+                className="space-y-4 border p-6 bg-muted/30"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="bg-background border flex items-center justify-center px-1 aspect-square ">
+                    {category.name.slice(0, 2).toUpperCase()}
+                  </div>
+                  <h3 className="text-sm md:text-base">
+                    {category.name.toLowerCase()}
+                  </h3>
+                </div>
                 <div className="flex flex-wrap gap-2 ">
                   {category.skills.map((skill: string) => (
-                    <Badge key={skill} variant="secondary">
+                    <Badge
+                      key={skill}
+                      variant="outline"
+                      className="bg-background"
+                    >
                       {skill}
                     </Badge>
                   ))}
@@ -237,9 +244,7 @@ export default function Page() {
       {/* Philosophy Section */}
       <section className="w-full  py-8 md:py-16">
         <div className="space-y-6">
-          <p className="text-sm text-muted-foreground font-mono">
-            // philosophy
-          </p>
+          <p className="text-sm text-muted-foreground ">// philosophy</p>
           <h2 className="text-xl md:text-3xl font-medium">
             {home.philosophy.title}
           </h2>

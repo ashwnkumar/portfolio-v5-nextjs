@@ -15,10 +15,10 @@ export default function ProjectsPage() {
       <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/30">
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-sm md:text-base text-muted-foreground font-mono">
+            <p className="text-sm md:text-base text-muted-foreground ">
               // projects
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
               Things I've Built
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-transparent to-muted/70 origin-left md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="font-mono text-xs">
+                    <Badge variant="outline" className=" text-xs">
                       {String(index + 1).padStart(2, "0")}
                     </Badge>
                   </div>
@@ -98,20 +98,19 @@ export default function ProjectsPage() {
                   <p className="text-sm text-muted-foreground line-clamp-2">
                     {project.description}
                   </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 4).map((tech: string) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                  {project.tech.length > 4 && (
-                    <Badge variant="secondary" className="text-xs">
-                      +{project.tech.length - 4}
-                    </Badge>
-                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.slice(0, 4).map((tech: string) => (
+                      <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.tech.length > 4 && (
+                      <Badge variant="secondary" className="text-xs">
+                        +{project.tech.length - 4}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
-                </div>
-
               </div>
             </Link>
           ))}

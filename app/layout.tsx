@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
-import { getNavigation, getSocialLinks } from "@/lib/data";
+import { getNavigation, getSocialLinks, getFooter } from "@/lib/data";
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
 import {
@@ -13,6 +13,7 @@ import {
 } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
 }) {
   const navItems = getNavigation();
   const socials = getSocialLinks();
+  const footerData = getFooter();
 
   return (
     <html
@@ -50,6 +52,7 @@ export default function RootLayout({
           "font-sans antialiased min-h-screen bg-background text-foreground",
         )}
       >
+        <Toaster />
         <div className="flex min-h-screen flex-col items-center font-pixel-square">
           <Navbar navItems={navItems} />
 
@@ -58,7 +61,11 @@ export default function RootLayout({
               {children}
             </div>
           </main>
-          <Footer socials={socials} />
+          <Footer
+            socials={socials}
+            quickLinks={footerData.quickLinks}
+            brand={footerData.brand}
+          />
         </div>
       </body>
     </html>

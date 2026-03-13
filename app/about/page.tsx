@@ -17,10 +17,10 @@ export default function AboutPage() {
       <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/30">
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-sm md:text-base text-muted-foreground font-mono">
+            <p className="text-sm md:text-base text-muted-foreground ">
               // about
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
               {aboutData.hero.title}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
@@ -29,7 +29,7 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <Button variant="secondary" size="lg" className="gap-2">
+            <Button size="lg" className="gap-2">
               <DownloadIcon className="w-4 h-4" />
               Download CV
             </Button>
@@ -47,9 +47,7 @@ export default function AboutPage() {
       <section className="w-full border p-4 md:p-8">
         <div className="space-y-6">
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground font-mono">
-              // background
-            </p>
+            <p className="text-sm text-muted-foreground ">// background</p>
             <h2 className="text-2xl md:text-3xl font-medium">
               {aboutData.background.title}
             </h2>
@@ -84,7 +82,7 @@ export default function AboutPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
                       <div className="flex items-center gap-3">
-                        <Badge variant="outline" className="font-mono text-xs">
+                        <Badge variant="outline" className=" text-xs">
                           {String(index + 1).padStart(2, "0")}
                         </Badge>
                         {job.isCurrent && (
@@ -155,7 +153,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Frontend */}
             <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base font-mono text-muted-foreground">
+              <h3 className="text-sm md:text-base  text-muted-foreground">
                 // frontend
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -169,7 +167,7 @@ export default function AboutPage() {
 
             {/* Backend */}
             <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base font-mono text-muted-foreground">
+              <h3 className="text-sm md:text-base  text-muted-foreground">
                 // backend
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -183,7 +181,7 @@ export default function AboutPage() {
 
             {/* Other */}
             <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base font-mono text-muted-foreground">
+              <h3 className="text-sm md:text-base  text-muted-foreground">
                 // other
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -202,7 +200,7 @@ export default function AboutPage() {
       <section className="w-full border p-4 md:p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="space-y-4 w-full md:w-1/2">
-            <p className="text-sm text-muted-foreground font-mono">
+            <p className="text-sm text-muted-foreground ">
               // life outside work
             </p>
             <h2 className="text-2xl md:text-3xl font-medium">

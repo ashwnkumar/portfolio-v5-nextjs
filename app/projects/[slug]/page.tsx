@@ -90,9 +90,7 @@ export default async function ProjectDetailPage({
       {/* Tech Stack */}
       <section className="w-full border p-4 md:p-8">
         <div className="space-y-4">
-          <p className="text-sm text-muted-foreground font-mono">
-            // tech stack
-          </p>
+          <p className="text-sm text-muted-foreground ">// tech stack</p>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech: string) => (
               <Badge key={tech} variant="secondary">
@@ -162,7 +160,7 @@ export default async function ProjectDetailPage({
                   </blockquote>
                 ),
                 code: ({ children }) => (
-                  <code className="bg-muted px-2 py-1 rounded text-sm font-mono">
+                  <code className="bg-muted px-2 py-1 rounded text-sm ">
                     {children}
                   </code>
                 ),

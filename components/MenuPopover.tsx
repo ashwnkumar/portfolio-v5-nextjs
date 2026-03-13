@@ -77,7 +77,7 @@ export function MenuPopover({ navItems }: MenuPopoverProps) {
                   <div className="flex items-center justify-between">
                     <span
                       className={cn(
-                        " font-mono transition-all duration-300",
+                        "  transition-all duration-300",
                         isActive
                           ? "text-foreground"
                           : "text-muted-foreground group-hover:text-foreground",
@@ -87,7 +87,7 @@ export function MenuPopover({ navItems }: MenuPopoverProps) {
                     </span>
                     <span
                       className={cn(
-                        "text-xs font-mono transition-all duration-300",
+                        "text-xs  transition-all duration-300",
                         isActive
                           ? "text-primary"
                           : "text-muted-foreground/50 group-hover:text-primary/70",
@@ -107,8 +107,6 @@ export function MenuPopover({ navItems }: MenuPopoverProps) {
               );
             })}
           </div>
-
-         
         </div>
       </PopoverContent>
     </Popover>

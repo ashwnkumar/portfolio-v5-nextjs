@@ -28,7 +28,7 @@ function Skills() {
             {/* Category Header */}
             <div className="flex items-center gap-3 mb-4">
               <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <span className="text-primary text-sm font-mono">
+                <span className="text-primary text-sm ">
                   {category.name.slice(0, 2).toUpperCase()}
                 </span>
               </div>
