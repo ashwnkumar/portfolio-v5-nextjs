@@ -2,10 +2,11 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowLeft, ArrowRight } from "@phosphor-icons/react";
+import { XIcon, ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 
 interface LightboxImage {
   id: number;
+  src: string;
   alt: string;
   title?: string;
   description?: string;
@@ -73,7 +74,7 @@ export default function Lightbox({
             className="absolute top-2 right-2 sm:top-4 sm:right-4 size-10 sm:size-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors z-10"
             aria-label="Close lightbox"
           >
-            <X className="size-5 sm:size-6 text-white" />
+            <XIcon className="size-5 sm:size-6 text-white" />
           </button>
 
           {/* Previous Button */}
@@ -86,7 +87,7 @@ export default function Lightbox({
               className="absolute left-2 sm:left-4 size-10 sm:size-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors z-10"
               aria-label="Previous image"
             >
-              <ArrowLeft className="size-5 sm:size-6 text-white" />
+              <ArrowLeftIcon className="size-5 sm:size-6 text-white" />
             </button>
           )}
 
@@ -100,7 +101,7 @@ export default function Lightbox({
               className="absolute right-2 sm:right-4 size-10 sm:size-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors z-10"
               aria-label="Next image"
             >
-              <ArrowRight className="size-5 sm:size-6 text-white" />
+              <ArrowRightIcon className="size-5 sm:size-6 text-white" />
             </button>
           )}
 
@@ -114,11 +115,13 @@ export default function Lightbox({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             key={currentIndex}
           >
-            {/* Image Placeholder */}
+            {/* Image */}
             <div className="relative flex-1 flex items-center justify-center">
-              <div className="max-w-full max-h-[90vh] aspect-video bg-muted rounded-lg flex items-center justify-center text-muted-foreground">
-                [Image Placeholder]
-              </div>
+              <img
+                src={currentImage.src}
+                alt={currentImage.alt}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              />
             </div>
 
             {/* Info Sidebar */}

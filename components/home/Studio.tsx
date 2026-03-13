@@ -4,7 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { StudioItem } from "@/lib/types";
 import Lightbox from "@/components/Lightbox";
-import { ArrowRightIcon, MagnifyingGlassPlusIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowRightIcon,
+  MagnifyingGlassPlusIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
 interface StudioProps {
   items: StudioItem[];
@@ -31,6 +34,7 @@ function Studio({ items }: StudioProps) {
 
   const lightboxImages = items.map((item, index) => ({
     id: index,
+    src: item.image,
     alt: item.category,
     title: item.title,
     description: item.description,

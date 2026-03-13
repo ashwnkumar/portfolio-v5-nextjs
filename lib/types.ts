@@ -38,6 +38,8 @@ export type ProjectType = {
   images: string[];
   featured: boolean;
   order: number;
+  content?: string;
+  frontmatter?: any;
 };
 
 export type StudioItem = {
