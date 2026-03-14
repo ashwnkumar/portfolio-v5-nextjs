@@ -12,6 +12,13 @@ import Image from "next/image";
 import { getSessionSeed } from "@/lib/session";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about Ashwin Kumar — a full-stack developer, photographer, and creative explorer based in Pune, India.",
+};
 
 export default async function AboutPage() {
   const seed = await getSessionSeed();

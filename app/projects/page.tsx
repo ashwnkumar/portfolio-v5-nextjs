@@ -5,6 +5,13 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { getAllProjects } from "@/lib/data";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A collection of full-stack applications and experiments built by Ashwin Kumar.",
+};
 
 export default function ProjectsPage() {
   const allProjects = getAllProjects();

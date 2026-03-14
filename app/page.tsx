@@ -248,7 +248,6 @@ export default async function Page() {
       {/* Philosophy Section */}
       <section className="w-full  py-8 md:py-16">
         <div className="space-y-6">
-          <p className="text-sm text-muted-foreground ">// philosophy</p>
           <h2 className="text-xl md:text-3xl font-medium">
             {home.philosophy.title}
           </h2>

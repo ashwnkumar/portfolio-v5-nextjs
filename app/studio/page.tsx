@@ -3,6 +3,13 @@ import { Badge } from "@/components/ui/badge";
 import { CameraIcon, CubeIcon } from "@phosphor-icons/react/dist/ssr";
 import { getShuffledStudioMix } from "@/lib/data";
 import { getSessionSeed } from "@/lib/session";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Studio",
+  description:
+    "Photography and 3D art by Ashwin Kumar — capturing moments and crafting worlds in Blender.",
+};
 
 export default async function StudioPage() {
   const seed = await getSessionSeed();
@@ -47,10 +54,11 @@ export default async function StudioPage() {
                 <h3 className="text-lg md:text-xl font-medium">Photography</h3>
               </div>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                I shoot primarily with Sony and Canon systems, focusing on
-                street, landscape, and portrait photography. My approach is
-                minimal editing—capturing the moment as authentically as
-                possible. Natural light is my favorite tool.
+                I shoot primarily with my smartphone (Galaxy S24) and
+                occasionally the Canon EOS 550D. I love capturing candid
+                moments, street scenes, and landscapes. My approach leans toward
+                little to no editing — I try to get the best shot I can straight
+                out of the camera.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <Badge variant="secondary">Sony A7III</Badge>
@@ -66,10 +74,12 @@ export default async function StudioPage() {
                 <h3 className="text-lg md:text-xl font-medium">3D Art</h3>
               </div>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                Blender is my playground for 3D work. I love experimenting with
-                procedural generation, abstract forms, and photorealistic
-                rendering. Whether it's product visualization or pure artistic
-                expression, I'm always learning something new.
+                Blender is my playground for 3D work. In the short time I spent
+                learning it, I managed to put together a handful of models,
+                basic animations, and small environments. I really enjoy
+                building out scenes and objects — photorealistic rendering was
+                always the dream, but my old laptop had other plans. Maybe one
+                day.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <Badge variant="secondary">Blender</Badge>
@@ -85,9 +95,7 @@ export default async function StudioPage() {
       {/* Philosophy */}
       <section className="w-full px-4 md:px-12">
         <div className="space-y-6">
-          <p className="text-sm text-muted-foreground ">
-            // creative philosophy
-          </p>
+         
           <blockquote className="border-l-4 border-primary/50 pl-6 py-2">
             <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
               "Creativity is just connecting things. When you ask creative

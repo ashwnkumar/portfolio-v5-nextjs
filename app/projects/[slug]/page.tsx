@@ -10,6 +10,25 @@ import { getAllProjects, getProjectBySlug } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import ReactMarkdown from "react-markdown";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return { title: "Project Not Found" };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+  };
+}
 
 export async function generateStaticParams() {
   const projects = getAllProjects();

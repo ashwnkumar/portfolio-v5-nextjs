@@ -10,6 +10,13 @@ import {
 import Link from "next/link";
 import { getSocialLinks } from "@/lib/data";
 import ContactForm from "@/components/ContactForm";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Ashwin Kumar for collaborations, freelance projects, or just to say hi.",
+};
 
 export default function ContactPage() {
   const socials = getSocialLinks();
