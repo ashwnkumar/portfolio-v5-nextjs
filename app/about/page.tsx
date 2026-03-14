@@ -3,16 +3,19 @@ import { Button } from "@/components/ui/button";
 import { DownloadIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import {
   getAboutContent,
+  getBio,
   getExperience,
   getSocialLinks,
   getShuffledPhotos,
 } from "@/lib/data";
+import Image from "next/image";
 import { getSessionSeed } from "@/lib/session";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import Link from "next/link";
 
 export default async function AboutPage() {
   const seed = await getSessionSeed();
+  const bio = getBio();
   const aboutData = getAboutContent();
   const experience = getExperience().reverse();
   const socials = getSocialLinks();
@@ -23,30 +26,44 @@ export default async function AboutPage() {
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
       {/* Hero Section - Full Width Impact */}
       <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/30">
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <p className="text-sm md:text-base text-muted-foreground ">
-              // about
-            </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
-              {aboutData.hero.title}
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-              {aboutData.hero.intro}
-            </p>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          <div className="space-y-8 flex-1">
+            <div className="space-y-4">
+              <p className="text-sm md:text-base text-muted-foreground ">
+                // about
+              </p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
+                {aboutData.hero.title}
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
+                {aboutData.hero.intro}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a href="/resume.pdf" download="Ashwin-Kumar-Resume.pdf">
+                <Button size="lg" className="gap-2">
+                  <DownloadIcon className="w-4 h-4" />
+                  Download CV
+                </Button>
+              </a>
+              <Link href="/projects">
+                <Button size="lg" variant="outline" className="gap-2">
+                  View Projects
+                  <ArrowRightIcon className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-4">
-            <Button size="lg" className="gap-2">
-              <DownloadIcon className="w-4 h-4" />
-              Download CV
-            </Button>
-            <Link href="/projects">
-              <Button size="lg" variant="outline" className="gap-2">
-                View Projects
-                <ArrowRightIcon className="w-4 h-4" />
-              </Button>
-            </Link>
+          <div className="relative w-64 h-64 md:w-80 md:h-80 shrink-0 overflow-hidden rounded-md">
+            <Image
+              src={bio.images.about}
+              alt={bio.imageAlt}
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>

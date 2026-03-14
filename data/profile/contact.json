@@ -3,29 +3,29 @@
     {
       "type": "email",
       "label": "Email",
-      "value": "your.email@example.com",
-      "href": "mailto:your.email@example.com",
+      "value": "code.by.ashwin@gmail.com",
+      "href": "mailto:code.by.ashwin@gmail.com",
       "icon": "RiMailLine"
     },
     {
       "type": "linkedin",
       "label": "LinkedIn",
       "value": "/in/yourusername",
-      "href": "https://linkedin.com/in/yourusername",
+      "href": "https://www.linkedin.com/in/ashwin-kumar-221160240/",
       "icon": "RiLinkedinBoxLine"
     },
     {
       "type": "github",
       "label": "GitHub",
       "value": "@yourusername",
-      "href": "https://github.com/yourusername",
+      "href": "http://github.com/ashwnkumar",
       "icon": "RiGithubLine"
     }
   ],
   "location": {
-    "city": "San Francisco",
-    "state": "CA",
-    "country": "USA",
+    "city": "Pune",
+    "state": "MH",
+    "country": "IN",
     "remote": true,
     "icon": "RiMapPinLine"
   }

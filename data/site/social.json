@@ -3,7 +3,7 @@
     {
       "platform": "github",
       "username": "yourusername",
-      "url": "https://github.com/yourusername",
+      "url": "http://github.com/ashwnkumar",
       "label": "github",
       "icons": {
         "line": "RiGithubLine",
@@ -13,7 +13,7 @@
     {
       "platform": "linkedin",
       "username": "yourusername",
-      "url": "https://linkedin.com/in/yourusername",
+      "url": "https://www.linkedin.com/in/ashwin-kumar-221160240/",
       "label": "linkedin",
       "icons": {
         "line": "RiLinkedinBoxLine",
@@ -23,7 +23,7 @@
     {
       "platform": "email",
       "value": "your.email@example.com",
-      "url": "mailto:your.email@example.com",
+      "url": "mailto:code.by.ashwin@gmail.com",
       "label": "email",
       "icons": {
         "line": "RiMailLine",
@@ -33,13 +33,13 @@
     {
       "platform": "instagram",
       "username": "ashwin",
-      "url": "https://instagram.com/ashwin",
+      "url": "https://instagram.com/ashwnkumar",
       "label": "instagram"
     },
     {
       "platform": "twitter",
       "username": "ashwinkumar",
-      "url": "https://x.com/ashwin",
+      "url": "https://x.com/ashwnkumaar",
       "label": "x",
       "icons": {
         "line": "RiTwitterXLine",
@@ -49,7 +49,7 @@
     {
       "platform": "artstation",
       "username": "ashwin",
-      "url": "https://artstation.com/ashwin",
+      "url": "https://www.artstation.com/ashwnkumar",
       "label": "artstation"
     }
   ]

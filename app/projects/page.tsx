@@ -85,7 +85,7 @@ export default function ProjectsPage() {
 
               {/* Project Content */}
               <div className="p-6 relative h-full">
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-transparent to-muted/70 origin-left md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-transparent to-muted origin-left md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className=" text-xs">

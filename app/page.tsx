@@ -122,7 +122,7 @@ export default async function Page() {
                 key={project.slug}
                 className="group border relative overflow-hidden transition-colors"
               >
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/40 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
 
                 <div className="grid md:grid-cols-[300px_1fr] gap-6">
                   {/* Project Image */}

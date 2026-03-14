@@ -11,8 +11,8 @@
       "TailwindCSS",
       "Web Crypto API"
     ],
-    "github": "https://github.com/yourusername/calyx",
-    "live": "https://calyx-demo.vercel.app",
+    "github": "https://github.com/ashwnkumar/calyx",
+    "live": "https://calyx-store.vercel.app",
     "preview": "/images/projects/calyx-preview.png",
     "images": [
       "/images/projects/calyx-1.png",
@@ -30,8 +30,8 @@
     "category": "Experiments",
     "description": "A terminal-inspired todo list for developers and keyboard-first thinkers.",
     "tech": ["React", "Vite", "TailwindCSS", "IndexedDB"],
-    "github": "https://github.com/yourusername/cmdtask",
-    "live": "https://cmdtask-demo.vercel.app",
+    "github": "https://github.com/ashwnkumar/cmdtask",
+    "live": "https://cmd-task.web.app",
     "preview": "/images/projects/cmdtask-preview.png",
     "images": [
       "/images/projects/cmdtask-1.png",
@@ -48,8 +48,8 @@
     "category": "Experiments",
     "description": "A browser-based file manager built with IndexedDB for learning client-side storage.",
     "tech": ["React", "Vite", "TailwindCSS", "IndexedDB", "Lucide React"],
-    "github": "https://github.com/yourusername/idbfiles",
-    "live": "https://idbfiles-demo.vercel.app",
+    "github": "https://github.com/ashwnkumar/idbfiles",
+    "live": "https://idbfiles.web.app",
     "preview": "/images/projects/idbfiles-preview.png",
     "images": [
       "/images/projects/idbfiles-1.png",
@@ -75,8 +75,8 @@
       "Google Sheets API",
       "Lucide React"
     ],
-    "github": "https://github.com/yourusername/hiten-enterprises",
-    "live": "https://hitenenterprises.com",
+    "github": null,
+    "live": "https://hitenenterprises.in",
     "preview": "/images/projects/hiten-enterprises-preview.png",
     "images": [
       "/images/projects/hiten-enterprises-1.png",
@@ -95,8 +95,8 @@
     "category": "Full-Stack",
     "description": "A collaborative playlist app for road trips where everyone wants to be the DJ.",
     "tech": ["Next.js", "TypeScript", "Supabase", "Spotify API", "TailwindCSS"],
-    "github": "https://github.com/yourusername/trip-tunes",
-    "live": "https://trip-tunes-demo.vercel.app",
+    "github": "https://github.com/ashwnkumar/trip-tunes",
+    "live": null,
     "preview": "/images/projects/trip-tunes-preview.png",
     "images": [
       "/images/projects/trip-tunes-1.png",
@@ -117,8 +117,8 @@
     "category": "Frontend",
     "description": "A comprehensive frontend for managing construction vehicle fleets, drivers, and operations.",
     "tech": ["React", "Vite", "TailwindCSS", "Recharts", "React Router"],
-    "github": "https://github.com/yourusername/construction-fleet",
-    "live": "https://fleet-demo.vercel.app",
+    "github": "https://github.com/ashwnkumar/construction-fleet-frontend",
+    "live": null,
     "preview": "/images/projects/construction-fleet-preview.png",
     "images": [
       "/images/projects/construction-fleet-1.png",
@@ -137,7 +137,7 @@
     "category": "Frontend",
     "description": "My old portfolio website with Bento Grid layout and multiple theme system. The one before this one.",
     "tech": ["Next.js", "TypeScript", "TailwindCSS", "Resend API", "CSS Grid"],
-    "github": "https://github.com/yourusername/portfolio-v4",
+    "github": "https://github.com/ashwnkumar/portfolio-v5-nextjs",
     "live": null,
     "preview": "/images/projects/personal-portfolio-preview.png",
     "images": [
