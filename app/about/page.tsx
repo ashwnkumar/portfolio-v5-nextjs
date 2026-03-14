@@ -1,15 +1,23 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DownloadIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
-import { getAboutContent, getExperience, getSocialLinks } from "@/lib/data";
+import {
+  getAboutContent,
+  getExperience,
+  getSocialLinks,
+  getShuffledPhotos,
+} from "@/lib/data";
+import { getSessionSeed } from "@/lib/session";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import Link from "next/link";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const seed = await getSessionSeed();
   const aboutData = getAboutContent();
   const experience = getExperience().reverse();
   const socials = getSocialLinks();
   const instagramLink = socials.find((s: any) => s.platform === "instagram");
+  const galleryPhotos = getShuffledPhotos(seed, 5);
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
@@ -199,7 +207,7 @@ export default function AboutPage() {
       {/* Life Outside Work */}
       <section className="w-full border p-4 md:p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="space-y-4 w-full md:w-1/2">
+          <div className="space-y-4 w-full ">
             <p className="text-sm text-muted-foreground ">
               // life outside work
             </p>
@@ -213,7 +221,7 @@ export default function AboutPage() {
 
           <div className="flex justify-center w-full">
             <ImageCarousel
-              images={aboutData.lifeOutsideWork.images}
+              images={galleryPhotos}
               instagramUrl={
                 instagramLink?.url || "https://instagram.com/ashwin.archives"
               }

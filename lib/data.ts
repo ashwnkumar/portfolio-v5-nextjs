@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { seededShuffle } from "./random";
 
 const dataDirectory = path.join(process.cwd(), "data");
 
@@ -72,4 +73,44 @@ export const getExperience = () => readJSON("work", "experience.json");
 
 export function getCurrentRole() {
   return getExperience().find((role: any) => role.isCurrent);
+}
+
+const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
+const studioDir = path.join(process.cwd(), "public", "images", "studio");
+
+function readImageDir(subdir: string): string[] {
+  const dir = path.join(studioDir, subdir);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase()))
+    .map((f) => `/images/studio/${subdir}/${f}`);
+}
+
+/** Get shuffled photography images for a session */
+export function getShuffledPhotos(seed: number, count?: number): string[] {
+  const photos = readImageDir("photos");
+  const shuffled = seededShuffle(photos, seed);
+  return count ? shuffled.slice(0, count) : shuffled;
+}
+
+/** Get shuffled render images for a session */
+export function getShuffledRenders(seed: number, count?: number): string[] {
+  const renders = readImageDir("renders");
+  const shuffled = seededShuffle(renders, seed);
+  return count ? shuffled.slice(0, count) : shuffled;
+}
+
+/** Get a mixed, shuffled array of photos and renders for the studio gallery */
+export function getShuffledStudioMix(
+  seed: number,
+  photoCount?: number,
+): { src: string; category: "Photography" | "3D Art" }[] {
+  const photos = getShuffledPhotos(seed, photoCount);
+  const renders = getShuffledRenders(seed);
+  const combined = [
+    ...photos.map((src) => ({ src, category: "Photography" as const })),
+    ...renders.map((src) => ({ src, category: "3D Art" as const })),
+  ];
+  return seededShuffle(combined, seed);
 }

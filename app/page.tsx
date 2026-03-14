@@ -16,10 +16,13 @@ import {
   getAllProjects,
   getExperience,
   getSocialLinks,
-  getAllStudioItems,
+  getShuffledPhotos,
+  getShuffledRenders,
 } from "@/lib/data";
+import { getSessionSeed } from "@/lib/session";
 
-export default function Page() {
+export default async function Page() {
+  const seed = await getSessionSeed();
   const home = getHomeContent();
   const bio = getBio();
   const skills = getSkills();
@@ -29,7 +32,8 @@ export default function Page() {
   const experience = getExperience();
   const currentJob = experience.find((e: any) => e.isCurrent);
   const socials = getSocialLinks();
-  const studioItems = getAllStudioItems().slice(0, 4);
+  const studioPhotos = getShuffledPhotos(seed, 3);
+  const studioRenders = getShuffledRenders(seed, 3);
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
@@ -271,7 +275,9 @@ export default function Page() {
       </section>
 
       {/* Studio Preview */}
-      {studioItems.length > 0 && <StudioPreview items={studioItems} />}
+      {(studioPhotos.length > 0 || studioRenders.length > 0) && (
+        <StudioPreview photos={studioPhotos} renders={studioRenders} />
+      )}
 
       {/* Contact Section */}
       <section className="w-full border p-4 md:p-8">

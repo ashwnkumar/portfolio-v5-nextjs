@@ -70,9 +70,9 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8 items-end">
       {/* Name Field */}
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="name">Name</Label>
         <Input
           type="text"
@@ -89,7 +89,7 @@ export default function ContactForm() {
       </div>
 
       {/* Email Field */}
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="email">Email</Label>
         <Input
           type="email"
@@ -106,7 +106,7 @@ export default function ContactForm() {
       </div>
 
       {/* Subject Field */}
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="subject">Subject</Label>
         <Input
           type="text"
@@ -123,7 +123,7 @@ export default function ContactForm() {
       </div>
 
       {/* Message Field */}
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         <Label htmlFor="message">Message</Label>
         <Textarea
           id="message"
@@ -131,8 +131,7 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          rows={8}
-          className={`rounded-none resize-none ${
+          className={`rounded-none h-24 ${
             errors.message ? "border-red-500 focus-visible:ring-red-500/50" : ""
           }`}
           placeholder="Tell me about your project, idea, or just say hi..."
@@ -140,7 +139,7 @@ export default function ContactForm() {
       </div>
 
       {/* Submit Button */}
-      <Button type="submit" size="lg" className="gap-2" disabled={loading}>
+      <Button type="submit" size="lg" className="" disabled={loading}>
         {loading ? "Sending..." : "Send Message"}
         <PaperPlaneIcon className="w-4 h-4" />
       </Button>

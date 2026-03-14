@@ -59,7 +59,7 @@ function Footer({ socials, quickLinks, brand }: FooterProps) {
             </h4>
             <div className="grid grid-cols-2 gap-3">
               {socials.map((social) => (
-                <a
+                <Link
                   key={social.platform}
                   href={social.url}
                   target="_blank"
@@ -74,7 +74,7 @@ function Footer({ socials, quickLinks, brand }: FooterProps) {
                     <ArrowUpRightIcon className="w-3 h-3 text-muted-foreground group-hover:text-foreground transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                   <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>

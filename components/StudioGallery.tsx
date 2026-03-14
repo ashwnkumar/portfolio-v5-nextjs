@@ -10,10 +10,15 @@ import {
   FunnelIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Lightbox from "@/components/Lightbox";
-import { StudioItem } from "@/lib/types";
+import Image from "next/image";
+
+type GalleryItem = {
+  src: string;
+  category: "Photography" | "3D Art";
+};
 
 interface StudioGalleryProps {
-  items: StudioItem[];
+  items: GalleryItem[];
 }
 
 export default function StudioGallery({ items }: StudioGalleryProps) {
@@ -51,10 +56,8 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
 
   const lightboxImages = filteredItems.map((item, index) => ({
     id: index,
-    src: item.image,
+    src: item.src,
     alt: item.category,
-    title: item.title,
-    description: item.description,
   }));
 
   return (
@@ -64,6 +67,10 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
         <div className="flex flex-wrap gap-3">
           {categories.map((category) => {
             const Icon = category.icon;
+            const count =
+              category.id === "all"
+                ? items.length
+                : items.filter((i) => i.category === category.id).length;
             return (
               <Button
                 key={category.id}
@@ -73,14 +80,12 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
               >
                 <Icon className="w-4 h-4" />
                 {category.label}
-                {category.id !== "all" && (
-                  <Badge
-                    variant={filter === category.id ? "secondary" : "outline"}
-                    className="ml-1"
-                  >
-                    {items.filter((i) => i.category === category.label).length}
-                  </Badge>
-                )}
+                <Badge
+                  variant={filter === category.id ? "secondary" : "outline"}
+                  className="ml-1"
+                >
+                  {count}
+                </Badge>
               </Button>
             );
           })}
@@ -97,23 +102,19 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
             {filteredItems.map((item, index) => (
               <article
-                key={item.id}
-                className="break-inside-avoid group relative rounded-xl border border-border/70 bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer"
+                key={item.src}
+                className="break-inside-avoid group relative overflow-hidden border border-border/70 bg-card hover:shadow-lg transition-all cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
-                <div
-                  className={`relative bg-muted overflow-hidden ${
-                    item.aspectRatio === "square"
-                      ? "aspect-square"
-                      : item.aspectRatio === "portrait"
-                        ? "aspect-3/4"
-                        : "aspect-video"
-                  }`}
-                >
-                  {/* Placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                    [{item.category}]
-                  </div>
+                <div className="relative bg-muted overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.category}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
 
                   {/* Zoom overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
@@ -129,16 +130,6 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
                       {item.category}
                     </Badge>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-4 md:p-6 space-y-2">
-                  <h3 className="text-base md:text-lg font-medium group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">
-                    {item.description}
-                  </p>
                 </div>
               </article>
             ))}

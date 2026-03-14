@@ -6,17 +6,29 @@ import {
   ArrowRightIcon,
   MagnifyingGlassPlusIcon,
 } from "@phosphor-icons/react/dist/ssr";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Lightbox from "@/components/Lightbox";
-import { StudioItem } from "@/lib/types";
+import Image from "next/image";
 
 interface StudioPreviewProps {
-  items: StudioItem[];
+  photos: string[];
+  renders: string[];
 }
 
-export default function StudioPreview({ items }: StudioPreviewProps) {
+type PreviewItem = {
+  src: string;
+  category: "Photography" | "3D Art";
+};
+
+export default function StudioPreview({ photos, renders }: StudioPreviewProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const items: PreviewItem[] = [
+    ...photos.map((src) => ({ src, category: "Photography" as const })),
+    ...renders.map((src) => ({ src, category: "3D Art" as const })),
+  ];
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -33,17 +45,15 @@ export default function StudioPreview({ items }: StudioPreviewProps) {
     setCurrentImageIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   };
 
-  const lightboxImages = items.map((item: any, index: number) => ({
+  const lightboxImages = items.map((item, index) => ({
     id: index,
-    src: item.image,
+    src: item.src,
     alt: item.category,
-    title: item.title,
-    description: item.description,
   }));
 
   return (
     <>
-      <section className="w-full max-w-[90vw] md:max-w-[70vw]  border-border/70 py-12 md:py-16">
+      <section className="w-full max-w-[90vw] md:max-w-[70vw] border-border/70 py-12 md:py-16">
         <div className="space-y-8">
           <div className="flex items-center justify-between">
             <div className="space-y-2">
@@ -62,24 +72,21 @@ export default function StudioPreview({ items }: StudioPreviewProps) {
 
           {/* Masonry Grid */}
           <div className="columns-1 md:columns-2 gap-4 md:gap-6 space-y-4 md:space-y-6">
-            {items.map((item: any, index: number) => (
+            {items.map((item, index) => (
               <article
-                key={item.id}
+                key={item.src}
                 className="break-inside-avoid group relative rounded-xl border border-border/70 bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
-                <div
-                  className={`relative bg-muted overflow-hidden ${
-                    item.aspectRatio === "square"
-                      ? "aspect-square"
-                      : item.aspectRatio === "portrait"
-                        ? "aspect-3/4"
-                        : "aspect-video"
-                  }`}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                    [{item.category}]
-                  </div>
+                <div className="relative bg-muted overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.category}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
 
                   {/* Zoom overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
@@ -88,9 +95,12 @@ export default function StudioPreview({ items }: StudioPreviewProps) {
 
                   {/* Category badge */}
                   <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1.5 text-xs rounded-full bg-primary text-primary-foreground font-medium backdrop-blur-sm shadow-lg">
+                    <Badge
+                      variant="secondary"
+                      className="backdrop-blur-sm shadow-lg"
+                    >
                       {item.category}
-                    </span>
+                    </Badge>
                   </div>
                 </div>
               </article>

@@ -1,10 +1,12 @@
 import StudioGallery from "@/components/StudioGallery";
 import { Badge } from "@/components/ui/badge";
 import { CameraIcon, CubeIcon } from "@phosphor-icons/react/dist/ssr";
-import { getAllStudioItems } from "@/lib/data";
+import { getShuffledStudioMix } from "@/lib/data";
+import { getSessionSeed } from "@/lib/session";
 
-export default function StudioPage() {
-  const allItems = getAllStudioItems();
+export default async function StudioPage() {
+  const seed = await getSessionSeed();
+  const items = getShuffledStudioMix(seed, 10);
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-8 md:gap-12 items-center pb-16">
@@ -28,7 +30,7 @@ export default function StudioPage() {
       </section>
 
       {/* Gallery with Filters */}
-      <StudioGallery items={allItems} />
+      <StudioGallery items={items} />
 
       {/* Process Section */}
       <section className="w-full px-4 md:px-12 py-8 md:py-16">
