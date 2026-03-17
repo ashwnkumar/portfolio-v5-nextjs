@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRightIcon,
-  ArrowUpRightIcon,
   DownloadIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
@@ -170,35 +169,16 @@ export default async function Page() {
                           <Badge variant="secondary">{project.category}</Badge>
                         </div>
                         <h3 className="text-xl md:text-2xl font-medium group-hover:text-primary transition-colors">
-                          {project.title}
+                          <Link
+                            href={`/projects/${project.slug}`}
+                            className="after:absolute after:inset-0"
+                          >
+                            {project.title}
+                          </Link>
                         </h3>
                         <p className="text-sm md:text-base text-muted-foreground w-full">
                           {project.description}
                         </p>
-                      </div>
-                      <div className="flex gap-2">
-                        {project.github && (
-                          <Link
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Button size="icon" variant="ghost">
-                              <GithubLogoIcon className="w-4 h-4" />
-                            </Button>
-                          </Link>
-                        )}
-                        {project.live && (
-                          <Link
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Button size="icon" variant="ghost">
-                              <ArrowUpRightIcon className="w-4 h-4" />
-                            </Button>
-                          </Link>
-                        )}
                       </div>
                     </div>
 
