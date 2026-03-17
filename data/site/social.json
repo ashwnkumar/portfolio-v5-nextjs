@@ -4,7 +4,7 @@
       "platform": "github",
       "username": "yourusername",
       "url": "http://github.com/ashwnkumar",
-      "label": "github",
+      "label": "ashwnkumar",
       "icons": {
         "line": "RiGithubLine",
         "fill": "RiGithubFill"
@@ -14,7 +14,7 @@
       "platform": "linkedin",
       "username": "yourusername",
       "url": "https://www.linkedin.com/in/ashwin-kumar-221160240/",
-      "label": "linkedin",
+      "label": "ashwin-kumar-221160240",
       "icons": {
         "line": "RiLinkedinBoxLine",
         "fill": "RiLinkedinBoxFill"
@@ -24,7 +24,7 @@
       "platform": "email",
       "value": "your.email@example.com",
       "url": "mailto:code.by.ashwin@gmail.com",
-      "label": "email",
+      "label": "code.by.ashwin@gmail.com",
       "icons": {
         "line": "RiMailLine",
         "fill": "RiMailFill"
@@ -34,19 +34,19 @@
       "platform": "instagram",
       "username": "ashwin",
       "url": "https://instagram.com/ashwnkumar",
-      "label": "instagram"
+      "label": "ashwnkumar"
     },
     {
-      "platform": "instagram-photography",
+      "platform": "photography",
       "username": "ashwin.archives",
       "url": "https://instagram.com/ashwin.archives",
-      "label": "photography"
+      "label": "ashwin.archives"
     },
     {
       "platform": "twitter",
       "username": "ashwinkumar",
       "url": "https://x.com/ashwnkumaar",
-      "label": "x",
+      "label": "ashwnkumaar",
       "icons": {
         "line": "RiTwitterXLine",
         "fill": "RiTwitterXFill"
@@ -56,7 +56,7 @@
       "platform": "artstation",
       "username": "ashwin",
       "url": "https://www.artstation.com/ashwnkumar",
-      "label": "artstation"
+      "label": "ashwnkumar"
     }
   ]
 }

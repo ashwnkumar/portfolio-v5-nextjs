@@ -39,7 +39,7 @@ export default async function Page() {
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
       {/* Hero Section - Full Width Impact */}
-      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/40">
+      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/70">
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-sm md:text-base text-muted-foreground ">
@@ -237,7 +237,7 @@ export default async function Page() {
             {skills.categories.map((category: any) => (
               <div
                 key={category.name}
-                className="space-y-4 border p-6 bg-muted/30"
+                className="space-y-4 border p-6 bg-muted/40"
               >
                 <div className="flex items-center gap-2">
                   <div className="bg-background border flex items-center justify-center px-1 aspect-square ">

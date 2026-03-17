@@ -22,7 +22,7 @@ export default function ProjectsPage() {
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
       {/* Hero Section */}
-      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/30">
+      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/70">
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-sm md:text-base text-muted-foreground ">
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
               className="group border relative overflow-hidden transition-all hover:border-primary/50 block"
             >
               {/* Project Image - Hero */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-muted">
                 {project.preview ? (
                   <img
                     src={project.preview}
@@ -106,7 +106,7 @@ export default function ProjectsPage() {
 
               {/* Project Content */}
               <div className="p-6 relative h-full">
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-transparent to-muted origin-left md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-br  md:bg-linear-to-r from-transparent to-muted origin-left md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className=" text-xs">

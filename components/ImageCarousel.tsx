@@ -81,7 +81,7 @@ export function ImageCarousel({
     <div className={`w-full flex flex-col items-center gap-4 ${className}`}>
       {/* Carousel container */}
       <div
-        className="relative w-full max-w-md aspect-square overflow-hidden rounded-xl border border-border/60 bg-muted/30 shadow-sm"
+        className="relative w-full max-w-md aspect-square overflow-hidden rounded-xl border border-border/60 bg-muted/70 shadow-sm"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}

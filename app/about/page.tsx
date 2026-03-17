@@ -38,7 +38,7 @@ export default async function AboutPage() {
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
       {/* Hero Section - Full Width Impact */}
-      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/30">
+      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/70">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           <div className="space-y-8 flex-1">
             <div className="space-y-4">
@@ -114,7 +114,7 @@ export default async function AboutPage() {
                 key={job.id}
                 className="group border relative overflow-hidden transition-colors"
               >
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/30 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/70 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
 
                 <div className="p-6 md:p-8 space-y-4">
                   <div className="flex items-start justify-between gap-4">
@@ -190,7 +190,7 @@ export default async function AboutPage() {
                 key={edu.id}
                 className="group border relative overflow-hidden transition-colors"
               >
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/30 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/70 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
 
                 <div className="p-6 md:p-8">
                   <div className="flex items-start justify-between gap-4">
@@ -237,7 +237,7 @@ export default async function AboutPage() {
             {skills.categories.map((category: any) => (
               <div
                 key={category.name}
-                className="space-y-4 border p-6 bg-muted/30"
+                className="space-y-4 border p-6 bg-muted/40"
               >
                 <div className="flex items-center gap-2">
                   <div className="bg-background border flex items-center justify-center px-1 aspect-square">

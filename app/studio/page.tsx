@@ -32,7 +32,7 @@ export default async function StudioPage() {
   return (
     <div className="w-full min-h-screen flex flex-col gap-8 md:gap-12 items-center pb-16">
       {/* Hero Section */}
-      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/40">
+      <section className="w-full px-4 md:px-12 py-12 md:py-24 bg-linear-to-b from-transparent to-muted/70">
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-sm md:text-base text-muted-foreground ">
