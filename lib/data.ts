@@ -70,6 +70,7 @@ export function getStudioItemsByCategory(category: string) {
 }
 
 export const getExperience = () => readJSON("work", "experience.json");
+export const getEducation = () => readJSON("work", "education.json");
 
 export function getCurrentRole() {
   return getExperience().find((role: any) => role.isCurrent);

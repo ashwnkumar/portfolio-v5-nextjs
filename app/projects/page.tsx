@@ -1,10 +1,11 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   ArrowUpRightIcon,
   GithubLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { getAllProjects } from "@/lib/data";
+import { getAllProjects, getSocialLinks } from "@/lib/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const allProjects = getAllProjects();
+  const socials = getSocialLinks();
+  const githubUrl = socials.find((s: any) => s.platform === "github")?.url;
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
@@ -34,6 +37,17 @@ export default function ProjectsPage() {
               something new.
             </p>
           </div>
+
+          {githubUrl && (
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="secondary" className="gap-2">
+                  <GithubLogoIcon className="w-4 h-4" />
+                  GitHub
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 

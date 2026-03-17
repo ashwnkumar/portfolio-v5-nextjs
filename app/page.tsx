@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
+  DownloadIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
   EnvelopeSimpleIcon,
@@ -53,16 +54,34 @@ export default async function Page() {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <Link href="/projects">
+            <a href="/resume.pdf" download="Ashwin-Kumar-Resume.pdf">
               <Button size="lg" className="gap-2">
-                {home.hero.cta.primary.text}
-                <ArrowRightIcon className="w-4 h-4" />
+                <DownloadIcon className="w-4 h-4" />
+                Download Resume
+              </Button>
+            </a>
+            <Link
+              href={
+                socials.find((s: any) => s.platform === "linkedin")?.url ?? "#"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" variant="secondary" className="gap-2">
+                <LinkedinLogoIcon className="w-4 h-4" />
+                LinkedIn
               </Button>
             </Link>
-            <Link href="/about">
+            <Link
+              href={
+                socials.find((s: any) => s.platform === "github")?.url ?? "#"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" variant="secondary" className="gap-2">
-                {home.hero.cta.secondary.text}
-                <ArrowUpRightIcon className="w-4 h-4" />
+                <GithubLogoIcon className="w-4 h-4" />
+                GitHub
               </Button>
             </Link>
           </div>

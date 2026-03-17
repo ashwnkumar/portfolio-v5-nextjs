@@ -1,7 +1,14 @@
 import StudioGallery from "@/components/StudioGallery";
 import { Badge } from "@/components/ui/badge";
-import { CameraIcon, CubeIcon } from "@phosphor-icons/react/dist/ssr";
-import { getShuffledStudioMix } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import {
+  CameraIcon,
+  CubeIcon,
+  InstagramLogoIcon,
+  ArrowUpRightIcon,
+} from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { getShuffledStudioMix, getSocialLinks } from "@/lib/data";
 import { getSessionSeed } from "@/lib/session";
 import type { Metadata } from "next";
 
@@ -14,6 +21,13 @@ export const metadata: Metadata = {
 export default async function StudioPage() {
   const seed = await getSessionSeed();
   const items = getShuffledStudioMix(seed, 10);
+  const socials = getSocialLinks();
+  const instagramUrl = socials.find(
+    (s: any) => s.platform === "instagram-photography",
+  )?.url;
+  const artstationUrl = socials.find(
+    (s: any) => s.platform === "artstation",
+  )?.url;
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-8 md:gap-12 items-center pb-16">
@@ -32,6 +46,33 @@ export default async function StudioPage() {
               or crafting 3D worlds in Blender. This is where pixels meet
               passion.
             </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 pt-4">
+            {instagramUrl && (
+              <Link
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" variant="secondary" className="gap-2">
+                  <InstagramLogoIcon className="w-4 h-4" />
+                  Photography
+                </Button>
+              </Link>
+            )}
+            {artstationUrl && (
+              <Link
+                href={artstationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" variant="secondary" className="gap-2">
+                  <ArrowUpRightIcon className="w-4 h-4" />
+                  ArtStation
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -95,7 +136,6 @@ export default async function StudioPage() {
       {/* Philosophy */}
       <section className="w-full px-4 md:px-12">
         <div className="space-y-6">
-         
           <blockquote className="border-l-4 border-primary/50 pl-6 py-2">
             <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
               "Creativity is just connecting things. When you ask creative

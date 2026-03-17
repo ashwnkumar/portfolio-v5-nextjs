@@ -5,6 +5,7 @@ import {
   getAboutContent,
   getBio,
   getExperience,
+  getEducation,
   getSocialLinks,
   getShuffledPhotos,
 } from "@/lib/data";
@@ -25,8 +26,9 @@ export default async function AboutPage() {
   const bio = getBio();
   const aboutData = getAboutContent();
   const experience = getExperience().reverse();
+  const education = getEducation();
   const socials = getSocialLinks();
-  const instagramLink = socials.find((s: any) => s.platform === "instagram");
+  const instagramLink = socials.find((s: any) => s.platform === "instagram-photography");
   const galleryPhotos = getShuffledPhotos(seed, 5);
 
   return (
@@ -163,6 +165,51 @@ export default async function AboutPage() {
                       )}
                     </ul>
                   )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="w-full py-8 md:py-16">
+        <div className="space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-2xl md:text-3xl font-medium">Education</h2>
+            <p className="text-muted-foreground">Academic background</p>
+          </div>
+
+          <div className="space-y-4">
+            {education.map((edu: any, index: number) => (
+              <div
+                key={edu.id}
+                className="group border relative overflow-hidden transition-colors"
+              >
+                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted/30 to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+
+                <div className="p-6 md:p-8">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="space-y-2 flex-1">
+                      <div className="flex items-center gap-3">
+                        <Badge variant="outline" className="text-xs">
+                          {String(index + 1).padStart(2, "0")}
+                        </Badge>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-medium">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground">
+                        {edu.institution}
+                      </p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <Badge variant="secondary">{edu.score}</Badge>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        {edu.year}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
