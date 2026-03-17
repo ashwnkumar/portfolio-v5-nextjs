@@ -7,9 +7,13 @@
         "React",
         "Next.js",
         "TypeScript",
-        "Tailwind CSS",
-        "Vue.js",
-        "HTML/CSS"
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "TailwindCSS",
+        "shadcn/ui",
+        "Bootstrap",
+        "React Native"
       ]
     },
     {
@@ -19,15 +23,17 @@
         "Node.js",
         "Express",
         "PostgreSQL",
+        "Supabase",
         "MongoDB",
-        "Redis",
-        "REST APIs"
+        "REST APIs",
+        "gRPC",
+        "Firebase"
       ]
     },
     {
-      "name": "Tools & DevOps",
+      "name": "Tools & Other",
       "icon": "RiToolsLine",
-      "skills": ["Git", "Docker", "AWS", "Vercel", "CI/CD", "Jest"]
+      "skills": ["Git", "Postman", "Figma", "Blender 3D", "Vercel", "CI/CD"]
     }
   ],
   "hobbies": [

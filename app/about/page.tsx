@@ -6,6 +6,7 @@ import {
   getBio,
   getExperience,
   getEducation,
+  getSkills,
   getSocialLinks,
   getShuffledPhotos,
 } from "@/lib/data";
@@ -27,8 +28,11 @@ export default async function AboutPage() {
   const aboutData = getAboutContent();
   const experience = getExperience().reverse();
   const education = getEducation();
+  const skills = getSkills();
   const socials = getSocialLinks();
-  const instagramLink = socials.find((s: any) => s.platform === "instagram-photography");
+  const instagramLink = socials.find(
+    (s: any) => s.platform === "instagram-photography",
+  );
   const galleryPhotos = getShuffledPhotos(seed, 5);
 
   return (
@@ -222,7 +226,7 @@ export default async function AboutPage() {
         <div className="space-y-8">
           <div className="space-y-2">
             <h2 className="text-xl md:text-2xl font-medium">
-              Skills & Technologies
+              Skills &amp; Technologies
             </h2>
             <p className="text-sm md:text-base text-muted-foreground">
               My current toolkit (always expanding)
@@ -230,47 +234,32 @@ export default async function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Frontend */}
-            <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base  text-muted-foreground">
-                // frontend
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {aboutData.skills.frontend.map((skill: string) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
+            {skills.categories.map((category: any) => (
+              <div
+                key={category.name}
+                className="space-y-4 border p-6 bg-muted/30"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="bg-background border flex items-center justify-center px-1 aspect-square">
+                    {category.name.slice(0, 2).toUpperCase()}
+                  </div>
+                  <h3 className="text-sm md:text-base">
+                    {category.name.toLowerCase()}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill: string) => (
+                    <Badge
+                      key={skill}
+                      variant="outline"
+                      className="bg-background"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            {/* Backend */}
-            <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base  text-muted-foreground">
-                // backend
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {aboutData.skills.backend.map((skill: string) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Other */}
-            <div className="space-y-4 border p-6">
-              <h3 className="text-sm md:text-base  text-muted-foreground">
-                // other
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {aboutData.skills.other.map((skill: string) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
