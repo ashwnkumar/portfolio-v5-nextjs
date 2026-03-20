@@ -63,8 +63,8 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
   return (
     <>
       {/* Filter Section */}
-      <section className="w-full px-4 md:px-12">
-        <div className="flex flex-wrap gap-3">
+      <section className="w-full px-4 md:px-12 ">
+        <div className="flex flex-wrap gap-3 mb-4">
           {categories.map((category) => {
             const Icon = category.icon;
             const count =
