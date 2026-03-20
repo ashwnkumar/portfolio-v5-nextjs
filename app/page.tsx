@@ -21,6 +21,8 @@ import {
   getShuffledRenders,
 } from "@/lib/data";
 import { getSessionSeed } from "@/lib/session";
+import DecryptedText from "@/components/DecryptedText";
+import RevealOnScroll from "@/components/motion/RevealOnScroll";
 
 export default async function Page() {
   const seed = await getSessionSeed();
@@ -46,7 +48,14 @@ export default async function Page() {
               // {bio.tagline}
             </p>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight font-pixel-grid">
-              {home.hero.greeting}
+              <DecryptedText
+                text={home.hero.greeting}
+                speed={50}
+                animateOn="view"
+                revealDirection="start"
+                sequential
+                useOriginalCharsOnly={false}
+              />
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               {home.hero.tagline}
@@ -90,215 +99,230 @@ export default async function Page() {
 
       {/* Current Status */}
       {currentJob && (
-        <section className="w-full border p-4 md:p-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <p className="text-sm text-muted-foreground ">// currently</p>
-            </div>
-            <div className="space-y-3">
-              <h2 className="text-xl md:text-2xl font-medium">
-                {currentJob.role} at {currentJob.company}
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-                {currentJob.description}
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                {currentJob.technologies.slice(0, 6).map((tech: string) => (
-                  <Badge key={tech} variant="secondary">
-                    {tech}
-                  </Badge>
-                ))}
+        <RevealOnScroll>
+          <section className="w-full border p-4 md:p-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <p className="text-sm text-muted-foreground ">// currently</p>
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-xl md:text-2xl font-medium">
+                  {currentJob.role} at {currentJob.company}
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+                  {currentJob.description}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {currentJob.technologies.slice(0, 6).map((tech: string) => (
+                    <Badge key={tech} variant="secondary">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </RevealOnScroll>
       )}
 
       {/* Featured Projects */}
-      <section className="w-full py-8 md:py-16">
-        <div className="space-y-8">
-          <div className="flex items-center justify-between">
+      <RevealOnScroll>
+        <section className="w-full py-8 md:py-16">
+          <div className="space-y-8">
+            <div className="flex items-center justify-between">
+              <div className="space-y-2">
+                <h2 className="text-2xl md:text-3xl font-medium">
+                  Things I've built
+                </h2>
+                <p className="text-muted-foreground">
+                  A few projects I'm proud of
+                </p>
+              </div>
+              <Link href="/projects">
+                <Button variant="ghost" className="gap-2">
+                  See all
+                  <ArrowRightIcon className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="space-y-4">
+              {projects.map((project: any, index: number) => (
+                <RevealOnScroll key={project.slug} delay={index * 0.1}>
+                  <div className="group border relative overflow-hidden transition-colors">
+                    <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
+
+                    <div className="grid md:grid-cols-[300px_1fr] gap-6">
+                      {/* Project Image */}
+                      <div className="relative aspect-video w-full h-full overflow-hidden bg-muted">
+                        {project.preview ? (
+                          <img
+                            src={project.preview}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
+                            [Project Preview]
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Project Content */}
+                      <div className="p-6 md:p-8 md:pl-0 space-y-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="space-y-2 flex-1">
+                            <div className="flex items-center gap-3">
+                              <Badge variant="outline" className=" text-xs">
+                                {String(index + 1).padStart(2, "0")}
+                              </Badge>
+                              <Badge variant="secondary">
+                                {project.category}
+                              </Badge>
+                            </div>
+                            <h3 className="text-xl md:text-2xl font-medium group-hover:text-primary transition-colors">
+                              <Link
+                                href={`/projects/${project.slug}`}
+                                className="after:absolute after:inset-0"
+                              >
+                                {project.title}
+                              </Link>
+                            </h3>
+                            <p className="text-sm md:text-base text-muted-foreground w-full">
+                              {project.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech: string) => (
+                            <Badge
+                              key={tech}
+                              variant="secondary"
+                              className="text-xs"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+      </RevealOnScroll>
+
+      {/* Skills Grid */}
+      <RevealOnScroll>
+        <section className="w-full py-8 md:py-16">
+          <div className="space-y-8">
             <div className="space-y-2">
-              <h2 className="text-2xl md:text-3xl font-medium">
-                Things I've built
+              <h2 className="text-xl md:text-2xl font-medium">
+                What I work with
               </h2>
-              <p className="text-muted-foreground">
-                A few projects I'm proud of
+              <p className="text-sm md:text-base text-muted-foreground">
+                My current toolkit (always expanding)
               </p>
             </div>
-            <Link href="/projects">
-              <Button variant="ghost" className="gap-2">
-                See all
+
+            <SkillsGrid categories={skills.categories} />
+          </div>
+        </section>
+      </RevealOnScroll>
+
+      {/* Philosophy Section */}
+      <RevealOnScroll>
+        <section className="w-full  py-8 md:py-16">
+          <div className="space-y-6">
+            <h2 className="text-xl md:text-3xl font-medium">
+              {home.philosophy.title}
+            </h2>
+            <div className="space-y-4">
+              <blockquote className="border-l-4 border-primary/50 pl-6 py-2">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
+                  "{home.philosophy.quote}"
+                </p>
+                <footer className="mt-3 text-xs md:text-sm text-muted-foreground">
+                  — {home.philosophy.author}
+                </footer>
+              </blockquote>
+              <p className="text-sm md:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+                {home.philosophy.personalNote}
+              </p>
+            </div>
+            <Link href={home.philosophy.cta.href}>
+              <Button variant="outline" className="gap-2">
+                {home.philosophy.cta.text}
                 <ArrowRightIcon className="w-4 h-4" />
               </Button>
             </Link>
           </div>
-
-          <div className="space-y-4">
-            {projects.map((project: any, index: number) => (
-              <div
-                key={project.slug}
-                className="group border relative overflow-hidden transition-colors"
-              >
-                <div className="absolute inset-0 -z-10 bg-linear-to-br md:bg-linear-to-r from-muted to-transparent origin-right md:scale-x-0 md:group-hover:scale-x-100 transition-all md:opacity-0 md:group-hover:opacity-100 duration-700 ease-in-out" />
-
-                <div className="grid md:grid-cols-[300px_1fr] gap-6">
-                  {/* Project Image */}
-                  <div className="relative aspect-video w-full h-full overflow-hidden bg-muted">
-                    {project.preview ? (
-                      <img
-                        src={project.preview}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-                        [Project Preview]
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-6 md:p-8 md:pl-0 space-y-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-2 flex-1">
-                        <div className="flex items-center gap-3">
-                          <Badge variant="outline" className=" text-xs">
-                            {String(index + 1).padStart(2, "0")}
-                          </Badge>
-                          <Badge variant="secondary">{project.category}</Badge>
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-medium group-hover:text-primary transition-colors">
-                          <Link
-                            href={`/projects/${project.slug}`}
-                            className="after:absolute after:inset-0"
-                          >
-                            {project.title}
-                          </Link>
-                        </h3>
-                        <p className="text-sm md:text-base text-muted-foreground w-full">
-                          {project.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech: string) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Grid */}
-      <section className="w-full py-8 md:py-16">
-        <div className="space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-xl md:text-2xl font-medium">
-              What I work with
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground">
-              My current toolkit (always expanding)
-            </p>
-          </div>
-
-          <SkillsGrid categories={skills.categories} />
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="w-full  py-8 md:py-16">
-        <div className="space-y-6">
-          <h2 className="text-xl md:text-3xl font-medium">
-            {home.philosophy.title}
-          </h2>
-          <div className="space-y-4">
-            <blockquote className="border-l-4 border-primary/50 pl-6 py-2">
-              <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
-                "{home.philosophy.quote}"
-              </p>
-              <footer className="mt-3 text-xs md:text-sm text-muted-foreground">
-                — {home.philosophy.author}
-              </footer>
-            </blockquote>
-            <p className="text-sm md:text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              {home.philosophy.personalNote}
-            </p>
-          </div>
-          <Link href={home.philosophy.cta.href}>
-            <Button variant="outline" className="gap-2">
-              {home.philosophy.cta.text}
-              <ArrowRightIcon className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
+        </section>
+      </RevealOnScroll>
 
       {/* Studio Preview */}
       {(studioPhotos.length > 0 || studioRenders.length > 0) && (
-        <StudioPreview photos={studioPhotos} renders={studioRenders} />
+        <RevealOnScroll>
+          <StudioPreview photos={studioPhotos} renders={studioRenders} />
+        </RevealOnScroll>
       )}
 
       {/* Contact Section */}
-      <section className="w-full border p-4 md:p-8">
-        <div className="space-y-4">
+      <RevealOnScroll>
+        <section className="w-full border p-4 md:p-8">
           <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-medium">
-              Let's build something together
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
-              Got a project in mind? Want to chat about tech? Or just want to
-              say hi? I'm always up for a conversation. Drop me a line and let's
-              see what we can create.
-            </p>
-          </div>
+            <div className="space-y-4">
+              <h2 className="text-xl md:text-2xl font-medium">
+                Let's build something together
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+                Got a project in mind? Want to chat about tech? Or just want to
+                say hi? I'm always up for a conversation. Drop me a line and
+                let's see what we can create.
+              </p>
+            </div>
 
-          <div className="flex flex-wrap gap-4">
-            {socials
-              .filter((s: any) =>
-                ["email", "github", "linkedin"].includes(s.platform),
-              )
-              .map((social: any) => {
-                const Icon =
-                  social.platform === "email"
-                    ? EnvelopeSimpleIcon
-                    : social.platform === "github"
-                      ? GithubLogoIcon
-                      : LinkedinLogoIcon;
-                return (
-                  <Link
-                    key={social.platform}
-                    href={social.url}
-                    target={social.platform === "email" ? undefined : "_blank"}
-                    rel={
-                      social.platform === "email"
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                  >
-                    <Button variant="outline" className="gap-2">
-                      <Icon className="w-4 h-4" />
-                      {social.platform.charAt(0).toUpperCase() +
-                        social.platform.slice(1)}
-                    </Button>
-                  </Link>
-                );
-              })}
+            <div className="flex flex-wrap gap-4">
+              {socials
+                .filter((s: any) =>
+                  ["email", "github", "linkedin"].includes(s.platform),
+                )
+                .map((social: any) => {
+                  const Icon =
+                    social.platform === "email"
+                      ? EnvelopeSimpleIcon
+                      : social.platform === "github"
+                        ? GithubLogoIcon
+                        : LinkedinLogoIcon;
+                  return (
+                    <Link
+                      key={social.platform}
+                      href={social.url}
+                      target={
+                        social.platform === "email" ? undefined : "_blank"
+                      }
+                      rel={
+                        social.platform === "email"
+                          ? undefined
+                          : "noopener noreferrer"
+                      }
+                    >
+                      <Button variant="outline" className="gap-2">
+                        <Icon className="w-4 h-4" />
+                        {social.platform.charAt(0).toUpperCase() +
+                          social.platform.slice(1)}
+                      </Button>
+                    </Link>
+                  );
+                })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </RevealOnScroll>
 
       {/* Footer Spacer */}
       <div className="w-full  h-px" />
