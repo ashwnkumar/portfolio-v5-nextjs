@@ -14,6 +14,7 @@ import {
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,20 +54,22 @@ export default function RootLayout({
         )}
       >
         <Toaster />
-        <div className="flex min-h-screen flex-col items-center font-pixel-square">
-          <Navbar navItems={navItems} />
+        <TooltipProvider delayDuration={100}>
+          <div className="flex min-h-screen flex-col items-center font-pixel-square">
+            <Navbar navItems={navItems} />
 
-          <main className="flex-1 w-full">
-            <div className="mx-auto w-full border-x p-4 md:p-8 min-h-screen max-w-[90vw] md:max-w-[70vw]">
-              {children}
-            </div>
-          </main>
-          <Footer
-            socials={socials}
-            quickLinks={footerData.quickLinks}
-            brand={footerData.brand}
-          />
-        </div>
+            <main className="flex-1 w-full">
+              <div className="mx-auto w-full border-x p-4 md:p-8 min-h-screen max-w-[90vw] md:max-w-[70vw]">
+                {children}
+              </div>
+            </main>
+            <Footer
+              socials={socials}
+              quickLinks={footerData.quickLinks}
+              brand={footerData.brand}
+            />
+          </div>
+        </TooltipProvider>
       </body>
     </html>
   );

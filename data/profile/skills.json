@@ -4,37 +4,42 @@
       "name": "Frontend",
       "icon": "RiCodeSSlashLine",
       "skills": [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "TailwindCSS",
-        "shadcn/ui",
-        "Bootstrap",
-        "React Native"
+        { "name": "React", "iconId": "react" },
+        { "name": "Next.js", "iconId": "nextjs" },
+        { "name": "TypeScript", "iconId": "ts" },
+        { "name": "JavaScript", "iconId": "js" },
+        { "name": "HTML", "iconId": "html" },
+        { "name": "CSS", "iconId": "css" },
+        { "name": "TailwindCSS", "iconId": "tailwind" },
+        { "name": "Bootstrap", "iconId": "bootstrap" },
+        { "name": "React Native", "iconId": "react" }
       ]
     },
     {
       "name": "Backend",
       "icon": "RiServerLine",
       "skills": [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Supabase",
-        "MongoDB",
-        "REST APIs",
-        "Firebase"
+        { "name": "Node.js", "iconId": "nodejs" },
+        { "name": "Express", "iconId": "express" },
+        { "name": "PostgreSQL", "iconId": "postgres" },
+        { "name": "Supabase", "iconId": "supabase" },
+        { "name": "MongoDB", "iconId": "mongodb" },
+        { "name": "Firebase", "iconId": "firebase" }
       ]
     },
     {
       "name": "Tools & Other",
       "icon": "RiToolsLine",
-      "skills": ["Git", "Postman", "Figma", "Blender 3D", "Vercel"]
+      "skills": [
+        { "name": "Git", "iconId": "git" },
+        { "name": "Postman", "iconId": "postman" },
+        { "name": "Figma", "iconId": "figma" },
+        { "name": "Blender 3D", "iconId": "blender" },
+        { "name": "Vercel", "iconId": "vercel" }
+      ]
     }
   ],
+
   "hobbies": [
     {
       "name": "Photography",
