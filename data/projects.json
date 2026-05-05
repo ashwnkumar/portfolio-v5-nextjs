@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "calyx",
+    "title": "Calyx",
+    "category": "Full-Stack",
+    "description": "A personal, zero-knowledge secrets manager for environment variables with client-side encryption.",
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "TailwindCSS",
+      "Web Crypto API"
+    ],
+    "github": "https://github.com/ashwnkumar/calyx",
+    "live": "https://calyx-store.vercel.app",
+    "preview": "/images/projects/calyx-preview.png",
+    "images": [
+      "/images/projects/calyx-1.png",
+      "/images/projects/calyx-2.png",
+      "/images/projects/calyx-3.png",
+      "/images/projects/calyx-4.png",
+      "/images/projects/calyx-5.png"
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
+    "slug": "cmdtask",
+    "title": "cmdtask",
+    "category": "Experiments",
+    "description": "A terminal-inspired todo list for developers and keyboard-first thinkers.",
+    "tech": ["React", "Vite", "TailwindCSS", "IndexedDB"],
+    "github": "https://github.com/ashwnkumar/cmdtask",
+    "live": "https://cmd-task.web.app",
+    "preview": "/images/projects/cmdtask-preview.png",
+    "images": [
+      "/images/projects/cmdtask-1.png",
+      "/images/projects/cmdtask-2.png",
+      "/images/projects/cmdtask-3.png",
+      "/images/projects/cmdtask-4.png"
+    ],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "slug": "idbfiles",
+    "title": "IDBFiles",
+    "category": "Experiments",
+    "description": "A browser-based file manager built with IndexedDB for learning client-side storage.",
+    "tech": ["React", "Vite", "TailwindCSS", "IndexedDB", "Lucide React"],
+    "github": "https://github.com/ashwnkumar/idbfiles",
+    "live": "https://idbfiles.web.app",
+    "preview": "/images/projects/idbfiles-preview.png",
+    "images": [
+      "/images/projects/idbfiles-1.png",
+      "/images/projects/idbfiles-2.png",
+      "/images/projects/idbfiles-3.png",
+      "/images/projects/idbfiles-4.png",
+      "/images/projects/idbfiles-5.png",
+      "/images/projects/idbfiles-6.png",
+      "/images/projects/idbfiles-7.png"
+    ],
+    "featured": true,
+    "order": 3
+  },
+  {
+    "slug": "hiten-enterprises",
+    "title": "Hiten Enterprises",
+    "category": "Full-Stack",
+    "description": "A professional business website for an industrial sheet metal fabrication company.",
+    "tech": [
+      "React",
+      "Vite",
+      "TailwindCSS",
+      "Google Sheets API",
+      "Lucide React"
+    ],
+    "github": null,
+    "live": "https://hitenenterprises.in",
+    "preview": "/images/projects/hiten-enterprises-preview.png",
+    "images": [
+      "/images/projects/hiten-enterprises-1.png",
+      "/images/projects/hiten-enterprises-2.png",
+      "/images/projects/hiten-enterprises-3.png",
+      "/images/projects/hiten-enterprises-4.png",
+      "/images/projects/hiten-enterprises-5.png",
+      "/images/projects/hiten-enterprises-6.png"
+    ],
+    "featured": true,
+    "order": 10
+  },
+  {
+    "slug": "trip-tunes",
+    "title": "Trip Tunes",
+    "category": "Full-Stack",
+    "description": "A collaborative playlist app for road trips where everyone wants to be the DJ.",
+    "tech": ["Next.js", "TypeScript", "Supabase", "Spotify API", "TailwindCSS"],
+    "github": "https://github.com/ashwnkumar/trip-tunes",
+    "live": null,
+    "preview": "/images/projects/trip-tunes-preview.png",
+    "images": [
+      "/images/projects/trip-tunes-1.png",
+      "/images/projects/trip-tunes-2.png",
+      "/images/projects/trip-tunes-3.png",
+      "/images/projects/trip-tunes-4.png",
+      "/images/projects/trip-tunes-5.png",
+      "/images/projects/trip-tunes-6.png",
+      "/images/projects/trip-tunes-7.png",
+      "/images/projects/trip-tunes-8.png"
+    ],
+    "featured": false,
+    "order": 2
+  },
+  {
+    "slug": "construction-fleet",
+    "title": "Construction Fleet Management System",
+    "category": "Frontend",
+    "description": "A comprehensive frontend for managing construction vehicle fleets, drivers, and operations.",
+    "tech": ["React", "Vite", "TailwindCSS", "Recharts", "React Router"],
+    "github": "https://github.com/ashwnkumar/construction-fleet-frontend",
+    "live": null,
+    "preview": "/images/projects/construction-fleet-preview.png",
+    "images": [
+      "/images/projects/construction-fleet-1.png",
+      "/images/projects/construction-fleet-2.png",
+      "/images/projects/construction-fleet-3.png",
+      "/images/projects/construction-fleet-4.png",
+      "/images/projects/construction-fleet-5.png",
+      "/images/projects/construction-fleet-6.png"
+    ],
+    "featured": false,
+    "order": 3
+  },
+  {
+    "slug": "personal-portfolio",
+    "title": "Developer Portfolio (v4)",
+    "category": "Frontend",
+    "description": "My old portfolio website with Bento Grid layout and multiple theme system. The one before this one.",
+    "tech": ["Next.js", "TypeScript", "TailwindCSS", "Resend API", "CSS Grid"],
+    "github": "https://github.com/ashwnkumar/portfolio-v5-nextjs",
+    "live": null,
+    "preview": "/images/projects/personal-portfolio-preview.png",
+    "images": [
+      "/images/projects/personal-portfolio-1.png",
+      "/images/projects/personal-portfolio-2.png",
+      "/images/projects/personal-portfolio-3.png",
+      "/images/projects/personal-portfolio-4.png",
+      "/images/projects/personal-portfolio-5.png",
+      "/images/projects/personal-portfolio-6.png",
+      "/images/projects/personal-portfolio-7.png"
+    ],
+    "featured": false,
+    "order": 7
+  }
+]
