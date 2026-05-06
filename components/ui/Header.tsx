@@ -38,7 +38,7 @@ function Header() {
       </h1>
       <div className="flex items-center justify-center gap-4">
         <Button variant={"secondary"}>resume</Button>
-        <AnimatedThemeToggler duration={700}/>
+        <AnimatedThemeToggler duration={600}/>
         {/* <Button
           onClick={handleThemeToggle}
           variant="outline"

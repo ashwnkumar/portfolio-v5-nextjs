@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope, Raleway, Lora } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Raleway, Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/ui/Header";
@@ -9,6 +9,7 @@ import LayoutWrapper from "@/components/LayoutWrapper";
 const loraHeading = Lora({ subsets: ["latin"], variable: "--font-heading" });
 
 const raleway = Raleway({ subsets: ["latin"], variable: "--font-sans" });
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

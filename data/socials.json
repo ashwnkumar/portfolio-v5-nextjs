@@ -1,0 +1,43 @@
+{
+  "github": {
+    "platform": "GitHub",
+    "username": "yourusername",
+    "url": "http://github.com/ashwnkumar",
+    "label": "ashwnkumar"
+  },
+  "linkedin": {
+    "platform": "LinkedIn",
+    "username": "yourusername",
+    "url": "https://www.linkedin.com/in/ashwin-kumar-221160240/",
+    "label": "ashwin-kumar-221160240"
+  },
+  "email": {
+    "platform": "Email",
+    "url": "mailto:code.by.ashwin@gmail.com",
+    "label": "code.by.ashwin@gmail.com"
+  },
+  "instagram": {
+    "platform": "Instagram",
+    "username": "ashwin",
+    "url": "https://instagram.com/ashwnkumar",
+    "label": "ashwnkumar"
+  },
+  "instagramPhotography": {
+    "platform": "Photography",
+    "username": "ashwin.archives",
+    "url": "https://instagram.com/ashwin.archives",
+    "label": "ashwin.archives"
+  },
+  "twitter": {
+    "platform": "Twitter",
+    "username": "ashwinkumar",
+    "url": "https://x.com/ashwnkumaar",
+    "label": "ashwnkumaar"
+  },
+  "artstation": {
+    "platform": "ArtStation",
+    "username": "ashwin",
+    "url": "https://www.artstation.com/ashwnkumar",
+    "label": "ashwnkumar"
+  }
+}
