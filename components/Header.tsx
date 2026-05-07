@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import {
   DownloadIcon,
   MoonIcon,
@@ -8,7 +8,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { AnimatedThemeToggler } from "./animated-theme-toggler";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 function Header() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -33,12 +33,12 @@ function Header() {
 
   return (
     <nav className="flex items-center justify-between w-full sticky top-0 z-50 bg-background p-2">
-      <h1 className="text-2xl font-medium">
+      <Link href="/" className="text-2xl font-medium">
         Ashwin<span className="text-muted-foreground">Kumar</span>
-      </h1>
+      </Link>
       <div className="flex items-center justify-center gap-4">
-        <Button variant={"secondary"}>resume</Button>
-        <AnimatedThemeToggler duration={600}/>
+        <Button variant={"secondary"} className="text-sm!">resume</Button>
+        <AnimatedThemeToggler duration={600} />
         {/* <Button
           onClick={handleThemeToggle}
           variant="outline"

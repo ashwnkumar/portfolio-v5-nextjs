@@ -8,7 +8,7 @@ function StudioSection() {
 
   const combined = [...photos, ...renders];
 
-  console.log('combined', combined)
+  console.log("combined", combined);
 
   return (
     <div className="w-full flex flex-col items-start gap-8 py-20">
@@ -17,7 +17,7 @@ function StudioSection() {
         href="/studio"
         desc="Life outside the 9-5"
       />
-      <StudioGallery allImages={combined}  />
+      <StudioGallery allImages={combined} preview />
     </div>
   );
 }

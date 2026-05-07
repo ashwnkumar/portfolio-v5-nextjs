@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 import ClickSpark from "./ClickSpark";
 import Footer from "./Footer";
-import Header from "./ui/Header";
+import Header from "./Header";
 
 function LayoutWrapper({ children }: { children: ReactNode }) {
   return (
