@@ -30,12 +30,12 @@ function HeroSection() {
 
       <div className="flex items-center gap-2">
         <Button asChild size={"icon"} variant={"ghost"}>
-          <Link href={`${socials.github.url}`}>
+          <Link target="_blank" href={`${socials.github.url}`}>
             <GithubLogoIcon className="w-6! h-6!" />
           </Link>
         </Button>
         <Button asChild size={"icon"} variant={"ghost"}>
-          <Link href={`${socials.linkedin.url}`}>
+          <Link target="_blank" href={`${socials.linkedin.url}`}>
             <LinkedinLogoIcon className="w-6! h-6!" />
           </Link>
         </Button>

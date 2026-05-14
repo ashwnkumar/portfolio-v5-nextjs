@@ -6,7 +6,6 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 function Footer() {
   const socialLinks = Object.values(socials);
-  console.log("socialLinks", socialLinks);
   return (
     <footer className="p-2 flex flex-col items-center justify-center gap-4 text-sm border-t pt-4">
       <div className="w-full flex items-start justify-between">
