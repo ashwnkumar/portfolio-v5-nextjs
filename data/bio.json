@@ -1,0 +1,26 @@
+{
+  "header": "Hello World, I'm Ashwin.",
+  "tagline": "I build things for the web. They tend to turn out pretty nice.",
+  "work_exp": [
+    {
+      "role": "Full Stack AI Developer",
+      "company": "NeuralArc Inc",
+      "address": "Rangehill, Pune",
+      "start_date": "Jan 2026"
+    },
+    {
+      "role": "SDE Trainee",
+      "company": "NDSofttech Solutions",
+      "address": "Hinjewadi, Pune",
+      "start_date": "Jul 2025",
+      "end_date": "Dec 2025"
+    },
+    {
+      "role": "ReactJS Intern",
+      "company": "Dreams International Infosoft",
+      "address": "Swargete, Pune",
+      "start_date": "Nov 2024",
+      "end_date": "May 2025"
+    }
+  ]
+}
