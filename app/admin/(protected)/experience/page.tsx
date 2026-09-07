@@ -1,72 +1,47 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Button } from "@/components/ui/button";
 import { AdminPage } from "@/components/admin/ui/AdminPage";
-import { Panel, RowList, Row, EmptyState } from "@/components/admin/ui/Panel";
-import { DeleteButton } from "@/components/admin/DeleteButton";
-import { MoveButtons } from "@/components/admin/MoveButtons";
-import { deleteExperience, moveExperience } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ExperienceBoard } from "@/components/admin/ExperienceBoard";
 
-async function ExperienceList() {
+async function Board() {
   const supabase = await createClient();
+
+  // Newest first, derived from the dates — no sort_order to maintain.
   const { data: rows } = await supabase
     .from("experience")
-    .select("id, company, role, start_date, end_date, is_current")
-    .order("sort_order");
+    .select(
+      "id, role, company, location, start_month, start_year, end_month, end_year, is_current, description, achievements, technologies",
+    )
+    .order("is_current", { ascending: false })
+    .order("start_year", { ascending: false, nullsFirst: false })
+    .order("start_month", { ascending: false, nullsFirst: false });
 
-  if (!rows?.length) {
-    return (
-      <Panel label="roles">
-        <EmptyState>no roles yet</EmptyState>
-      </Panel>
-    );
-  }
+  // Autocomplete source, so spellings stay consistent across roles.
+  const suggestions = [...new Set((rows ?? []).flatMap((r) => r.technologies))].sort();
 
+  return <ExperienceBoard rows={rows ?? []} suggestions={suggestions} />;
+}
+
+function BoardSkeleton() {
   return (
-    <Panel label={`roles · ${rows.length}`}>
-      <RowList>
-        {rows.map((row, i) => (
-          <Row key={row.id}>
-            <MoveButtons
-              isFirst={i === 0}
-              isLast={i === rows.length - 1}
-              onMove={async (direction) => {
-                "use server";
-                await moveExperience(row.id, direction);
-              }}
-            />
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <p className="font-medium truncate">{row.role}</p>
-                {row.is_current && (
-                  <span className="font-pixel-square text-[10px] uppercase tracking-wide border border-border/70 px-1.5 py-0.5 text-muted-foreground">
-                    current
-                  </span>
-                )}
-              </div>
-              <p className="font-mono text-xs text-muted-foreground truncate mt-0.5">
-                {row.company} · {row.start_date} – {row.end_date ?? "present"}
-              </p>
-            </div>
-
-            <div className="flex items-center shrink-0">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href={`/admin/experience/${row.id}`}>Edit</Link>
-              </Button>
-              <DeleteButton
-                confirmText={`Delete "${row.role} at ${row.company}"?`}
-                action={async () => {
-                  "use server";
-                  await deleteExperience(row.id);
-                }}
-              />
-            </div>
-          </Row>
-        ))}
-      </RowList>
-    </Panel>
+    <div className="space-y-4">
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="border border-border/70 p-5 space-y-3">
+          <div className="flex justify-between">
+            <Skeleton className="h-5 w-52" />
+            <Skeleton className="h-4 w-32" />
+          </div>
+          <Skeleton className="h-3 w-40" />
+          <Skeleton className="h-10 w-full" />
+          <div className="flex gap-1.5">
+            {[0, 1, 2, 3].map((j) => (
+              <Skeleton key={j} className="h-5 w-16" />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -75,19 +50,10 @@ export default function ExperienceAdminPage() {
     <AdminPage
       label="experience"
       title="Experience"
-      description="Ordered oldest first here; the about page reverses it to show the most recent role at the top."
-      action={
-        <Button asChild>
-          <Link href="/admin/experience/new">+ New role</Link>
-        </Button>
-      }
+      description="Each card shows exactly what publishes to your about page. Order follows the dates."
     >
-      <Suspense
-        fallback={
-          <div className="h-56 border border-border/70 bg-muted/20 animate-pulse" />
-        }
-      >
-        <ExperienceList />
+      <Suspense fallback={<BoardSkeleton />}>
+        <Board />
       </Suspense>
     </AdminPage>
   );

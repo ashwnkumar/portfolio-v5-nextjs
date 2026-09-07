@@ -126,13 +126,17 @@ export type Database = {
           company: string
           created_at: string
           description: string
-          end_date: string | null
+          end_date_text: string | null
+          end_month: number | null
+          end_year: number | null
           id: string
           is_current: boolean
           location: string
           role: string
           sort_order: number
-          start_date: string
+          start_date_text: string | null
+          start_month: number | null
+          start_year: number | null
           technologies: string[]
           updated_at: string
         }
@@ -141,13 +145,17 @@ export type Database = {
           company: string
           created_at?: string
           description?: string
-          end_date?: string | null
+          end_date_text?: string | null
+          end_month?: number | null
+          end_year?: number | null
           id?: string
           is_current?: boolean
           location?: string
           role: string
           sort_order?: number
-          start_date: string
+          start_date_text?: string | null
+          start_month?: number | null
+          start_year?: number | null
           technologies?: string[]
           updated_at?: string
         }
@@ -156,13 +164,17 @@ export type Database = {
           company?: string
           created_at?: string
           description?: string
-          end_date?: string | null
+          end_date_text?: string | null
+          end_month?: number | null
+          end_year?: number | null
           id?: string
           is_current?: boolean
           location?: string
           role?: string
           sort_order?: number
-          start_date?: string
+          start_date_text?: string | null
+          start_month?: number | null
+          start_year?: number | null
           technologies?: string[]
           updated_at?: string
         }

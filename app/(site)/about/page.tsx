@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const [bio, aboutData, allExperience, education, skills] = await Promise.all([
+  const [bio, aboutData, experience, education, skills] = await Promise.all([
     getBio(),
     getAboutContent(),
     getExperience(),
@@ -33,9 +33,7 @@ export default async function AboutPage() {
     getSkills(),
   ]);
 
-  // Most recent first. getExperience() is cached, so reverse a copy rather
-  // than mutating the shared array.
-  const experience = [...allExperience].reverse();
+  // getExperience() already returns newest-first, derived from the dates.
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">

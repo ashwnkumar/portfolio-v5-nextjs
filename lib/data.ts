@@ -3,6 +3,7 @@ import type { PostgrestSingleResponse } from "@supabase/supabase-js";
 import { supabase } from "./supabase/public";
 import { imageUrl } from "./images";
 import { seededShuffle } from "./random";
+import { formatMonthYear } from "./dates";
 
 /**
  * Every getter here is cached and tagged. Content changes only when the admin
@@ -178,8 +179,15 @@ export async function getExperience() {
   cacheTag("experience");
   cacheLife("days");
 
+  // Newest first, derived from the structured dates rather than a hand
+  // maintained sort_order. The current role always leads.
   const rows = unwrap(
-    await supabase.from("experience").select("*").order("sort_order"),
+    await supabase
+      .from("experience")
+      .select("*")
+      .order("is_current", { ascending: false })
+      .order("start_year", { ascending: false, nullsFirst: false })
+      .order("start_month", { ascending: false, nullsFirst: false }),
     "experience",
   );
 
@@ -188,12 +196,17 @@ export async function getExperience() {
     company: r.company,
     role: r.role,
     location: r.location,
-    startDate: r.start_date,
-    endDate: r.end_date,
+    // *_date_text are the pre-migration originals, kept as a fallback.
+    startDate: formatMonthYear(r.start_month, r.start_year, r.start_date_text),
+    endDate: formatMonthYear(r.end_month, r.end_year, r.end_date_text),
     isCurrent: r.is_current,
     description: r.description,
     achievements: r.achievements,
     technologies: r.technologies,
+    startMonth: r.start_month,
+    startYear: r.start_year,
+    endMonth: r.end_month,
+    endYear: r.end_year,
   }));
 }
 
