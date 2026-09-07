@@ -8,7 +8,9 @@ import {
   EnvelopeSimpleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import StudioPreview from "@/components/home/StudioPreview";
+import { Suspense } from "react";
+import StudioPreviewSection from "@/components/sections/StudioPreviewSection";
+import { GallerySkeleton } from "@/components/sections/GallerySkeleton";
 import SkillsGrid from "@/components/SkillsGrid";
 import {
   getHomeContent,
@@ -17,26 +19,22 @@ import {
   getAllProjects,
   getExperience,
   getSocialLinks,
-  getShuffledPhotos,
-  getShuffledRenders,
 } from "@/lib/data";
-import { getSessionSeed } from "@/lib/session";
 import DecryptedText from "@/components/DecryptedText";
 import RevealOnScroll from "@/components/motion/RevealOnScroll";
 
 export default async function Page() {
-  const seed = await getSessionSeed();
-  const home = getHomeContent();
-  const bio = getBio();
-  const skills = getSkills();
-  const projects = getAllProjects()
-    .filter((p: any) => p.featured)
-    .slice(0, 3);
-  const experience = getExperience();
-  const currentJob = experience.find((e: any) => e.isCurrent);
-  const socials = getSocialLinks();
-  const studioPhotos = getShuffledPhotos(seed, 3);
-  const studioRenders = getShuffledRenders(seed, 3);
+  const [home, bio, skills, allProjects, experience, socials] = await Promise.all([
+    getHomeContent(),
+    getBio(),
+    getSkills(),
+    getAllProjects(),
+    getExperience(),
+    getSocialLinks(),
+  ]);
+
+  const projects = allProjects.filter((p) => p.featured).slice(0, 3);
+  const currentJob = experience.find((e) => e.isCurrent);
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
@@ -265,11 +263,11 @@ export default async function Page() {
       </RevealOnScroll>
 
       {/* Studio Preview */}
-      {(studioPhotos.length > 0 || studioRenders.length > 0) && (
-        <RevealOnScroll>
-          <StudioPreview photos={studioPhotos} renders={studioRenders} />
-        </RevealOnScroll>
-      )}
+      <RevealOnScroll>
+        <Suspense fallback={<GallerySkeleton count={6} />}>
+          <StudioPreviewSection />
+        </Suspense>
+      </RevealOnScroll>
 
       {/* Contact Section */}
       <RevealOnScroll>

@@ -8,12 +8,11 @@ import {
   getExperience,
   getEducation,
   getSkills,
-  getSocialLinks,
-  getShuffledPhotos,
 } from "@/lib/data";
 import Image from "next/image";
-import { getSessionSeed } from "@/lib/session";
-import { ImageCarousel } from "@/components/ImageCarousel";
+import { Suspense } from "react";
+import AboutGallery from "@/components/sections/AboutGallery";
+import { GallerySkeleton } from "@/components/sections/GallerySkeleton";
 import Link from "next/link";
 import type { Metadata } from "next";
 import DecryptedText from "@/components/DecryptedText";
@@ -26,17 +25,17 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const seed = await getSessionSeed();
-  const bio = getBio();
-  const aboutData = getAboutContent();
-  const experience = getExperience().reverse();
-  const education = getEducation();
-  const skills = getSkills();
-  const socials = getSocialLinks();
-  const instagramLink = socials.find(
-    (s: any) => s.platform === "instagram-photography",
-  );
-  const galleryPhotos = getShuffledPhotos(seed, 5);
+  const [bio, aboutData, allExperience, education, skills] = await Promise.all([
+    getBio(),
+    getAboutContent(),
+    getExperience(),
+    getEducation(),
+    getSkills(),
+  ]);
+
+  // Most recent first. getExperience() is cached, so reverse a copy rather
+  // than mutating the shared array.
+  const experience = [...allExperience].reverse();
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-4 md:gap-8 items-center">
@@ -79,15 +78,17 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          <div className="relative w-64 h-64 md:w-80 md:h-80 shrink-0 overflow-hidden rounded-md">
-            <Image
-              src={bio.images.about}
-              alt={bio.imageAlt}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          {bio.images.about && (
+            <div className="relative w-64 h-64 md:w-80 md:h-80 shrink-0 overflow-hidden rounded-md">
+              <Image
+                src={bio.images.about}
+                alt={bio.imageAlt}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -272,13 +273,9 @@ export default async function AboutPage() {
             </div>
 
             <div className="flex justify-center w-full">
-              <ImageCarousel
-                images={galleryPhotos}
-                instagramUrl={
-                  instagramLink?.url || "https://instagram.com/ashwin.archives"
-                }
-                instagramHandle={`@${instagramLink?.handle || "ashwin.archives"}`}
-              />
+              <Suspense fallback={<GallerySkeleton count={2} />}>
+                <AboutGallery />
+              </Suspense>
             </div>
           </div>
         </section>

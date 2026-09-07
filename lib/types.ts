@@ -1,53 +1,17 @@
-export type SocialLink = {
-  platform: string;
-  username?: string;
-  url: string;
-  label: string;
-  icons?: {
-    line: string;
-    fill: string;
-  };
-};
+import type { Database } from "./database.types";
+
+type Tables = Database["public"]["Tables"];
 
 export type NavItem = {
   label: string;
   href: string;
 };
 
-export type ExperienceType = {
-  id: string;
-  role: string;
-  company: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  achievements: string[];
-  technologies: string[];
-};
+/** Exactly what getSocialLinks() returns, kept in sync with the schema. */
+export type SocialLink = Pick<
+  Tables["social_links"]["Row"],
+  "platform" | "label" | "url" | "username"
+>;
 
-export type ProjectType = {
-  slug: string;
-  title: string;
-  category: string;
-  description: string;
-  tech: string[];
-  github: string;
-  live: string | null;
-  preview: string;
-  images: string[];
-  featured: boolean;
-  order: number;
-  content?: string;
-  frontmatter?: any;
-};
-
-export type StudioItem = {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  aspectRatio: string;
-  image: string;
-  order: number;
-};
+// ExperienceType / ProjectType / StudioItem lived here for the JSON era and
+// were never referenced. Row types now come from database.types.ts.

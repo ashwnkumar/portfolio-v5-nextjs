@@ -25,14 +25,16 @@ export const metadata: Metadata = {
   description: "Developer, designer, and photographer portfolio.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const navItems = getNavigation();
-  const socials = getSocialLinks();
-  const footerData = getFooter();
+  const [navItems, socials, footerData] = await Promise.all([
+    getNavigation(),
+    getSocialLinks(),
+    getFooter(),
+  ]);
 
   return (
     <html

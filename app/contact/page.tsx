@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "Get in touch with Ashwin Kumar for collaborations, freelance projects, or just to say hi.",
 };
 
-export default function ContactPage() {
-  const socials = getSocialLinks();
+export default async function ContactPage() {
+  const socials = await getSocialLinks();
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-8 md:gap-12 items-center pb-16">
@@ -115,7 +115,6 @@ export default function ContactPage() {
                             {social.platform === "email"
                               ? social.url.replace("mailto:", "")
                               : `@${social.label}`}
-                            {console.log("socials", socials)}
                           </p>
                         </div>
                       </Link>

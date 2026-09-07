@@ -16,9 +16,11 @@ export const metadata: Metadata = {
     "A collection of full-stack applications and experiments built by Ashwin Kumar.",
 };
 
-export default function ProjectsPage() {
-  const allProjects = getAllProjects();
-  const socials = getSocialLinks();
+export default async function ProjectsPage() {
+  const [allProjects, socials] = await Promise.all([
+    getAllProjects(),
+    getSocialLinks(),
+  ]);
   const githubUrl = socials.find((s: any) => s.platform === "github")?.url;
 
   return (

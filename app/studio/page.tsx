@@ -1,4 +1,6 @@
-import StudioGallery from "@/components/StudioGallery";
+import { Suspense } from "react";
+import StudioGallerySection from "@/components/sections/StudioGallerySection";
+import { GallerySkeleton } from "@/components/sections/GallerySkeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,7 @@ import {
   ArrowUpRightIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { getShuffledStudioMix, getSocialLinks } from "@/lib/data";
-import { getSessionSeed } from "@/lib/session";
+import { getSocialLinks } from "@/lib/data";
 import type { Metadata } from "next";
 import DecryptedText from "@/components/DecryptedText";
 import RevealOnScroll from "@/components/motion/RevealOnScroll";
@@ -21,15 +22,11 @@ export const metadata: Metadata = {
 };
 
 export default async function StudioPage() {
-  const seed = await getSessionSeed();
-  const items = getShuffledStudioMix(seed, 10);
-  const socials = getSocialLinks();
+  const socials = await getSocialLinks();
   const instagramUrl = socials.find(
-    (s: any) => s.platform === "instagram-photography",
+    (s) => s.platform === "instagram-photography",
   )?.url;
-  const artstationUrl = socials.find(
-    (s: any) => s.platform === "artstation",
-  )?.url;
+  const artstationUrl = socials.find((s) => s.platform === "artstation")?.url;
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-8 md:gap-12 items-center pb-16">
@@ -88,7 +85,9 @@ export default async function StudioPage() {
 
       {/* Gallery with Filters */}
       <RevealOnScroll>
-        <StudioGallery items={items} />
+        <Suspense fallback={<GallerySkeleton count={9} />}>
+          <StudioGallerySection />
+        </Suspense>
       </RevealOnScroll>
 
       {/* Process Section */}

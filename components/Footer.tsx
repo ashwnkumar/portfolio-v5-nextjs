@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { SocialLink } from "@/lib/types";
+import { CurrentYear } from "./CurrentYear";
 import { ArrowUpRightIcon, HeartIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
@@ -9,8 +11,6 @@ type FooterProps = {
 };
 
 function Footer({ socials, quickLinks, brand }: FooterProps) {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="w-full border-t bg-background">
       <div className="w-full max-w-[90vw] md:max-w-[70vw] border-x mx-auto">
@@ -84,7 +84,8 @@ function Footer({ socials, quickLinks, brand }: FooterProps) {
         <div className="border-t border-border p-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} {brand?.name || "Ashwin"}. All rights reserved.
+              © 2026
+              {brand?.name || "Ashwin"}. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground/50 font-mono">
               // now go build something{" "}

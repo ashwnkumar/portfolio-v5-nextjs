@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return { title: "Project Not Found" };
@@ -31,8 +31,8 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const projects = getAllProjects();
-  return projects.map((project: any) => ({
+  const projects = await getAllProjects();
+  return projects.map((project) => ({
     slug: project.slug,
   }));
 }
@@ -43,7 +43,7 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
