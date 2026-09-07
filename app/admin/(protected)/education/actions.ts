@@ -1,71 +1,69 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { revalidateContent } from "@/lib/admin/revalidate";
-import { nextSortOrder, swapSortOrder } from "@/lib/admin/crud";
-import { text, nullableText, type ActionState } from "@/lib/admin/forms";
+import type { ActionState } from "@/lib/admin/forms";
 
-const LIST = "/admin/education";
+export type EducationDraft = {
+  id: string | null;
+  degree: string;
+  institution: string;
+  score: string;
+  year: string;
+};
 
-function parse(form: FormData) {
-  return {
-    degree: text(form, "degree"),
-    institution: text(form, "institution"),
-    score: nullableText(form, "score"),
-    year: nullableText(form, "year"),
-  };
-}
-
-export async function createEducation(
+/**
+ * Saves the whole section in one go: the page is a single form over ~12 short
+ * strings, so there is no per-row save. Existing rows update, new rows insert.
+ *
+ * sort_order is written as a mirror of the year so the column stays coherent
+ * for anything reading it directly, but nothing depends on it — ordering is
+ * derived from `year` on both the public site and here.
+ */
+export async function saveEducation(
   _prev: ActionState,
   form: FormData,
 ): Promise<ActionState> {
-  const values = parse(form);
-  if (!values.degree || !values.institution) {
-    return { error: "Degree and institution are required." };
+  let rows: EducationDraft[];
+  try {
+    rows = JSON.parse(String(form.get("payload") ?? "[]"));
+  } catch {
+    return { error: "Could not read the form data." };
+  }
+
+  for (const [i, row] of rows.entries()) {
+    if (!row.degree.trim() || !row.institution.trim()) {
+      return { error: `Entry ${i + 1} needs both a degree and an institution.` };
+    }
   }
 
   const supabase = await createClient();
-  const { error } = await supabase
-    .from("education")
-    .insert({ ...values, sort_order: await nextSortOrder(supabase, "education") });
 
-  if (error) return { error: error.message };
-  revalidateContent("education");
-  redirect(LIST);
-}
+  for (const row of rows) {
+    const values = {
+      degree: row.degree.trim(),
+      institution: row.institution.trim(),
+      score: row.score.trim() || null,
+      year: row.year.trim() || null,
+      sort_order: Number(row.year) || 0,
+    };
 
-export async function updateEducation(
-  _prev: ActionState,
-  form: FormData,
-): Promise<ActionState> {
-  const id = text(form, "id");
-  const values = parse(form);
-  if (!id) return { error: "Missing id." };
-  if (!values.degree || !values.institution) {
-    return { error: "Degree and institution are required." };
+    const { error } = row.id
+      ? await supabase.from("education").update(values).eq("id", row.id)
+      : await supabase.from("education").insert(values);
+
+    if (error) return { error: error.message };
   }
 
-  const supabase = await createClient();
-  const { error } = await supabase.from("education").update(values).eq("id", id);
-  if (error) return { error: error.message };
-
   revalidateContent("education");
-  redirect(LIST);
+  return { error: null, ok: true };
 }
 
-export async function deleteEducation(id: string) {
+export async function deleteEducation(id: string): Promise<ActionState> {
   const supabase = await createClient();
   const { error } = await supabase.from("education").delete().eq("id", id);
-  if (error) throw new Error(error.message);
+  if (error) return { error: error.message };
 
   revalidateContent("education");
-  redirect(LIST);
-}
-
-export async function moveEducation(id: string, direction: "up" | "down") {
-  const supabase = await createClient();
-  await swapSortOrder(supabase, "education", id, direction);
-  revalidateContent("education");
+  return { error: null, ok: true };
 }

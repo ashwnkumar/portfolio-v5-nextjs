@@ -215,11 +215,12 @@ export async function getEducation() {
   cacheTag("education");
   cacheLife("days");
 
+  // Newest qualification first, derived from `year` — sort_order is not used.
   return unwrap(
     await supabase
       .from("education")
       .select("id, degree, institution, score, year")
-      .order("sort_order"),
+      .order("year", { ascending: false, nullsFirst: false }),
     "education",
   );
 }

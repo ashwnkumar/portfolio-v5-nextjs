@@ -1,65 +1,51 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Button } from "@/components/ui/button";
 import { AdminPage } from "@/components/admin/ui/AdminPage";
-import { Panel, RowList, Row, EmptyState } from "@/components/admin/ui/Panel";
-import { DeleteButton } from "@/components/admin/DeleteButton";
-import { MoveButtons } from "@/components/admin/MoveButtons";
-import { deleteEducation, moveEducation } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
+import { EducationEditor } from "@/components/admin/EducationEditor";
 
-async function EducationList() {
+async function Editor() {
   const supabase = await createClient();
+
+  // Ordered by year, same as the public about page. 4-digit years sort
+  // correctly as text, so no schema change was needed for this.
   const { data: rows } = await supabase
     .from("education")
     .select("id, degree, institution, score, year")
-    .order("sort_order");
-
-  if (!rows?.length) {
-    return (
-      <Panel label="entries">
-        <EmptyState>nothing yet</EmptyState>
-      </Panel>
-    );
-  }
+    .order("year", { ascending: false, nullsFirst: false });
 
   return (
-    <Panel label={`entries · ${rows.length}`}>
-      <RowList>
-        {rows.map((row, i) => (
-          <Row key={row.id}>
-            <MoveButtons
-              isFirst={i === 0}
-              isLast={i === rows.length - 1}
-              onMove={async (direction) => {
-                "use server";
-                await moveEducation(row.id, direction);
-              }}
-            />
-            <div className="flex-1 min-w-0">
-              <p className="font-medium truncate">{row.degree}</p>
-              <p className="font-mono text-xs text-muted-foreground truncate mt-0.5">
-                {row.institution}
-                {row.score ? ` · ${row.score}` : ""}
-                {row.year ? ` · ${row.year}` : ""}
-              </p>
+    <EducationEditor
+      rows={(rows ?? []).map((r) => ({
+        id: r.id,
+        degree: r.degree,
+        institution: r.institution,
+        score: r.score ?? "",
+        year: r.year ?? "",
+      }))}
+    />
+  );
+}
+
+function EditorSkeleton() {
+  return (
+    <div className="border border-border/70 divide-y divide-border/70">
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="p-4 space-y-3">
+          <Skeleton className="h-5 w-8" />
+          <div className="grid md:grid-cols-[1fr_auto] gap-3">
+            <div className="space-y-2">
+              <Skeleton className="h-9 w-full" />
+              <Skeleton className="h-9 w-full" />
             </div>
-            <div className="flex items-center shrink-0">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href={`/admin/education/${row.id}`}>Edit</Link>
-              </Button>
-              <DeleteButton
-                confirmText={`Delete "${row.degree}"?`}
-                action={async () => {
-                  "use server";
-                  await deleteEducation(row.id);
-                }}
-              />
+            <div className="space-y-2 md:w-44">
+              <Skeleton className="h-9 w-full" />
+              <Skeleton className="h-9 w-full" />
             </div>
-          </Row>
-        ))}
-      </RowList>
-    </Panel>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -68,15 +54,10 @@ export default function EducationAdminPage() {
     <AdminPage
       label="education"
       title="Education"
-      description="Shown on the about page in this order."
-      action={
-        <Button asChild>
-          <Link href="/admin/education/new">+ New entry</Link>
-        </Button>
-      }
+      description="Edit any field directly, then save. Entries are numbered and ordered by year, matching the about page."
     >
-      <Suspense fallback={<div className="h-48 border border-border/70 bg-muted/20 animate-pulse" />}>
-        <EducationList />
+      <Suspense fallback={<EditorSkeleton />}>
+        <Editor />
       </Suspense>
     </AdminPage>
   );
