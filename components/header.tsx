@@ -1,11 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import { useState } from "react";
+import { Button } from "./ui/button";
 import { Highlighter } from "./ui/highlighter";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 
 function Header() {
   const pathname = usePathname();
+  const [theme, setTheme] = useState<boolean>(false);
 
   const navLinks = [
     { label: "about", href: "/about" },
@@ -30,6 +33,16 @@ function Header() {
               <Link href={i.href}>{i.label}</Link>
             ),
           )}
+        </div>
+        <div className="flex items-center gap-2">
+          <Button>Resume</Button>
+          <Button
+            onClick={() => setTheme(!theme)}
+            size={"icon"}
+            variant={"secondary"}
+          >
+            {theme ? <SunIcon size={32} /> : <MoonIcon size={32} />}
+          </Button>
         </div>
       </div>
     </nav>
