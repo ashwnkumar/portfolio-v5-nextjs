@@ -1,9 +1,5 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
-import { getNavigation, getSocialLinks, getFooter } from "@/lib/data";
 import type { Metadata } from "next";
-import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
 import {
   GeistPixelSquare,
   GeistPixelGrid,
@@ -25,17 +21,18 @@ export const metadata: Metadata = {
   description: "Developer, designer, and photographer portfolio.",
 };
 
-export default async function RootLayout({
+/**
+ * Document shell only — fonts, globals and providers.
+ *
+ * The navbar and footer live in app/(site)/layout.tsx so that /admin does not
+ * inherit the public site chrome, and does not run the nav/social/footer
+ * queries on every admin request.
+ */
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [navItems, socials, footerData] = await Promise.all([
-    getNavigation(),
-    getSocialLinks(),
-    getFooter(),
-  ]);
-
   return (
     <html
       lang="en"
@@ -56,22 +53,7 @@ export default async function RootLayout({
         )}
       >
         <Toaster />
-        <TooltipProvider delayDuration={100}>
-          <div className="flex min-h-screen flex-col items-center font-pixel-square">
-            <Navbar navItems={navItems} />
-
-            <main className="flex-1 w-full">
-              <div className="mx-auto w-full border-x p-4 md:p-8 min-h-screen max-w-[90vw] md:max-w-[70vw]">
-                {children}
-              </div>
-            </main>
-            <Footer
-              socials={socials}
-              quickLinks={footerData.quickLinks}
-              brand={footerData.brand}
-            />
-          </div>
-        </TooltipProvider>
+        <TooltipProvider delayDuration={100}>{children}</TooltipProvider>
       </body>
     </html>
   );

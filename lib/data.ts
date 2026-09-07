@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 import type { PostgrestSingleResponse } from "@supabase/supabase-js";
-import { supabase } from "./supabase";
+import { supabase } from "./supabase/public";
 import { imageUrl } from "./images";
 import { seededShuffle } from "./random";
 
