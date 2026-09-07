@@ -2,6 +2,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Form controls stay in Geist for legibility; the pixel faces are carried by
+ * headings and `//` labels. shadcn primitives are already rounded-none, which
+ * matches the site.
+ */
+function Hint({ children }: { children?: string }) {
+  if (!children) return null;
+  return <p className="text-xs text-muted-foreground leading-relaxed">{children}</p>;
+}
+
 export function Field({
   name,
   label,
@@ -19,7 +29,10 @@ export function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name} className="text-xs">
+        {label}
+        {required && <span className="text-muted-foreground"> *</span>}
+      </Label>
       <Input
         id={name}
         name={name}
@@ -27,7 +40,7 @@ export function Field({
         required={required}
         defaultValue={defaultValue ?? ""}
       />
-      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      <Hint>{hint}</Hint>
     </div>
   );
 }
@@ -47,9 +60,17 @@ export function TextField({
 }) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={name}>{label}</Label>
-      <Textarea id={name} name={name} rows={rows} defaultValue={defaultValue ?? ""} />
-      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      <Label htmlFor={name} className="text-xs">
+        {label}
+      </Label>
+      <Textarea
+        id={name}
+        name={name}
+        rows={rows}
+        defaultValue={defaultValue ?? ""}
+        className="font-mono text-xs leading-relaxed"
+      />
+      <Hint>{hint}</Hint>
     </div>
   );
 }
@@ -66,17 +87,19 @@ export function CheckField({
   defaultChecked?: boolean;
 }) {
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex items-start gap-2.5 border border-border/70 p-3">
       <input
         id={name}
         name={name}
         type="checkbox"
         defaultChecked={defaultChecked}
-        className="mt-1"
+        className="mt-0.5 accent-foreground"
       />
-      <div>
-        <Label htmlFor={name}>{label}</Label>
-        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      <div className="space-y-0.5">
+        <Label htmlFor={name} className="text-xs">
+          {label}
+        </Label>
+        <Hint>{hint}</Hint>
       </div>
     </div>
   );

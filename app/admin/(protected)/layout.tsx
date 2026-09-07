@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/admin/SignOutButton";
+import { AdminNav } from "@/components/admin/AdminNav";
 import Link from "next/link";
 
 /**
@@ -26,25 +27,31 @@ async function AdminShell({ children }: { children: React.ReactNode }) {
   const email = claimsData.claims.email as string | undefined;
 
   return (
-    <div className="w-full min-h-screen flex flex-col gap-6">
-      <header className="flex items-center justify-between border-b pb-4">
-        <div className="flex items-center gap-3">
-          <Link href="/admin" className="text-xl font-medium">
-            admin
+    <div className="w-full min-h-screen flex flex-col">
+      <header className="flex items-center justify-between border-b border-border/70 px-1 pb-3">
+        <div className="flex items-baseline gap-2">
+          <Link
+            href="/admin"
+            className="font-pixel-grid text-lg tracking-tight"
+          >
+            ashwin<span className="text-muted-foreground">/admin</span>
           </Link>
-          <span className="text-xs text-muted-foreground">{email}</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <span className="hidden md:inline font-pixel-square text-xs text-muted-foreground">
+            {email}
+          </span>
           <Link
             href="/"
-            className="text-sm text-muted-foreground hover:text-foreground"
+            className="font-pixel-square text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
-            View site
+            view site
           </Link>
           <SignOutButton />
         </div>
       </header>
-      {children}
+      <AdminNav />
+      <div className="pt-6">{children}</div>
     </div>
   );
 }

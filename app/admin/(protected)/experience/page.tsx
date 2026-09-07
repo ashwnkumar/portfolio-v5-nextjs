@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { AdminPage } from "@/components/admin/ui/AdminPage";
+import { Panel, RowList, Row, EmptyState } from "@/components/admin/ui/Panel";
 import { DeleteButton } from "@/components/admin/DeleteButton";
 import { MoveButtons } from "@/components/admin/MoveButtons";
 import { deleteExperience, moveExperience } from "./actions";
@@ -15,69 +16,79 @@ async function ExperienceList() {
     .order("sort_order");
 
   if (!rows?.length) {
-    return <p className="text-sm text-muted-foreground">No roles yet.</p>;
+    return (
+      <Panel label="roles">
+        <EmptyState>no roles yet</EmptyState>
+      </Panel>
+    );
   }
 
   return (
-    <ul className="divide-y border rounded-md">
-      {rows.map((row, i) => (
-        <li key={row.id} className="flex items-center gap-3 p-3">
-          <MoveButtons
-            isFirst={i === 0}
-            isLast={i === rows.length - 1}
-            onMove={async (direction) => {
-              "use server";
-              await moveExperience(row.id, direction);
-            }}
-          />
+    <Panel label={`roles · ${rows.length}`}>
+      <RowList>
+        {rows.map((row, i) => (
+          <Row key={row.id}>
+            <MoveButtons
+              isFirst={i === 0}
+              isLast={i === rows.length - 1}
+              onMove={async (direction) => {
+                "use server";
+                await moveExperience(row.id, direction);
+              }}
+            />
 
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <p className="font-medium truncate">{row.role}</p>
-              {row.is_current && <Badge variant="secondary">Current</Badge>}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <p className="font-medium truncate">{row.role}</p>
+                {row.is_current && (
+                  <span className="font-pixel-square text-[10px] uppercase tracking-wide border border-border/70 px-1.5 py-0.5 text-muted-foreground">
+                    current
+                  </span>
+                )}
+              </div>
+              <p className="font-mono text-xs text-muted-foreground truncate mt-0.5">
+                {row.company} · {row.start_date} – {row.end_date ?? "present"}
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground truncate">
-              {row.company} · {row.start_date} – {row.end_date ?? "Present"}
-            </p>
-          </div>
 
-          <Button variant="ghost" size="sm" asChild>
-            <Link href={`/admin/experience/${row.id}`}>Edit</Link>
-          </Button>
-          <DeleteButton
-            confirmText={`Delete "${row.role} at ${row.company}"?`}
-            action={async () => {
-              "use server";
-              await deleteExperience(row.id);
-            }}
-          />
-        </li>
-      ))}
-    </ul>
+            <div className="flex items-center shrink-0">
+              <Button variant="ghost" size="sm" asChild>
+                <Link href={`/admin/experience/${row.id}`}>Edit</Link>
+              </Button>
+              <DeleteButton
+                confirmText={`Delete "${row.role} at ${row.company}"?`}
+                action={async () => {
+                  "use server";
+                  await deleteExperience(row.id);
+                }}
+              />
+            </div>
+          </Row>
+        ))}
+      </RowList>
+    </Panel>
   );
 }
 
 export default function ExperienceAdminPage() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-medium">Experience</h1>
-          <p className="text-sm text-muted-foreground">
-            Order here is the order on the about page (reversed to most-recent
-            first).
-          </p>
-        </div>
+    <AdminPage
+      label="experience"
+      title="Experience"
+      description="Ordered oldest first here; the about page reverses it to show the most recent role at the top."
+      action={
         <Button asChild>
-          <Link href="/admin/experience/new">New role</Link>
+          <Link href="/admin/experience/new">+ New role</Link>
         </Button>
-      </div>
-
+      }
+    >
       <Suspense
-        fallback={<div className="h-64 bg-muted/40 rounded-md animate-pulse" />}
+        fallback={
+          <div className="h-56 border border-border/70 bg-muted/20 animate-pulse" />
+        }
       >
         <ExperienceList />
       </Suspense>
-    </div>
+    </AdminPage>
   );
 }
