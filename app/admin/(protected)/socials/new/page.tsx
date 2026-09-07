@@ -1,17 +1,18 @@
+import { AdminPage } from "@/components/admin/ui/AdminPage";
 import { SimpleForm } from "@/components/admin/SimpleForm";
 import { createSocial } from "../actions";
 import { SOCIAL_FIELDS } from "../fields";
 
 export default function NewSocialPage() {
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-medium">New link</h1>
+    <AdminPage label="socials / new" title="New link">
       <SimpleForm
         action={createSocial}
         fields={SOCIAL_FIELDS}
         row={{ is_visible: true }}
         cancelHref="/admin/socials"
+        panelLabel="link"
       />
-    </div>
+    </AdminPage>
   );
 }

@@ -8,7 +8,7 @@ const COLLECTIONS = [
   { table: "studio_images", label: "studio images", href: "/admin/studio", ready: false },
   { table: "experience", label: "experience", href: "/admin/experience", ready: true },
   { table: "education", label: "education", href: "/admin/education", ready: true },
-  { table: "skills", label: "skills", href: "/admin/skills", ready: false },
+  { table: "skills", label: "skills", href: "/admin/skills", ready: true },
   { table: "social_links", label: "social links", href: "/admin/socials", ready: true },
 ] as const;
 

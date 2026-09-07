@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Field, TextField, CheckField } from "@/components/admin/Field";
+import { Panel } from "@/components/admin/ui/Panel";
 import type { ActionState } from "@/lib/admin/forms";
 
 export type FieldDef =
@@ -23,12 +24,14 @@ export function SimpleForm({
   row,
   cancelHref,
   submitLabel,
+  panelLabel = "details",
 }: {
   action: (prev: ActionState, form: FormData) => Promise<ActionState>;
   fields: FieldDef[];
   row?: Record<string, unknown>;
   cancelHref: string;
   submitLabel?: string;
+  panelLabel?: string;
 }) {
   const [state, formAction, pending] = useActionState(action, INITIAL);
   const value = (name: string) => {
@@ -37,9 +40,11 @@ export function SimpleForm({
   };
 
   return (
-    <form action={formAction} className="space-y-5 max-w-2xl">
+    <form action={formAction} className="space-y-4 max-w-3xl">
       {row?.id != null && <input type="hidden" name="id" value={String(row.id)} />}
 
+      <Panel label={panelLabel}>
+        <div className="p-4 space-y-4">
       {fields.map((field) => {
         if (field.kind === "check") {
           return (
@@ -76,7 +81,16 @@ export function SimpleForm({
         );
       })}
 
-      <div className="flex items-center gap-2 pt-2">
+        </div>
+      </Panel>
+
+      {state.error && (
+        <p className="border border-destructive/50 px-3 py-2 text-sm text-destructive">
+          {state.error}
+        </p>
+      )}
+
+      <div className="flex items-center gap-2">
         <Button type="submit" disabled={pending}>
           {pending ? "Saving…" : (submitLabel ?? (row ? "Save changes" : "Create"))}
         </Button>
@@ -84,8 +98,6 @@ export function SimpleForm({
           <Link href={cancelHref}>Cancel</Link>
         </Button>
       </div>
-
-      {state.error && <p className="text-sm text-destructive">{state.error}</p>}
     </form>
   );
 }
