@@ -22,7 +22,11 @@ export function ExperienceBoard({
           // {rows.length} role{rows.length === 1 ? "" : "s"} · newest first
         </p>
         {!addingNew && (
-          <Button size="sm" className="gap-1.5" onClick={() => setAddingNew(true)}>
+          <Button
+            size="sm"
+            className="gap-1.5"
+            onClick={() => setAddingNew(true)}
+          >
             <PlusIcon className="w-3.5 h-3.5" />
             Add role
           </Button>
@@ -39,7 +43,7 @@ export function ExperienceBoard({
       )}
 
       {rows.length === 0 && !addingNew ? (
-        <div className="border border-border/70 px-4 py-12 text-center">
+        <div className="border border-border px-4 py-12 text-center">
           <p className="font-pixel-square text-sm text-muted-foreground">
             no roles yet
           </p>

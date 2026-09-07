@@ -19,9 +19,11 @@ export function AdminNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-wrap items-center gap-x-1 gap-y-1 border-b border-border/70 px-1">
+    <nav className="flex flex-wrap items-center gap-x-1 gap-y-1 border-b border-border px-1">
       {SECTIONS.map((s) => {
-        const active = s.exact ? pathname === s.href : pathname.startsWith(s.href);
+        const active = s.exact
+          ? pathname === s.href
+          : pathname.startsWith(s.href);
         return (
           <Link
             key={s.href}

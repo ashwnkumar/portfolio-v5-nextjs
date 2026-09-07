@@ -49,7 +49,7 @@ export function TechChips({
         {items.map((item) => (
           <span
             key={item}
-            className="inline-flex items-center gap-1 border border-border/70 pl-2 pr-1 py-0.5 text-xs"
+            className="inline-flex items-center gap-1 border border-border pl-2 pr-1 py-0.5 text-xs"
           >
             {item}
             <button
@@ -83,7 +83,7 @@ export function TechChips({
           }}
         />
         {matches.length > 0 && (
-          <div className="absolute z-20 mt-1 w-full border border-border/70 bg-background shadow-sm">
+          <div className="absolute z-20 mt-1 w-full border border-border bg-background shadow-sm">
             {matches.map((m) => (
               <button
                 key={m}

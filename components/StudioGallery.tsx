@@ -103,7 +103,7 @@ export default function StudioGallery({ items }: StudioGalleryProps) {
             {filteredItems.map((item, index) => (
               <article
                 key={item.src}
-                className="break-inside-avoid group relative overflow-hidden border border-border/70 bg-card hover:shadow-lg transition-all cursor-pointer"
+                className="break-inside-avoid group relative overflow-hidden border border-border bg-card hover:shadow-lg transition-all cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
                 <div className="relative bg-muted overflow-hidden">

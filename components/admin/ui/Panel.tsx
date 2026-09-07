@@ -15,9 +15,9 @@ export function Panel({
   children: ReactNode;
 }) {
   return (
-    <section className={cn("w-full border border-border/70", className)}>
+    <section className={cn("w-full border border-border", className)}>
       {label && (
-        <div className="flex items-center justify-between gap-3 border-b border-border/70 pl-4 pr-2 py-1.5 min-h-10">
+        <div className="flex items-center justify-between gap-3 border-b border-border pl-4 pr-2 py-1.5 min-h-10">
           <SectionLabel>{label}</SectionLabel>
           {action}
         </div>
@@ -30,7 +30,9 @@ export function Panel({
 export function EmptyState({ children }: { children: ReactNode }) {
   return (
     <div className="px-4 py-10 text-center">
-      <p className="font-pixel-square text-sm text-muted-foreground">{children}</p>
+      <p className="font-pixel-square text-sm text-muted-foreground">
+        {children}
+      </p>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function MenuPopover({ navItems }: MenuPopoverProps) {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
-          className="group relative w-10 h-10 border border-border/70 hover:border-primary/50 transition-all duration-300"
+          className="group relative w-10 h-10 border border-border hover:border-primary/50 transition-all duration-300"
           aria-label="Menu"
         >
           <div className="absolute inset-0 flex items-center justify-center">
@@ -53,7 +53,7 @@ export function MenuPopover({ navItems }: MenuPopoverProps) {
       <PopoverContent
         align="end"
         sideOffset={8}
-        className="w-[70vw] p-0 border border-border/70 bg-background backdrop-blur-sm overflow-hidden"
+        className="w-[70vw] p-0 border border-border bg-background backdrop-blur-sm overflow-hidden"
       >
         <div className="relative">
           {/* Menu items */}

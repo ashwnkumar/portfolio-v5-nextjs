@@ -5,7 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 /** Inline "add a skill" row at the foot of each category panel. */
-export function AddSkillForm({ action }: { action: (form: FormData) => Promise<void> }) {
+export function AddSkillForm({
+  action,
+}: {
+  action: (form: FormData) => Promise<void>;
+}) {
   const ref = useRef<HTMLFormElement>(null);
 
   return (
@@ -15,9 +19,14 @@ export function AddSkillForm({ action }: { action: (form: FormData) => Promise<v
         await action(formData);
         ref.current?.reset();
       }}
-      className="flex items-center gap-2 border-t border-border/70 bg-muted/20 px-3 py-2"
+      className="flex items-center gap-2 border-t border-border bg-muted/20 px-3 py-2"
     >
-      <Input name="name" placeholder="Skill name" required className="h-8 flex-1" />
+      <Input
+        name="name"
+        placeholder="Skill name"
+        required
+        className="h-8 flex-1"
+      />
       <Input
         name="icon_id"
         placeholder="icon id (optional)"

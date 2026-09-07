@@ -9,7 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
  */
 function Hint({ children }: { children?: string }) {
   if (!children) return null;
-  return <p className="text-xs text-muted-foreground leading-relaxed">{children}</p>;
+  return (
+    <p className="text-xs text-muted-foreground leading-relaxed">{children}</p>
+  );
 }
 
 export function Field({
@@ -87,7 +89,7 @@ export function CheckField({
   defaultChecked?: boolean;
 }) {
   return (
-    <div className="flex items-start gap-2.5 border border-border/70 p-3">
+    <div className="flex items-start gap-2.5 border border-border p-3">
       <input
         id={name}
         name={name}

@@ -9,8 +9,9 @@ export function SignOutButton() {
 
   return (
     <Button
-      variant="ghost"
+      variant="destructive"
       size="sm"
+      className="bg-background! hover:bg-destructive/10!"
       disabled={pending}
       onClick={() => startTransition(() => void signOut())}
     >

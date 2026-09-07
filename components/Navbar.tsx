@@ -15,8 +15,8 @@ function Navbar({ navItems }: NavbarProps) {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 z-40 w-full flex items-center justify-center border-y border-border/70 bg-background/95 backdrop-blur-sm">
-      <div className="w-full max-w-[90vw] md:max-w-[70vw] flex items-center justify-between p-2 md:p-4 border-x border-border/70">
+    <div className="sticky top-0 z-40 w-full flex items-center justify-center border-y border-border bg-background/95 backdrop-blur-sm">
+      <div className="w-full max-w-[90vw] md:max-w-[70vw] flex items-center justify-between p-2 md:p-4 border-x border-border">
         <div className="flex items-center gap-2 font-medium text-xl">
           <Button variant={"ghost"} size={"icon-lg"} asChild>
             <Link href={"/"}>

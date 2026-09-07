@@ -57,10 +57,14 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
   }, [state, router]);
 
   const update = (key: string, patch: Partial<Draft>) =>
-    setDrafts((prev) => prev.map((d) => (d.key === key ? { ...d, ...patch } : d)));
+    setDrafts((prev) =>
+      prev.map((d) => (d.key === key ? { ...d, ...patch } : d)),
+    );
 
   // Mirrors the public card numbering, which is derived from position.
-  const ordered = [...drafts].sort((a, b) => (b.year || "").localeCompare(a.year || ""));
+  const ordered = [...drafts].sort((a, b) =>
+    (b.year || "").localeCompare(a.year || ""),
+  );
 
   return (
     <form action={formAction} className="space-y-4">
@@ -70,11 +74,11 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
         value={JSON.stringify(ordered.map(({ key, ...rest }) => rest))} // eslint-disable-line @typescript-eslint/no-unused-vars
       />
 
-      <div className="border border-border/70 divide-y divide-border/70">
+      <div className="border border-border divide-y divide-border/70">
         {ordered.map((draft, i) => (
           <div key={draft.key} className="p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="font-pixel-square text-xs text-muted-foreground border border-border/70 px-1.5 py-0.5">
+              <span className="font-pixel-square text-xs text-muted-foreground border border-border px-1.5 py-0.5">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
@@ -83,8 +87,11 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                   title="Delete this entry?"
                   description={
                     <p>
-                      <strong className="text-foreground">{draft.degree || "This entry"}</strong>{" "}
-                      will be removed from your about page. This cannot be undone.
+                      <strong className="text-foreground">
+                        {draft.degree || "This entry"}
+                      </strong>{" "}
+                      will be removed from your about page. This cannot be
+                      undone.
                     </p>
                   }
                   onConfirm={async () => {
@@ -92,7 +99,9 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                     if (result.error) toast.error(result.error);
                     else {
                       toast.success("Entry deleted");
-                      setDrafts((prev) => prev.filter((d) => d.key !== draft.key));
+                      setDrafts((prev) =>
+                        prev.filter((d) => d.key !== draft.key),
+                      );
                       router.refresh();
                     }
                   }}
@@ -115,7 +124,9 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                   size="icon"
                   className="h-7 w-7 text-muted-foreground hover:text-destructive"
                   aria-label="Remove unsaved entry"
-                  onClick={() => setDrafts((prev) => prev.filter((d) => d.key !== draft.key))}
+                  onClick={() =>
+                    setDrafts((prev) => prev.filter((d) => d.key !== draft.key))
+                  }
                 >
                   <XIcon className="w-3.5 h-3.5" />
                 </Button>
@@ -131,7 +142,9 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                   <Input
                     id={`degree-${draft.key}`}
                     value={draft.degree}
-                    onChange={(e) => update(draft.key, { degree: e.target.value })}
+                    onChange={(e) =>
+                      update(draft.key, { degree: e.target.value })
+                    }
                     placeholder="B.E. Computer Engineering"
                   />
                 </div>
@@ -142,7 +155,9 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                   <Input
                     id={`inst-${draft.key}`}
                     value={draft.institution}
-                    onChange={(e) => update(draft.key, { institution: e.target.value })}
+                    onChange={(e) =>
+                      update(draft.key, { institution: e.target.value })
+                    }
                     placeholder="College or school name"
                   />
                 </div>
@@ -156,7 +171,9 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
                   <Input
                     id={`score-${draft.key}`}
                     value={draft.score}
-                    onChange={(e) => update(draft.key, { score: e.target.value })}
+                    onChange={(e) =>
+                      update(draft.key, { score: e.target.value })
+                    }
                     placeholder="7.65 CGPA or 85%"
                   />
                   <p className="text-[10px] text-muted-foreground">
@@ -202,7 +219,7 @@ export function EducationEditor({ rows }: { rows: EducationDraft[] }) {
       <div className="flex items-center justify-between">
         <Button
           type="button"
-          variant="ghost"
+          variant="secondary"
           size="sm"
           className="gap-1.5"
           onClick={() => setDrafts((prev) => [...prev, toDraft()])}

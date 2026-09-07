@@ -35,7 +35,11 @@ export default async function EditCategoryPage({
   const { id } = await params;
   return (
     <AdminPage label="skills / rename" title="Rename category">
-      <Suspense fallback={<div className="h-48 border border-border/70 bg-muted/20 animate-pulse" />}>
+      <Suspense
+        fallback={
+          <div className="h-48 border border-border bg-muted/20 animate-pulse" />
+        }
+      >
         <EditForm id={id} />
       </Suspense>
     </AdminPage>

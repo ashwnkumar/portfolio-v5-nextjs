@@ -53,7 +53,7 @@ export default function StudioPreview({ photos, renders }: StudioPreviewProps) {
 
   return (
     <>
-      <section className="w-full max-w-[90vw] md:max-w-[70vw] border-border/70 py-12 md:py-16">
+      <section className="w-full max-w-[90vw] md:max-w-[70vw] border-border py-12 md:py-16">
         <div className="space-y-8">
           <div className="flex items-center justify-between">
             <div className="space-y-2">
@@ -75,7 +75,7 @@ export default function StudioPreview({ photos, renders }: StudioPreviewProps) {
             {items.map((item, index) => (
               <article
                 key={item.src}
-                className="break-inside-avoid group relative rounded-xl border border-border/70 bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer"
+                className="break-inside-avoid group relative rounded-xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
                 <div className="relative bg-muted overflow-hidden">

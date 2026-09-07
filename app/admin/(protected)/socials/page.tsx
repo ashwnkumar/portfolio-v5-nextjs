@@ -38,9 +38,11 @@ async function SocialsList() {
             />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className="font-pixel-square text-sm truncate">{row.platform}</p>
+                <p className="font-pixel-square text-sm truncate">
+                  {row.platform}
+                </p>
                 {!row.is_visible && (
-                  <span className="font-pixel-square text-[10px] uppercase tracking-wide border border-border/70 px-1.5 py-0.5 text-muted-foreground">
+                  <span className="font-pixel-square text-[10px] uppercase tracking-wide border border-border px-1.5 py-0.5 text-muted-foreground">
                     hidden
                   </span>
                 )}
@@ -80,7 +82,11 @@ export default function SocialsAdminPage() {
         </Button>
       }
     >
-      <Suspense fallback={<div className="h-64 border border-border/70 bg-muted/20 animate-pulse" />}>
+      <Suspense
+        fallback={
+          <div className="h-64 border border-border bg-muted/20 animate-pulse" />
+        }
+      >
         <SocialsList />
       </Suspense>
     </AdminPage>

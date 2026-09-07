@@ -33,7 +33,9 @@ async function SkillsBoard() {
   return (
     <div className="space-y-4">
       {categories.map((category, ci) => {
-        const skills = [...category.skills].sort((a, b) => a.sort_order - b.sort_order);
+        const skills = [...category.skills].sort(
+          (a, b) => a.sort_order - b.sort_order,
+        );
 
         return (
           <Panel
@@ -89,11 +91,13 @@ async function SkillsBoard() {
                         className="w-6 h-6 shrink-0"
                       />
                     ) : (
-                      <span className="w-6 h-6 shrink-0 border border-border/70 flex items-center justify-center font-pixel-square text-[9px] text-muted-foreground">
+                      <span className="w-6 h-6 shrink-0 border border-border flex items-center justify-center font-pixel-square text-[9px] text-muted-foreground">
                         {skill.name.slice(0, 2).toUpperCase()}
                       </span>
                     )}
-                    <p className="flex-1 min-w-0 truncate text-sm">{skill.name}</p>
+                    <p className="flex-1 min-w-0 truncate text-sm">
+                      {skill.name}
+                    </p>
                     <p className="font-mono text-xs text-muted-foreground shrink-0">
                       {skill.icon_id ?? "—"}
                     </p>
@@ -135,7 +139,11 @@ export default function SkillsAdminPage() {
         </Button>
       }
     >
-      <Suspense fallback={<div className="h-96 border border-border/70 bg-muted/20 animate-pulse" />}>
+      <Suspense
+        fallback={
+          <div className="h-96 border border-border bg-muted/20 animate-pulse" />
+        }
+      >
         <SkillsBoard />
       </Suspense>
     </AdminPage>

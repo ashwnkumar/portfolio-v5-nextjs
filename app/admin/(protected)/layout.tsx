@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/admin/SignOutButton";
 import { AdminNav } from "@/components/admin/AdminNav";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 /**
  * Second gate. proxy.ts already redirects unauthenticated requests, but
@@ -28,7 +29,7 @@ async function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
-      <header className="flex items-center justify-between border-b border-border/70 px-1 pb-3">
+      <header className="flex items-center justify-between border-b border-border px-1 pb-3">
         <div className="flex items-baseline gap-2">
           <Link
             href="/admin"
@@ -41,12 +42,14 @@ async function AdminShell({ children }: { children: React.ReactNode }) {
           <span className="hidden md:inline font-pixel-square text-xs text-muted-foreground">
             {email}
           </span>
-          <Link
-            href="/"
-            className="font-pixel-square text-xs text-muted-foreground hover:text-foreground transition-colors"
-          >
-            view site
-          </Link>
+          <Button asChild variant={"secondary"}>
+            <Link
+              href="/"
+              className="font-pixel-square text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              view site
+            </Link>
+          </Button>
           <SignOutButton />
         </div>
       </header>

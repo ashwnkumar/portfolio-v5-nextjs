@@ -35,7 +35,11 @@ export default async function EditSocialPage({
   const { id } = await params;
   return (
     <AdminPage label="socials / edit" title="Edit link">
-      <Suspense fallback={<div className="h-96 border border-border/70 bg-muted/20 animate-pulse" />}>
+      <Suspense
+        fallback={
+          <div className="h-96 border border-border bg-muted/20 animate-pulse" />
+        }
+      >
         <EditForm id={id} />
       </Suspense>
     </AdminPage>

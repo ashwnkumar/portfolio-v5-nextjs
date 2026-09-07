@@ -29,7 +29,7 @@ async function Editor() {
 
 function EditorSkeleton() {
   return (
-    <div className="border border-border/70 divide-y divide-border/70">
+    <div className="border border-border divide-y divide-border/70">
       {[0, 1, 2].map((i) => (
         <div key={i} className="p-4 space-y-3">
           <Skeleton className="h-5 w-8" />

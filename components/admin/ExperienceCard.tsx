@@ -13,7 +13,10 @@ import { MonthYearField } from "./MonthYearField";
 import { AchievementsEditor } from "./AchievementsEditor";
 import { TechChips } from "./TechChips";
 import { ConfirmDialog } from "./ConfirmDialog";
-import { saveExperience, deleteExperience } from "@/app/admin/(protected)/experience/actions";
+import {
+  saveExperience,
+  deleteExperience,
+} from "@/app/admin/(protected)/experience/actions";
 import { formatMonthYear } from "@/lib/dates";
 import type { ActionState } from "@/lib/admin/forms";
 import { cn } from "@/lib/utils";
@@ -65,25 +68,32 @@ export function ExperienceCard({
   // ---------------------------------------------------------------- display
   if (!editing && row) {
     const start = formatMonthYear(row.start_month, row.start_year);
-    const end = row.is_current ? "Present" : formatMonthYear(row.end_month, row.end_year);
+    const end = row.is_current
+      ? "Present"
+      : formatMonthYear(row.end_month, row.end_year);
 
     return (
-      <article className={cn("border border-border/70 p-4 md:p-5 space-y-3 group", isCurrent && "border-primary/30")}>
+      <article
+        className={cn(
+          "border border-border p-4 md:p-5 space-y-3 group",
+          isCurrent && "border-primary/30",
+        )}
+      >
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0 space-y-0.5">
             <div className="flex items-center gap-2 flex-wrap">
               <span
                 aria-hidden
-                className={row.is_current ? "text-foreground" : "text-muted-foreground/40"}
+                className={
+                  row.is_current
+                    ? "text-foreground"
+                    : "text-muted-foreground/40"
+                }
               >
                 ●
               </span>
               <h2 className="font-medium truncate">{row.role}</h2>
-              {row.is_current && (
-                <Badge className="font-mono">
-                  current
-                </Badge>
-              )}
+              {row.is_current && <Badge className="font-mono">current</Badge>}
             </div>
             <p className="font-mono text-xs text-muted-foreground">
               {row.company}
@@ -106,13 +116,18 @@ export function ExperienceCard({
         </div>
 
         {row.description && (
-          <p className="text-sm text-muted-foreground leading-relaxed">{row.description}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {row.description}
+          </p>
         )}
 
         {row.technologies.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {row.technologies.map((t) => (
-              <span key={t} className="border border-border/70 px-2 py-0.5 text-xs">
+              <span
+                key={t}
+                className="border border-border px-2 py-0.5 text-xs"
+              >
                 {t}
               </span>
             ))}
@@ -135,26 +150,52 @@ export function ExperienceCard({
 
   // ------------------------------------------------------------------- edit
   const willUnset =
-    isCurrent && currentRoleName && currentRoleName !== row?.role ? currentRoleName : null;
+    isCurrent && currentRoleName && currentRoleName !== row?.role
+      ? currentRoleName
+      : null;
 
   return (
-    <form action={formAction} className="border border-foreground/30 p-4 md:p-5 space-y-4">
+    <form
+      action={formAction}
+      className="border border-foreground/30 p-4 md:p-5 space-y-4"
+    >
       {row && <input type="hidden" name="id" value={row.id} />}
 
       <div className="grid md:grid-cols-2 gap-3">
         <div className="space-y-1.5">
-          <Label htmlFor={`role-${row?.id ?? "new"}`} className="text-xs">Role *</Label>
-          <Input id={`role-${row?.id ?? "new"}`} name="role" defaultValue={row?.role} required autoFocus />
+          <Label htmlFor={`role-${row?.id ?? "new"}`} className="text-xs">
+            Role *
+          </Label>
+          <Input
+            id={`role-${row?.id ?? "new"}`}
+            name="role"
+            defaultValue={row?.role}
+            required
+            autoFocus
+          />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor={`company-${row?.id ?? "new"}`} className="text-xs">Company *</Label>
-          <Input id={`company-${row?.id ?? "new"}`} name="company" defaultValue={row?.company} required />
+          <Label htmlFor={`company-${row?.id ?? "new"}`} className="text-xs">
+            Company *
+          </Label>
+          <Input
+            id={`company-${row?.id ?? "new"}`}
+            name="company"
+            defaultValue={row?.company}
+            required
+          />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor={`location-${row?.id ?? "new"}`} className="text-xs">Location</Label>
-        <Input id={`location-${row?.id ?? "new"}`} name="location" defaultValue={row?.location} />
+        <Label htmlFor={`location-${row?.id ?? "new"}`} className="text-xs">
+          Location
+        </Label>
+        <Input
+          id={`location-${row?.id ?? "new"}`}
+          name="location"
+          defaultValue={row?.location}
+        />
       </div>
 
       <Separator />
@@ -177,7 +218,7 @@ export function ExperienceCard({
         />
       </div>
 
-      <div className="flex items-start gap-3 border border-border/70 p-3">
+      <div className="flex items-start gap-3 border border-border p-3">
         <Switch
           id={`current-${row?.id ?? "new"}`}
           name="is_current"
@@ -199,7 +240,9 @@ export function ExperienceCard({
       <Separator />
 
       <div className="space-y-1.5">
-        <Label htmlFor={`desc-${row?.id ?? "new"}`} className="text-xs">Description</Label>
+        <Label htmlFor={`desc-${row?.id ?? "new"}`} className="text-xs">
+          Description
+        </Label>
         <Textarea
           id={`desc-${row?.id ?? "new"}`}
           name="description"
@@ -209,8 +252,15 @@ export function ExperienceCard({
         />
       </div>
 
-      <AchievementsEditor name="achievements" defaultValue={row?.achievements} />
-      <TechChips name="technologies" defaultValue={row?.technologies} suggestions={suggestions} />
+      <AchievementsEditor
+        name="achievements"
+        defaultValue={row?.achievements}
+      />
+      <TechChips
+        name="technologies"
+        defaultValue={row?.technologies}
+        suggestions={suggestions}
+      />
 
       {state.error && (
         <p className="border border-destructive/50 px-3 py-2 text-sm text-destructive">
@@ -259,7 +309,12 @@ export function ExperienceCard({
               }
             }}
             trigger={
-              <Button type="button" variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="text-destructive hover:text-destructive"
+              >
                 Delete role
               </Button>
             }

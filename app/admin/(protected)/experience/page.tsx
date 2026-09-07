@@ -18,7 +18,9 @@ async function Board() {
     .order("start_month", { ascending: false, nullsFirst: false });
 
   // Autocomplete source, so spellings stay consistent across roles.
-  const suggestions = [...new Set((rows ?? []).flatMap((r) => r.technologies))].sort();
+  const suggestions = [
+    ...new Set((rows ?? []).flatMap((r) => r.technologies)),
+  ].sort();
 
   return <ExperienceBoard rows={rows ?? []} suggestions={suggestions} />;
 }
@@ -27,7 +29,7 @@ function BoardSkeleton() {
   return (
     <div className="space-y-4">
       {[0, 1, 2].map((i) => (
-        <div key={i} className="border border-border/70 p-5 space-y-3">
+        <div key={i} className="border border-border p-5 space-y-3">
           <div className="flex justify-between">
             <Skeleton className="h-5 w-52" />
             <Skeleton className="h-4 w-32" />
