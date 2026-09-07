@@ -1,0 +1,130 @@
+{
+  "profile": {
+    "about": "profile/profile-about.webp"
+  },
+  "projects": {
+    "calyx": {
+      "preview": "projects/calyx/preview.webp",
+      "images": [
+        "projects/calyx/1.webp",
+        "projects/calyx/2.webp",
+        "projects/calyx/3.webp",
+        "projects/calyx/4.webp",
+        "projects/calyx/5.webp"
+      ]
+    },
+    "cmdtask": {
+      "preview": "projects/cmdtask/preview.webp",
+      "images": [
+        "projects/cmdtask/1.webp",
+        "projects/cmdtask/2.webp",
+        "projects/cmdtask/3.webp",
+        "projects/cmdtask/4.webp"
+      ]
+    },
+    "idbfiles": {
+      "preview": "projects/idbfiles/preview.webp",
+      "images": [
+        "projects/idbfiles/1.webp",
+        "projects/idbfiles/2.webp",
+        "projects/idbfiles/3.webp",
+        "projects/idbfiles/4.webp",
+        "projects/idbfiles/5.webp",
+        "projects/idbfiles/6.webp",
+        "projects/idbfiles/7.webp"
+      ]
+    },
+    "hiten-enterprises": {
+      "preview": "projects/hiten-enterprises/preview.webp",
+      "images": [
+        "projects/hiten-enterprises/1.webp",
+        "projects/hiten-enterprises/2.webp",
+        "projects/hiten-enterprises/3.webp",
+        "projects/hiten-enterprises/4.webp",
+        "projects/hiten-enterprises/5.webp",
+        "projects/hiten-enterprises/6.webp"
+      ]
+    },
+    "trip-tunes": {
+      "preview": "projects/trip-tunes/preview.webp",
+      "images": [
+        "projects/trip-tunes/1.webp",
+        "projects/trip-tunes/2.webp",
+        "projects/trip-tunes/3.webp",
+        "projects/trip-tunes/4.webp",
+        "projects/trip-tunes/5.webp",
+        "projects/trip-tunes/6.webp",
+        "projects/trip-tunes/7.webp",
+        "projects/trip-tunes/8.webp"
+      ]
+    },
+    "construction-fleet": {
+      "preview": "projects/construction-fleet/preview.webp",
+      "images": [
+        "projects/construction-fleet/1.webp",
+        "projects/construction-fleet/2.webp",
+        "projects/construction-fleet/3.webp",
+        "projects/construction-fleet/4.webp",
+        "projects/construction-fleet/5.webp",
+        "projects/construction-fleet/6.webp"
+      ]
+    },
+    "personal-portfolio": {
+      "preview": "projects/personal-portfolio/preview.webp",
+      "images": [
+        "projects/personal-portfolio/1.webp",
+        "projects/personal-portfolio/2.webp",
+        "projects/personal-portfolio/3.webp",
+        "projects/personal-portfolio/4.webp",
+        "projects/personal-portfolio/5.webp",
+        "projects/personal-portfolio/6.webp",
+        "projects/personal-portfolio/7.webp"
+      ]
+    }
+  },
+  "studio": {
+    "photography": [
+      "studio/photography/photo-cloud.webp",
+      "studio/photography/photo-crane-moon.webp",
+      "studio/photography/photo-crow.webp",
+      "studio/photography/photo-bappa.webp",
+      "studio/photography/photo-firework.webp",
+      "studio/photography/photo-iguana-2.webp",
+      "studio/photography/photo-iguana-1.webp",
+      "studio/photography/photo-mcdonalds-2.webp",
+      "studio/photography/photo-mandai.webp",
+      "studio/photography/photo-lake.webp",
+      "studio/photography/photo-mcdondalds-1.webp",
+      "studio/photography/photo-pole.webp",
+      "studio/photography/photo-pillar.webp",
+      "studio/photography/photo-sapling.webp",
+      "studio/photography/photo-spices-1.webp",
+      "studio/photography/photo-spices-2.webp",
+      "studio/photography/photo-spices-3.webp",
+      "studio/photography/photo-pool.webp",
+      "studio/photography/photo-sandcastle.webp",
+      "studio/photography/photo-twilight.webp",
+      "studio/photography/photo-spider.webp",
+      "studio/photography/photo-vase.webp",
+      "studio/photography/photo-wtc.webp",
+      "studio/photography/photo-waterfall.webp",
+      "studio/photography/photo-valley.webp"
+    ],
+    "3d-art": [
+      "studio/3d-art/blender-batarang-1.webp",
+      "studio/3d-art/blender-batarang-4.webp",
+      "studio/3d-art/blender-batarang-2.webp",
+      "studio/3d-art/blender-batarang-3.webp",
+      "studio/3d-art/blender-doll-2.webp",
+      "studio/3d-art/blender-doll-1.webp",
+      "studio/3d-art/blender-doll-3.webp",
+      "studio/3d-art/blender-spider-2.webp",
+      "studio/3d-art/blender-doll-4.webp",
+      "studio/3d-art/blender-spider-1.webp",
+      "studio/3d-art/blender-donut.webp",
+      "studio/3d-art/blender-spidey-3.webp",
+      "studio/3d-art/blender-spidey-2.webp",
+      "studio/3d-art/blender-spidey-1.webp"
+    ]
+  }
+}

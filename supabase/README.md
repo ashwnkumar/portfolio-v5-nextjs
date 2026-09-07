@@ -86,11 +86,32 @@ the rows survive a project-ref change, bucket rename, or custom domain.
 `skills.hobbies`, `bio.traits`, `bio.japaneseText`, `footer.copyright`, and all
 the `icon` / `icons` name strings.
 
-## Next
+## Seeding (Phase 1)
 
-Phase 1 — WebP conversion + Storage upload script, and the content seed script.
-Both need `SUPABASE_SECRET_KEY`; consider creating a dedicated `sb_secret_…` key
-for the run and revoking it afterwards.
+Two scripts, run in order from the repo root. Node 24 reads `.env` natively, so
+no `dotenv` is involved:
+
+```bash
+node --env-file=.env scripts/verify-remote.mjs          # read-only preflight
+node --env-file=.env scripts/migrate-images.mjs --dry-run
+node --env-file=.env scripts/migrate-images.mjs         # convert + upload
+node --env-file=.env scripts/seed-content.mjs           # insert rows
+```
+
+`migrate-images.mjs` converts `public/images/**` to WebP (quality 80, long edge
+capped at 2400px), uploads to the bucket, and writes
+`scripts/.image-manifest.json` mapping old public paths to storage paths.
+Measured locally: **152.0 MB -> 9.7 MB across 90 files (-94%)**. Uploads use
+upsert, so an interrupted run resumes cleanly; the manifest is only written on a
+fully clean run.
+
+`seed-content.mjs` consumes that manifest plus `data/*.json` and the seven
+project markdown bodies. It refuses to run against non-empty content tables
+unless given `--force`, so it cannot silently overwrite edits made later in
+Supabase Studio or the admin panel.
+
+Both scripts use `SUPABASE_SECRET_KEY` and live under `scripts/`. Nothing under
+`app/` imports them.
 
 ## CLI setup
 
