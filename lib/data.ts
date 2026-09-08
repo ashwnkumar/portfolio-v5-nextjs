@@ -72,7 +72,7 @@ export async function getSocialLinks() {
   return unwrap(
     await supabase
       .from("social_links")
-      .select("platform, label, url, username")
+      .select("platform, display_name, label, url")
       .order("sort_order"),
     "social_links",
   );

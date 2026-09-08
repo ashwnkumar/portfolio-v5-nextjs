@@ -502,6 +502,7 @@ export type Database = {
       social_links: {
         Row: {
           created_at: string
+          display_name: string
           id: string
           is_visible: boolean
           label: string
@@ -509,10 +510,10 @@ export type Database = {
           sort_order: number
           updated_at: string
           url: string
-          username: string | null
         }
         Insert: {
           created_at?: string
+          display_name: string
           id?: string
           is_visible?: boolean
           label: string
@@ -520,10 +521,10 @@ export type Database = {
           sort_order?: number
           updated_at?: string
           url: string
-          username?: string | null
         }
         Update: {
           created_at?: string
+          display_name?: string
           id?: string
           is_visible?: boolean
           label?: string
@@ -531,7 +532,6 @@ export type Database = {
           sort_order?: number
           updated_at?: string
           url?: string
-          username?: string | null
         }
         Relationships: []
       }

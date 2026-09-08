@@ -1,72 +1,37 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Button } from "@/components/ui/button";
 import { AdminPage } from "@/components/admin/ui/AdminPage";
-import { Panel, RowList, Row, EmptyState } from "@/components/admin/ui/Panel";
-import { DeleteButton } from "@/components/admin/DeleteButton";
-import { MoveButtons } from "@/components/admin/MoveButtons";
-import { deleteSocial, moveSocial } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SocialsEditor } from "@/components/admin/SocialsEditor";
 
-async function SocialsList() {
+async function Editor() {
   const supabase = await createClient();
   const { data: rows } = await supabase
     .from("social_links")
-    .select("id, platform, label, url, is_visible")
+    .select("id, platform, display_name, label, url, is_visible")
     .order("sort_order");
 
-  if (!rows?.length) {
-    return (
-      <Panel label="links">
-        <EmptyState>nothing yet</EmptyState>
-      </Panel>
-    );
-  }
+  return <SocialsEditor rows={rows ?? []} />;
+}
 
+function EditorSkeleton() {
   return (
-    <Panel label={`links · ${rows.length}`}>
-      <RowList>
-        {rows.map((row, i) => (
-          <Row key={row.id} className={row.is_visible ? "" : "opacity-55"}>
-            <MoveButtons
-              isFirst={i === 0}
-              isLast={i === rows.length - 1}
-              onMove={async (direction) => {
-                "use server";
-                await moveSocial(row.id, direction);
-              }}
-            />
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <p className="font-pixel-square text-sm truncate">
-                  {row.platform}
-                </p>
-                {!row.is_visible && (
-                  <span className="font-pixel-square text-[10px] uppercase tracking-wide border border-border px-1.5 py-0.5 text-muted-foreground">
-                    hidden
-                  </span>
-                )}
-              </div>
-              <p className="font-mono text-xs text-muted-foreground truncate mt-0.5">
-                {row.url}
-              </p>
-            </div>
-            <div className="flex items-center shrink-0">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href={`/admin/socials/${row.id}`}>Edit</Link>
-              </Button>
-              <DeleteButton
-                confirmText={`Delete the "${row.platform}" link?`}
-                action={async () => {
-                  "use server";
-                  await deleteSocial(row.id);
-                }}
-              />
-            </div>
-          </Row>
-        ))}
-      </RowList>
-    </Panel>
+    <div className="border border-border/70 divide-y divide-border/70">
+      {[0, 1, 2, 3].map((i) => (
+        <div key={i} className="p-4 space-y-3">
+          <div className="flex justify-between">
+            <Skeleton className="h-7 w-36" />
+            <Skeleton className="h-6 w-16" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            <Skeleton className="h-9 w-full" />
+            <Skeleton className="h-9 w-full" />
+          </div>
+          <Skeleton className="h-9 w-full" />
+          <Skeleton className="h-3 w-64" />
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -75,19 +40,10 @@ export default function SocialsAdminPage() {
     <AdminPage
       label="socials"
       title="Social links"
-      description="Platform slugs are lookup keys the site filters on — renaming one breaks that link. Uncheck “visible” to hide a link without deleting it."
-      action={
-        <Button asChild>
-          <Link href="/admin/socials/new">+ New link</Link>
-        </Button>
-      }
+      description="Each link shows where it appears on the site. Locked slugs are referenced by name in the code — hiding or deleting one removes it from every surface listed."
     >
-      <Suspense
-        fallback={
-          <div className="h-64 border border-border bg-muted/20 animate-pulse" />
-        }
-      >
-        <SocialsList />
+      <Suspense fallback={<EditorSkeleton />}>
+        <Editor />
       </Suspense>
     </AdminPage>
   );

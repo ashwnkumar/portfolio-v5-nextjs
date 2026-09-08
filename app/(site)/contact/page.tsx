@@ -108,8 +108,7 @@ export default async function ContactPage() {
                         <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                         <div className="flex-1">
                           <p className="text-sm font-medium">
-                            {social.platform.charAt(0).toUpperCase() +
-                              social.platform.slice(1)}
+                            {social.display_name}
                           </p>
                           <p className="text-xs text-muted-foreground">
                             {social.platform === "email"

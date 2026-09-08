@@ -10,7 +10,7 @@ export type NavItem = {
 /** Exactly what getSocialLinks() returns, kept in sync with the schema. */
 export type SocialLink = Pick<
   Tables["social_links"]["Row"],
-  "platform" | "label" | "url" | "username"
+  "platform" | "display_name" | "label" | "url"
 >;
 
 // ExperienceType / ProjectType / StudioItem lived here for the JSON era and
