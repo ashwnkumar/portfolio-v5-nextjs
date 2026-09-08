@@ -2,8 +2,7 @@ import { updateTag } from "next/cache";
 
 /**
  * Cache tags map 1:1 to table names (see lib/data.ts), so invalidating a table
- * invalidates every getter that reads it -- including composite getters like
- * getFooter(), which is tagged with both footer_links and site_settings.
+ * invalidates every getter that reads it.
  *
  * Every write MUST call this. Public data is cached with cacheLife("days"),
  * so without it a save is invisible on the site for up to a day.
@@ -14,8 +13,6 @@ import { updateTag } from "next/cache";
  * argument in Next 16 and is the purge-oriented API.)
  */
 export type ContentTable =
-  | "nav_links"
-  | "footer_links"
   | "site_settings"
   | "social_links"
   | "profile"

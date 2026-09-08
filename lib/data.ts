@@ -3,6 +3,7 @@ import type { PostgrestSingleResponse } from "@supabase/supabase-js";
 import { supabase } from "./supabase/public";
 import { imageUrl } from "./images";
 import { seededShuffle } from "./random";
+import { FOOTER_LINKS } from "./routes";
 import { formatMonthYear } from "./dates";
 
 /**
@@ -29,21 +30,9 @@ function unwrap<T>(
 // -----------------------------------------------------------------------------
 // Site chrome
 // -----------------------------------------------------------------------------
-export async function getNavigation() {
-  "use cache";
-  cacheTag("nav_links");
-  cacheLife("days");
-
-  const rows = unwrap(
-    await supabase.from("nav_links").select("label, href").order("sort_order"),
-    "nav_links",
-  );
-  return rows.map((r) => ({ label: r.label, href: r.href }));
-}
-
 export async function getFooter() {
   "use cache";
-  cacheTag("footer_links", "site_settings");
+  cacheTag("site_settings");
   cacheLife("days");
 
   const settings = unwrap(
@@ -53,14 +42,11 @@ export async function getFooter() {
       .single(),
     "site_settings",
   );
-  const links = unwrap(
-    await supabase.from("footer_links").select("label, href").order("sort_order"),
-    "footer_links",
-  );
 
   return {
     brand: { name: settings.footer_brand_name, tagline: settings.footer_brand_tagline },
-    quickLinks: links.map((l) => ({ name: l.label, href: l.href })),
+    // Navigation is code, not content — see lib/routes.ts.
+    quickLinks: FOOTER_LINKS,
   };
 }
 
