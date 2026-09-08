@@ -156,7 +156,7 @@ export async function getSkills() {
   const rows = unwrap(
     await supabase
       .from("skill_categories")
-      .select("name, sort_order, skills(name, icon_id, sort_order)")
+      .select("name, sort_order, skills(name, icon_id, icon_variant, invert_dark, sort_order)")
       .order("sort_order"),
     "skill_categories",
   );
@@ -166,7 +166,12 @@ export async function getSkills() {
       name: c.name,
       skills: [...c.skills]
         .sort((a, b) => a.sort_order - b.sort_order)
-        .map((s) => ({ name: s.name, iconId: s.icon_id })),
+        .map((s) => ({
+          name: s.name,
+          iconId: s.icon_id,
+          iconVariant: s.icon_variant,
+          invertDark: s.invert_dark,
+        })),
     })),
   };
 }

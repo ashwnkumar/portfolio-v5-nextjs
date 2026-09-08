@@ -466,7 +466,10 @@ export type Database = {
           category_id: string
           created_at: string
           icon_id: string | null
+          icon_id_legacy: string | null
+          icon_variant: string
           id: string
+          invert_dark: boolean
           name: string
           sort_order: number
           updated_at: string
@@ -475,7 +478,10 @@ export type Database = {
           category_id: string
           created_at?: string
           icon_id?: string | null
+          icon_id_legacy?: string | null
+          icon_variant?: string
           id?: string
+          invert_dark?: boolean
           name: string
           sort_order?: number
           updated_at?: string
@@ -484,7 +490,10 @@ export type Database = {
           category_id?: string
           created_at?: string
           icon_id?: string | null
+          icon_id_legacy?: string | null
+          icon_variant?: string
           id?: string
+          invert_dark?: boolean
           name?: string
           sort_order?: number
           updated_at?: string

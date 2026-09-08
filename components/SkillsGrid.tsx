@@ -5,10 +5,19 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { deviconUrl } from "@/lib/devicon";
+import { cn } from "@/lib/utils";
 
 type Skill = {
   name: string;
   iconId: string | null;
+  iconVariant?: string | null;
+  /**
+   * devicon ships plain logos; a few (nextjs, express, vercel) carry no fill
+   * and render black, i.e. invisible on the dark theme. Inverting every icon
+   * would destroy the coloured marks, so only this subset is flipped.
+   */
+  invertDark?: boolean | null;
 };
 
 type Category = {
@@ -33,10 +42,15 @@ export default function SkillsGrid({ categories }: { categories: Category[] }) {
                   className="flex flex-col items-center gap-1.5"
                 >
                   {skill.iconId ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={`https://skillicons.dev/icons?i=${skill.iconId}&theme=dark`}
+                      src={deviconUrl(skill.iconId, skill.iconVariant)!}
                       alt={skill.name}
-                      className="w-10 h-10 rounded-lg"
+                      loading="lazy"
+                      className={cn(
+                        "w-10 h-10 object-contain",
+                        skill.invertDark && "dark:invert",
+                      )}
                     />
                   ) : (
                     <span className="text-xs font-medium text-muted-foreground border rounded-lg w-10 h-10 flex items-center justify-center bg-muted/40">
@@ -69,10 +83,15 @@ export default function SkillsGrid({ categories }: { categories: Category[] }) {
                   <TooltipTrigger asChild>
                     <div className="flex items-center justify-center w-14 h-14 rounded-lg cursor-default">
                       {skill.iconId ? (
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
-                          src={`https://skillicons.dev/icons?i=${skill.iconId}&theme=dark`}
+                          src={deviconUrl(skill.iconId, skill.iconVariant)!}
                           alt={skill.name}
-                          className="w-12 h-12 rounded-lg"
+                          loading="lazy"
+                          className={cn(
+                            "w-11 h-11 object-contain",
+                            skill.invertDark && "dark:invert",
+                          )}
                         />
                       ) : (
                         <span className="text-xs font-medium text-muted-foreground border rounded-lg w-12 h-12 flex items-center justify-center bg-muted/40">
