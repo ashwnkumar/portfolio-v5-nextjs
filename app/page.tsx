@@ -63,7 +63,7 @@ export default async function Page() {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <a href="/resume.pdf" download="Ashwin-Kumar-Resume.pdf">
+            <a href="/Ashwin-Kumar-Resume.pdf" download>
               <Button size="lg" className="gap-2">
                 <DownloadIcon className="w-4 h-4" />
                 Download Resume
